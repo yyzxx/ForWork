@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ajax1.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>新建组合</span>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item pd-10">
+        <div class="input-wrap">
+            <input type="text" class="input-txt" placeholder="请输入组合名称" id="itemName">
+        </div>
+        <p class="text-right"><span class="font-tip"><em id="fontNum">0</em>/6</span></p>
+        <p class="text-center mt-120"><a href="javascript:void(0)" class="input-btn" id="confirm">确认</a></p>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		var userId=plus.storage.getItem('userId');
+		jQuery("#confirm").on('tap',function(){
+			var name=jQuery("#itemName").val();
+			if(name==''){
+				mui.toast('请先输入组合名称');
+			}else{
+				getCommonData(userId,name); 
+			}	
+		})
+	})
+		
+	function getCommonData(userId,name){
+		var gzParam={
+		    body:{
+		        userId:userId,
+		        name:name
+		    }
+		}
+        getData2(gzParam,'/SQBusiness/goodsController/insertGoodsGroupApp','addItem');
+	}
+	jQuery("#itemName").keyup(function(){
+		var len=jQuery("#itemName").val().length;
+		var newLen=len>=6?6:len;
+		jQuery("#fontNum").html(newLen);
+		var str=jQuery("#itemName").val();
+		var newStr=str.substr(0,6);
+		jQuery("#itemName").val(newStr);
+	})
+</script>
+</html>

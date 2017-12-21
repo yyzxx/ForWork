@@ -1,0 +1,626 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{
+    margin:0;
+    padding:0;
+}
+body{
+    font-size: 14px;
+    font-family:'Microsoft Yahei',simsun,"宋体";
+    color: #000;
+    background: #fff;
+}
+img{
+    border: none;
+}
+li{
+    list-style: none;
+}
+*:focus {
+    outline: none;
+    border:none;
+}
+input,img {
+    vertical-align: middle;
+}
+input,select,textarea{
+    outline: none;
+    border:none;
+}
+textarea{
+    resize: none;
+}
+a:link,a:visited{
+    text-decoration: none;
+    color: #000;
+    outline: none;
+}
+a:hover,a:active{
+    color: #1171c5;
+    outline: none;
+}
+em,i{
+    font-style: normal;
+}
+/* 移动端禁止选中内容：*/
+.user-select-none {
+    -webkit-user-select:none;
+}
+/* 取消touch的高亮显示：*/
+html {
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+    -webkit-appearance: none;
+}
+textarea {
+    -webkit-appearance: none;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#999;
+}
+/*清除浮动*/
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.clearfix{
+    zoom: 1;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+.fixed-padding{
+    padding-top: 5.17rem;
+    padding-bottom: 2.37rem;
+}
+.fixed-padding1{
+    padding-top: 1.73rem;
+    padding-bottom: 2.37rem;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
+.border-left{
+    border-left: 1px solid #d2d2d2;
+}
+/* icon */
+.icon{
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    position: absolute;
+}
+.icon-1{
+    left: 0;
+    top:0;
+    width: 1.73rem;
+    height: 1.73rem;
+    background: url("../imgs/icon-1.png") no-repeat 0 0;
+    background-size: cover;
+}
+.icon-2{
+    right: 0;
+    top:0;
+    width: 1.73rem;
+    height: 1.73rem;
+    background: url("../imgs/icon-2.png") no-repeat 0 0;
+    background-size: cover;
+}
+.icon-3{
+    width: 0.54rem;
+    height: 0.54rem;
+    left: 0rem;
+    top:0.27rem;
+    background: url("../imgs/icon-3.png") no-repeat 0 0;
+    background-size: cover;
+    cursor: pointer;
+}
+.icon-4{
+    width: 0.54rem;
+    height: 0.54rem;
+    right: 0rem;
+    top:0.27rem;
+    background: url("../imgs/icon-4.png") no-repeat 0 0;
+    background-size: cover;
+    cursor: pointer;
+}
+.icon-5{
+    left: 0;
+    top:0;
+    width: 1.73rem;
+    height: 1.73rem;
+    background: url("../imgs/icon-8.png") no-repeat 0 0;
+    background-size: cover;
+}
+.icon-6{
+    width: 1rem;
+    height: 1rem;
+    background: url("../imgs/icon-9.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.icon-7{
+    right: 0;
+    top:0;
+    width: 1.73rem;
+    height: 1.73rem;
+    background: url("../imgs/icon-12.png") no-repeat 0 0;
+    background-size: cover;
+}
+.icon-8{
+    right: 0;
+    top:0;
+    width: 1.73rem;
+    height: 1.73rem;
+    background: url("../imgs/icon-14.png") no-repeat 0 0;
+    background-size: cover;
+}
+
+.icon-down{
+    width: 0.47rem;
+    height: 0.47rem;
+    background: url("../imgs/icon-15.png") no-repeat 0 0;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    margin: -1px 0px 0 3px;
+    vertical-align: middle;
+}
+
+.icon-up{
+    display: inline-block;
+    position: relative;
+    width: 0.47rem;
+    height: 0.47rem;
+    background: url("../imgs/icon-16.png") no-repeat 0 0;
+    background-size: cover;
+    margin: -1px 0px 0 3px;
+    vertical-align: middle;
+}
+.icon-at{
+	display: inline-block;
+    position: relative;
+    width: 0.52rem;
+    height: 0.65rem;
+    background: url("../imgs/icon-19.png") no-repeat 0 0;
+    background-size: cover;
+    margin-left: 8px;
+}
+.icon-date{
+    width: 1.08rem;
+    height: 1.081rem;
+    background: url("../imgs/icon-11.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-left: 0.65rem;
+}
+.icon-ar{
+    width: 0.43rem;
+    height: 0.82rem;
+    background: url("../imgs/arrow-right.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    margin-left: 7px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.icon-ar1{
+    width: 0.39rem;
+    height: 0.6rem;
+    background: url("../imgs/icon-21.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    margin-left: 5px;
+    margin-top: -3px;
+    vertical-align: middle;
+}
+.icon-close{
+    width: 0.65rem;
+    height: 0.65rem;
+    background:url("../imgs/icon-13.png") no-repeat 0 0;
+    position: absolute;
+    background-size: cover;
+    right: 0.5rem;
+    top:0.6rem;
+    display: none;
+}
+.icon-cal{
+	width: 1.08rem;
+	height: 1.08rem;
+	background:url("../imgs/icon-18.png") no-repeat 0 0;
+    position: relative;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+.icon-que{
+	width: 1.08rem;
+	height: 1.08rem;
+	background:url("../imgs/icon-17.png") no-repeat 0 0;
+    position: absolute;
+    background-size: cover;
+    display: inline-block;
+    right: 0.5rem;
+    top:0.4rem;
+}
+.icon-arrow{
+	width: 1.08rem;
+	height: 1.08rem;
+	background:url("../imgs/icon-20.png") no-repeat 0 0;
+    position: relative;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 5px;
+}
+.icon-idea{
+	width: 1.95rem;
+	height: 1.95rem;
+	background:url("../imgs/icon-22.png") no-repeat 0 0;
+    position: relative;
+    background-size: cover;
+    display: inline-block;
+}
+.ticon-1{
+    width: 1.52rem;
+    height: 1.52rem;
+    position: relative;
+    display: inline-block;
+    background: url("../imgs/icon-5.png") no-repeat 0 0;
+    background-size: cover;
+}
+.ticon-2{
+    width: 1.52rem;
+    height: 1.52rem;
+    position: relative;
+    display: inline-block;
+    background: url("../imgs/icon-6.png") no-repeat 0 0;
+    background-size: cover;
+}
+.ticon-3{
+    width: 1.52rem;
+    height: 1.52rem;
+    position: relative;
+    display: inline-block;
+    background: url("../imgs/icon-7.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu{
+    width: 1.08rem;
+    height: 1.08rem;
+    display: inline-block;
+    margin-top: 0.12rem;
+}
+.menu-1{
+    background:url("../imgs/ficon-1.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-1, a.active .menu-1{
+    background:url("../imgs/ficon-h1.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-2{
+    background:url("../imgs/ficon-2.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-2,a:active .menu-2, a.active .menu-2{
+    background:url("../imgs/ficon-h2.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-3{
+    background:url("../imgs/ficon-3.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-3,a:active .menu-3, a.active .menu-3{
+    background:url("../imgs/ficon-h3.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-4{
+    background:url("../imgs/ficon-4.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-4,a:active .menu-4, a.active .menu-4{
+    background:url("../imgs/ficon-h4.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-5{
+    background:url("../imgs/ficon-5.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-5,a:active .menu-5, a.active .menu-5{
+    background:url("../imgs/ficon-h5.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-6{
+    background:url("../imgs/ficon-6.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-6, a.active .menu-6{
+    background:url("../imgs/ficon-h6.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-7{
+    background:url("../imgs/ficon-7.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-7, a.active .menu-7{
+    background:url("../imgs/ficon-h7.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-8{
+    background:url("../imgs/ficon-8.png") no-repeat 0 0;
+    background-size: cover;
+}
+a:hover .menu-8, a.active .menu-8{
+    background:url("../imgs/ficon-h8.png") no-repeat 0 0;
+    background-size: cover;
+}
+.menu-add{
+    width: 1.95rem;
+    height: 1.95rem;
+    background:url("../imgs/ficon-9.png") no-repeat 0 0;
+    background-size: cover;
+    position: relative;
+    display: inline-block;
+    margin-top: 0.86rem;
+}
+.mui-menu-1{
+	background:url("../imgs/ficon-1.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-active .mui-menu-1{
+	background:url("../imgs/ficon-h1.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-menu-2{
+	background:url("../imgs/ficon-2.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-active .mui-menu-2{
+	background:url("../imgs/ficon-h2.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-menu-3{
+	background:url("../imgs/ficon-3.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-active .mui-menu-3{
+	background:url("../imgs/ficon-h3.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-menu-4{
+	background:url("../imgs/ficon-4.png") no-repeat 0 0;
+	background-size: cover;
+}
+.mui-active .mui-menu-4{
+	background:url("../imgs/ficon-h4.png") no-repeat 0 0;
+	background-size: cover;
+}
+
+.eicon-1{
+    width: 0.73rem;
+    height: 0.73rem;
+    background: url("../imgs/eicon-1.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+}
+.eicon-2{
+    width: 0.73rem;
+    height: 0.73rem;
+    background: url("../imgs/eicon-2.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+}
+.eicon-2a{
+    width: 0.73rem;
+    height: 0.73rem;
+    background: url("../imgs/eicon-2a.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+}
+.eicon-3{
+    width: 0.97rem;
+    height: 0.65rem;
+    background: url("../imgs/eicon-3.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.icon-right{
+    width: 0.82rem;
+    height: 0.82rem;
+    background: url("../imgs/arrow-right1.png") no-repeat 0 0;
+    display: inline-block;
+    position: absolute;
+    background-size: cover;
+    right: 0.6rem;
+    top:0.5rem;
+}
+.icon-bottom{
+    width: 0.82rem;
+    height: 0.82rem;
+    background: url("../imgs/arrow-bottom.png") no-repeat 0 0;
+    display: inline-block;
+    position: absolute;
+    background-size: cover;
+    right: 0.6rem;
+    top:0.5rem;
+}
+.icon-clock{
+	width: 30px;
+	height: 30px;
+	background: url(../imgs/eicon-1s.png) no-repeat 0 0;
+	position: absolute;
+    background-size: cover;
+    right: 10px;
+    top:6px;
+}
+/* login */
+body{
+	background: url(../imgs/log-bg.png);
+	width: 100%;
+	height: 100%;
+	background-size:cover;	
+}
+.logo img{
+	width: 3.47rem;	
+	height: 3.47rem;
+	margin-top: 4.6rem;
+	margin-bottom: 5.4rem;
+}
+.sicon-user{
+	width: 1.17rem;
+	height: 1.17rem;
+	background: url(../imgs/user.png) no-repeat 0 0;
+	background-size: cover;
+	display: inline-block;
+	position: absolute;
+	left: 0.43rem;
+	top:0.15rem;
+}
+.sicon-key{
+	width: 1.17rem;
+	height: 1.17rem;
+	background: url(../imgs/password.png) no-repeat 0 0;
+	background-size: cover;
+	display: inline-block;
+	position: absolute;
+	left: 0.43rem;
+	top:0.15rem;
+}
+.sicon-phone{
+	width: 1.17rem;
+	height: 1.17rem;
+	background: url(../imgs/iphone.png) no-repeat 0 0;
+	background-size: cover;
+	display: inline-block;
+	position: absolute;
+	left: 0.43rem;
+	top:0.15rem;
+}
+.sicon-valit{
+	width: 1.17rem;
+	height: 1.17rem;
+	background: url(../imgs/valit.png) no-repeat 0 0;
+	background-size: cover;
+	display: inline-block;
+	position: absolute;
+	left: 0.43rem;
+	top:0.15rem;
+}
+.sicon-log-arrow{
+	width: 1.17rem;
+	height: 1.17rem;
+	background: url(../imgs/log-arrow.png) no-repeat 0 0;
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+	top:11px;
+	background-size: cover;
+	cursor: pointer;
+}
+.header-title{
+	color: #fff;
+	margin-bottom: 3.47rem;
+	margin-top:15px;
+	font-size: 0.78rem;
+}
+
+.log-input{
+	background: transparent;
+	border-bottom: 1px solid #fff;
+	padding: 0.2rem;
+	width: 10.86rem;
+	margin: 0 auto;
+	height: 1.52rem;
+	line-height: 1.52rem;
+	position: relative;
+	margin-bottom: 0.8rem;
+}
+.input-item{
+	background-color: transparent!important;
+	width: 100%;
+    height: 100%!important;
+    border: none!important;
+    padding: 2px!important;
+    text-indent: 1.7rem;
+	font-size: 0.56rem;
+	color: #e4fcee;
+	box-sizing: border-box;
+}
+.log-form{
+	width: 10.86rem;
+	margin: 0 auto;
+}
+.log-form p a{
+	color: #dedede;
+	font-size: 0.52rem;
+	letter-spacing: 1px;
+}
+.log-form p.forgot{
+	margin-top: -0.3rem;
+}
+.log-sub{
+	width: 8.39rem;
+	height: 1.73rem;
+	line-height: 1.73rem;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #fff;
+	border-radius: 1.73rem;
+	font-size: 0.78rem!important;
+	margin-top: 1.3rem;
+}
+.fix-input{
+	padding-right: width: 4rem;
+}
+.validate,.validate:active,.validate:focus{
+	background: transparent!important;
+	color: #fff!important;
+	font-size:0.6rem;
+	height: 1.52rem !important;
+	width: 3.8rem;
+	position: absolute;
+	right: 0rem;
+	top: -0.05rem;
+	border:none;
+}

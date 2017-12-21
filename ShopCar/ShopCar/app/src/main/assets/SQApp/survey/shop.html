@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/mui.indexedlist.css" rel="stylesheet" />
+    <link href="../css/style(1).css" rel="stylesheet" type="text/css" />    
+    <style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+		.mui-bar {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+		#done.mui-disabled{
+			color: gray;
+		}
+		.mui-indexed-list-inner{
+			padding-bottom: 45px;
+		}
+	</style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav" style="background: #279ace;">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+	<h1 class="mui-title" style="color: #fff;">门店</h1>
+</header>
+<div class="mui-content wrap-cate">
+	<div id="slider" class="mui-slider">
+		<ul id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted list-tabed bg-white">
+			<li>
+				<a href="#item1mobile" class="mui-control-item mui-active">
+					推荐门店
+				</a>
+			</li>
+			<li >
+				<a href="#item2mobile" class="mui-control-item" >
+					字母排序
+				</a>
+			</li>
+		</ul>
+		<div class="mui-slider-group">
+			<div id="item1mobile" class="mui-slider-item mui-control-content bg-white mui-active" style="margin-top: 15px;">
+				<div id="listBand">					
+			        <ul class="mui-table-view mui-table-view-radio" id="selectList">
+						<!--<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								Item 1
+							</a>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+			<div id="item2mobile" class="mui-slider-item mui-control-content bg-white">
+				 <div id='list' class="mui-indexed-list">
+					<div class="mui-indexed-list-search mui-input-row mui-search" style="display: none;">
+						<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索机场">
+					</div>
+					<div class="mui-indexed-list-bar">
+						<a>A</a>
+						<a>B</a>
+						<a>C</a>
+						<a>D</a>
+						<a>E</a>
+						<a>F</a>
+						<a>G</a>
+						<a>H</a>
+						<a>I</a>
+						<a>J</a>
+						<a>K</a>
+						<a>L</a>
+						<a>M</a>
+						<a>N</a>
+						<a>O</a>
+						<a>P</a>
+						<a>Q</a>
+						<a>R</a>
+						<a>S</a>
+						<a>T</a>
+						<a>U</a>
+						<a>V</a>
+						<a>W</a>
+						<a>X</a>
+						<a>Y</a>
+						<a>Z</a>
+					</div>
+					<div class="mui-indexed-list-alert"></div>
+					<div class="mui-indexed-list-inner">
+						<div class="mui-indexed-list-empty-alert">没有数据</div>
+						<ul class="mui-table-view" id="letterList">
+							<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>-->
+							<!--<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />阿克苏机场</li>
+							<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />阿拉山口机场</li>
+							<li data-value="AAT" data-tags="ALeTai" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />阿勒泰机场</li>
+							<li data-value="NGQ" data-tags="ALiKunSha" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />阿里昆莎机场</li>
+							<li data-value="AQG" data-tags="AnQingTianZhuShan" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />安庆天柱山机场</li>
+							<li data-value="MFM" data-tags="AoMenGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+								<input type="checkbox" />澳门国际机场</li>-->
+							<!--<li data-group="B" class="mui-table-view-divider mui-indexed-list-group">B</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.indexedlist.js"></script>
+<script type="text/javascript" charset="utf-8">
+	mui.init({
+		swipeBack: false
+	});
+	mui.ready(function() {
+		var header = document.querySelector('header.mui-bar');
+		var list = document.getElementById('list');
+		//calc hieght
+		list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+		//create
+		window.indexedList = new mui.IndexedList(list);
+	});
+	
+//	mui.plusReady(function(){
+		var accessToken="1578BF239F724072A25E9BE32296926F"
+		//var accessToken=plus.storage.getItem('accessToken');
+		var sParams={
+			    head:{
+			        accessToken:accessToken
+			    }
+		}
+		getStore(sParams,'/SQBusiness/storeController/selectUserBelongStores');
+//	})
+	function getStore(dataParam,apiUrl){
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				//console.log(data);
+				var html='';
+				var arr=[];
+				var storeData = data.body.data;
+				for(var i=0;i<data.body.data.length;i++){
+					html+='<li class="mui-table-view-cell" storeid="'+data.body.data[i].storeId+'"><a class="mui-navigate-right">'+data.body.data[i].storeName+'</a></li>'				
+					arr.push(data.body.data[i].storeName+'-'+data.body.data[i].storeId)
+				}
+				jQuery("#selectList").html(html);
+				$('#selectList li').on('tap',function(){
+				var storeName = $(this).text();
+				alert(storeName);
+				var k = $(this).index();
+				var storeId = storeData[k].storeId;
+//					alert(storeId);
+				localStorage.setItem("storeName",storeName);
+				localStorage.setItem("storeId",storeId);
+//					location.href='datetime.html';					
+				mui.init({
+				    beforeback: function() {
+				　　　　 //获得父页面的webview
+				        var list = plus.webview.currentWebview().opener();
+				　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+				        mui.fire(list, 'refresh');
+				        //返回true,继续页面关闭逻辑
+				        return true;
+						    }
+				});
+				mui.back();
+			})
+				//console.log(arr);
+				//console.log(pySegSort(arr));
+				var objArr=pySegSort(arr);
+				var str='';
+				for(var j=0;j<objArr.length;j++){
+					//console.log(objArr[j].letter.toString());
+					str+='<li data-group="" class="mui-table-view-divider mui-indexed-list-group">'+objArr[j].letter.toString().toLocaleUpperCase()+'</li>'
+					//console.log(objArr[j].data.length);
+					for(var z=0;z<objArr[j].data.length;z++){
+						str+='<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item selec-item" storeid="'+objArr[j].data[z].toString().split('-')[1]+'">'+objArr[j].data[z].toString().split('-')[0]+'</li>'							
+//							  <li data-value="NGQ" data-tags="ALiKunSha" class="mui-table-view-cell mui-indexed-list-item">阿里昆莎机场</li>
+					}
+				}
+				jQuery("#letterList").html(str);
+				$('#letterList li').on('tap',function(){
+				var storeName = $(this).text();
+				alert(storeName);
+				var k = $(this).index();
+				var storeId = storeData[k].storeId;
+//					alert(storeId);
+				localStorage.setItem("storeName",storeName);
+				localStorage.setItem("storeId",storeId);
+//					location.href='datetime.html';					
+				mui.init({
+				    beforeback: function() {
+				　　　　 //获得父页面的webview
+				        var list = plus.webview.currentWebview().opener();
+				　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+				        mui.fire(list, 'refresh');
+				        //返回true,继续页面关闭逻辑
+				        return true;
+						    }
+				});
+				mui.back();
+			})
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}
+	
+	function pySegSort(arr,empty) {
+		if(!String.prototype.localeCompare)return null;
+		var letters ="*abcdefghjklmnopqrstwxyz".split('');
+		var zh ="啊把差大额发噶哈级卡啦吗那哦爬器然啥他哇西呀咋".split('');
+		var segs = [];
+		var curr;
+		$.each(letters, function(i){
+			curr = {letter: this, data:[]};
+			$.each(arr, function() {
+				if((!zh[i-1] || zh[i-1].localeCompare(this) <= 0) && this.localeCompare(zh[i]) == -1) {
+					curr.data.push(this);
+				}
+			});
+			if(empty || curr.data.length) {
+				segs.push(curr);
+				curr.data.sort(function(a,b){
+					return a.localeCompare(b);
+				});
+			}
+		});
+		return segs;
+	}
+</script>
+</body>
+</html>

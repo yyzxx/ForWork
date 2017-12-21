@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+<body class="fixed-padding1">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>选择组合</span>
+        <a href="javascript:void(0)" id="done"><i class="icon icon-7"></i></a>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item">
+        <div class="item-title">
+        	<ul class="list-set1 select-set" id="selectSet">
+	            <!--<li><label><input type="radio" name="set-item"><em>销售量</em></label></li>
+	            <li><label><input type="radio" name="set-item"><em>销售额</em></label></li>
+	            <li><label><input type="radio" name="set-item"><em>客流</em></label></li>-->
+            </li>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var groupIdFrom=self.groupId;
+		var groupIdTo='';
+		var userId=self.userId
+		var goodsId=self.goodsId;
+		var setParam={
+		    body:{
+		        userId:userId
+		    }
+		}		
+		mui.ajax(baseUrl+"/SQBusiness/goodsController/selectUserGoodsGroupListApp",{
+			data: JSON.stringify(setParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){		
+				//console.log(data);
+				var html="";
+				for(var i=0;i<data.body.data.length;i++){
+					if(data.body.data[i].groupId==groupIdFrom){
+						html+='<li><label><input type="radio" name="set-item" groupId="'+data.body.data[i].groupId+'" checked disabled class="set-item"><em>'+data.body.data[i].groupName+'</em></label></li>';
+					}else{
+						html+='<li><label><input type="radio" name="set-item" groupId="'+data.body.data[i].groupId+'" class="set-item"><em>'+data.body.data[i].groupName+'</em></label></li>';
+					}			
+				}
+				jQuery("#selectSet").html(html);
+				jQuery("#done").on('tap',function(){
+					jQuery(".set-item").each(function(i,o){
+						if(this.checked){
+							groupIdTo=jQuery(this).attr('groupId');						
+						}
+					})
+					if(groupIdTo==''){
+						mui.toast('请先选择组合');
+						return;
+					}
+					//alert(123);
+					if(groupIdTo==groupIdFrom){
+						mui.toast('不能添加到同一个组合');
+						return;
+					}
+					//alert(456);
+					var goParam={
+					    body:{
+					        userId:userId,
+					        goodsId:goodsId,
+					        groupId:groupIdTo
+					    }
+					}
+					//console.log(JSON.stringify(goParam));
+					addToSet(goParam,'/SQBusiness/goodsController/insertGoodsFocusApp');
+				})
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});		
+	})
+				
+	//判断商品是否已关注
+	function addToSet(dataParam,apiUrl){
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){			
+				if(apiUrl=='/SQBusiness/goodsController/insertGoodsFocusApp'){
+					//console.log(JSON.stringify(data));
+					if(data.body.code==0){
+						mui.toast('添加组合成功');
+						var prev=plus.webview.getWebviewById('product.html');
+			   		    mui.fire(prev,'refresh',{
+			   			   dateStr:'refresh'
+			   		    });
+			   		    var home=plus.webview.getWebviewById('gz1.html');
+			   		    mui.fire(home,'refresh',{
+			   			   dateStr:'refresh'
+			   		    });
+					}
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}
+</script>
+</html>

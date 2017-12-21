@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/ajax2.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <!--<a href="javascript:void(0)" class="" onclick="goBack()"><i class="icon icon-5"></i></a>-->
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>商品异常分析</span>
+    </div>
+</div>
+<div class="wrap analyse">
+	<div id="slider" class="mui-slider">
+	    	<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted bg-white" id="segmented">
+	            <div class="mui-scroll bg-white">
+	                <a class="mui-control-item mui-active" href="#item1mobile" index="0">
+	                    	合计
+	                </a>
+	                <a class="mui-control-item" href="#item2mobile" index="1">
+	                    	负毛利
+	                </a>
+	                <a class="mui-control-item" href="#item3mobile" index="2">
+	                    	负库存
+	                </a>
+	                <a class="mui-control-item" href="#item4mobile" index="3">
+	                    	高库存
+	                </a>
+	                <a class="mui-control-item" href="#item5mobile" index="4">
+	                    	无销售
+	                </a>
+	                <a class="mui-control-item" href="#item6mobile" index="5">
+	                                         缺货
+	                </a>
+	                <!--<a class="mui-control-item" href="#item7mobile" index="6">
+	                                         异常状态
+	                </a>-->
+	    		</div>
+			</div>
+            <div class="mui-slider-group" style="margin-top: 10px;">
+                <div id="item1mobile" class="mui-slider-item mui-control-content mui-active border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="0">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="0">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="0">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="0"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas1" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable1">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">赛马群库存准确率</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域</th>
+					                	<th>总项 合计</th>
+					                	<th>负毛利</th>
+					                	<th>负库存</th>
+					                	<th>高库存</th>
+					                	<th>缺货</th>
+					                	<th>无销售</th>
+					                	<th>异常</th>
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                	<td>160</td>
+					                	<td>5</td>
+					                	<td>1</td>
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>
+                <div id="item2mobile" class="mui-slider-item mui-control-content border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="1">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="1">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="1">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="1"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas2" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable2">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">各门店店品项数</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域-门店</th>
+					                	<th>品项数</th>
+					                	<th>销售额</th>
+					                	<th>负毛利额</th>
+					                	<th>负毛利率</th>
+					                	<th>促销负毛利品项数</th>
+					                	<th>连续3天负毛利品项数</th>
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                	<td>160</td>
+					                	<td>5</td>					                	
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>
+                <div id="item3mobile" class="mui-slider-item mui-control-content border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="2">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="2">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="2">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="2"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas3" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable3">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">各门店品项数</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域-门店</th>
+					                	<th>品项数</th>
+					                	<th>库存量</th>
+					                	<th>库存额</th>
+					                	<th style="width: 22%;">高频次负库品项数</th>
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>
+                <div id="item4mobile" class="mui-slider-item mui-control-content border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="3">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="3">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="3">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="3"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas4" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable4">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">各门店品相数</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域-门店</th>
+					                	<th>品项数</th>
+					                	<th>库存量</th>
+					                	<th>库存额</th>
+					                	<th>低销高库存品项数</th>
+					                	<th>高库存可退品相数</th>
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                	<td>160</td>
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>
+                <div id="item5mobile" class="mui-slider-item mui-control-content border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="4">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="4">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="4">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="4"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas5" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable5">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">各门店品相数</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域-门店</th>
+					                	<th>品相数</th>
+					                	<th>库存量</th>
+					                	<th>库存额</th>
+					                	<th>高库存无销售品相数</th>
+					                	<th>疑似虚库存品相数</th>				
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                	<td>160</td>
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>
+                <div id="item6mobile" class="mui-slider-item mui-control-content border-n">
+                    <div class="section-item mb-10 bg-white relative">
+				        <ul class="list-days1">
+				        	<li><a href="javascript:void(0)" class="today" index="5">今天</a></li>
+				        	<li><a href="javascript:void(0)" class="week" index="5">15天</a></li>
+				        	<li><a href="javascript:void(0)" class="month" index="5">30天</a></li>
+				        	<li><i class="icon-cal btn"></i><input type="date" value="2017-08-25" onfocus="(this.type='date')" class="input-date1" index="5"></li>
+				        </ul>
+				        <a href="###"><i class="icon-que"></i></a>
+				    </div>
+				    <div class="section-item mb-10 bg-white">
+				        <div class="tab-item" style="display: block;overflow:hidden;">
+				            <div class="char-line1" id="tCanvas6" style="margin-top: 10px;"></div>
+				            <div class="item-bottom mg-10 border-table a-table" id="itemTable6">
+				            	<p class="fix-p"><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+				            	<p class="table-title">各门店品相数</p>
+					            <table class="base-table">
+					                <!--<tr>
+					                	<th>区域-门店</th>
+					                	<th>有效品相</th>
+					                	<th>缺货品相</th>
+					                	<th>缺货率</th>
+					                	<th>无在途缺货品项数</th>
+					                	<th>未到货缺货品项数</th>
+					                	<th>新品缺货品项</th>
+					                </tr>
+					                <tr>
+					                	<td>三明</td>
+					                	<td>108</td>
+					                	<td>3%</td>
+					                	<td>120</td>
+					                	<td>370</td>
+					                	<td>160</td>
+					                	<td>5</td>
+					                </tr>-->
+					            </table>
+				        	</div>
+				        </div>
+				    </div>
+                </div>               
+            </div>
+    </div>
+</div>
+<div class="tip-alert">
+	<div class="tip-cover"></div>
+	<div class="tip-info">
+		<div class="tip-title">指标说明</div>
+		<div class="tip-body">
+			<p><span>销售额</span><em>销售金额</em></p>
+			<p><span>客流</span><em>进店客户人数</em></p>
+			<p><span>客单</span><em>客单=销售额/客流</em></p>
+			<p><span>去年同期</span><em>去年同时期段数据</em></p>
+			<p><span>VS去年同期</span><em>本周同期统计数据与去年同期相比较</em></p>
+		</div>
+		<div class="tip-foot">
+			<a href="####" class="tip-btn">确定</a>
+		</div>
+	</div>
+</div>			        	
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">
+	mui.init({
+		beforeback: function(){
+			//获得列表界面的webview
+			var list = plus.webview.getWebviewById('fx.html');
+			//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+			mui.fire(list,'refresh');
+			//返回true，继续页面关闭逻辑
+			return true;
+		}
+	})
+    jQuery(".icon-que").click(function(){
+    	jQuery(".tip-alert").show();
+    })
+    
+    jQuery(".tip-btn").click(function(){
+    	jQuery(".tip-alert").hide();
+    })
+    //分析
+	getCommonDataYC("","","","2017-07-01","2017-07-10",0);
+	
+    jQuery(".mui-control-item").bind('tap',function(){
+    	var index=jQuery(this).attr('index');
+		getCommonDataYC("","","","2017-07-1","2017-07-10",index);
+    })
+	
+	jQuery(".today").bind('click',function(){
+		var index=jQuery(this).attr('index');
+		getCommonDataYC("","","","2017-07-10","2017-07-10",index);
+	})
+	jQuery(".week").bind('click',function(){
+		var index=jQuery(this).attr('index');
+		getCommonDataYC("","","","2017-07-1","2017-07-14",index);
+	})
+	jQuery(".month").bind('click',function(){
+		var index=jQuery(this).attr('index');
+		getCommonDataYC("","","","2017-07-1","2017-07-30",index);
+	})
+	jQuery(".input-date1").bind('change',function(){
+		var index=jQuery(this).attr('index');
+		var beginTime=jQuery(this).val();
+		getCommonDataYC("","","",beginTime,beginTime,index);
+	})
+	
+	function getCommonDataYC(userId,shopId,deptId,beginTime,endTime,index){
+		var	dataParam0={
+			    body:{
+					userId:userId,
+			        shopId:shopId,
+					deptId:deptId,
+			        beginTime:beginTime,
+			        endTime:endTime,
+			        type:index
+			}
+		}
+		getData3(dataParam0,'/SQBusiness/goodsController/selectExceptionApp',index);
+	}
+	
+	function goBack(){
+		window.webkit.messageHandlers.NativeMethod.postMessage("我要调用native的方法");
+	}
+</script>
+</html>

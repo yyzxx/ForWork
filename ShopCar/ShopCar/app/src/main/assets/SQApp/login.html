@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/login.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+</head>
+<body>
+<div class="log-wrap">
+	<div class="logo text-center"><img src="imgs/logo.png"></div>
+	<form id="logForm" class="log-form">
+		<div class="log-input">
+			<i class="sicon-user"></i><input type="text" class="input-item" placeholder="请输入用户名" id="userName">
+		</div>
+		<div class="log-input">
+			<i class="sicon-key"></i><input type="password" class="input-item" placeholder="请输入密码" id="userPwd">
+		</div>
+		<p class="text-right forgot"><a href="javascript:void(0)" id="forgotPassword">忘记密码？</a></p>
+		<p class="text-center"><a href="javascript:void(0)" class="log-sub" id="logSub">登录</a></p>
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	jQuery("#forgotPassword").on('tap',function(){
+		openUrl('forget.html');
+	})
+	//console.log(hex_md5("123456"));
+
+	mui.plusReady(function(){		
+		login();		
+		// close splash
+		setTimeout(function() {
+			//关闭 splash
+			plus.navigator.closeSplashscreen();
+		}, 600);
+		
+		jQuery("#logSub").on('tap',function(){
+			var userName=jQuery("#userName").val();
+			var userPwd=jQuery("#userPwd").val();
+			if(userName==''){
+				mui.toast('用户名不能为空');
+				return;
+			}
+			if(userPwd==''){
+				mui.toast('密码不能为空');
+				return;
+			}
+			getLogin(userName,hex_md5(userPwd),1);			
+		})
+		var backButtonPress = 0;
+		mui.back = function(event) {
+			backButtonPress++;
+			if (backButtonPress > 1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用');
+			}
+			setTimeout(function() {
+				backButtonPress = 0;
+			}, 1000);
+			return false;
+		};
+	})
+		
+	function getLogin(userName,userPwd,type){
+		var loginParams={
+		    body:{
+		        userName:userName,
+		        userPwd:userPwd,
+		        type:type
+		    }
+		}
+		getLoginData(loginParams,"/SQBusiness/userController/login")
+	}
+	
+	function getLoginData(dataParam,apiUrl){
+		//console.log(baseUrl+apiUrl);
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				//查询关键指标
+				if(apiUrl=='/SQBusiness/userController/login'){
+				   //console.log(JSON.stringify(data));
+				   if(data.body.code==0){
+						plus.storage.setItem('userName',data.body.data.userName);
+						plus.storage.setItem('accessToken',data.body.data.accessToken);
+						var userIdParams={
+							  head:{
+							    accessToken:data.body.data.accessToken
+							  }
+						}
+						getLoginData(userIdParams,'/SQBusiness/userController/selectUserByUserIdOrAccessToken')
+					}else{
+						mui.toast('用户名或者密码错误');
+						jQuery("#logForm")[0].reset();
+					}
+				}
+				//查询所有指标
+				if(apiUrl=='/SQBusiness/userController/selectUserByUserIdOrAccessToken'){
+					if(data.body.code==0){
+						plus.storage.setItem('userId',data.body.data.id);
+						localStorage.setItem('userId',data.body.data.id);
+						login();
+					}
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}
+	
+	function login(){
+		var userId=plus.storage.getItem('userId');
+		if(userId!=undefined){
+			//openUrl('index.html');
+			mui.openWindow({
+				url:'index.html',
+				id:'index.html'
+			})
+			jQuery("#userName").val(plus.storage.getItem('userName'));
+		}
+	}
+	
+</script>
+</html>

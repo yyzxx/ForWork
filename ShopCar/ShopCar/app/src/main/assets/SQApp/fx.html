@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+	<!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <style type="text/css">
+    	.mui-content{
+    		background:#f0f0f0;
+    	}
+		.mui-row.mui-fullscreen>[class*="mui-col-"] {
+			height: 100%;
+		}
+		.mui-col-xs-3,
+		.mui-control-content {
+			overflow-y: auto;
+			height: 100%;
+		}
+		.mui-segmented-control .mui-control-item {
+			line-height: 50px;
+			width: 100%;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			background-color: #efeff4;
+			border-bottom: 1px solid #ddd!important;
+		}
+		.mui-segmented-control.mui-segmented-control-vertical .mui-control-item{
+			border-bottom: 1px solid #ddd!important;
+		}
+		.mui-table-view-cell:after{
+			background-color: #ddd!important;
+		}
+		.mui-bar-nav{
+			/*box-shadow: none;*/
+		}
+		.mui-bar{
+			background: #fff;
+		}
+		li:active .circle{
+			color: #333;
+		}
+		li.active .circle{
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+	<div class="search-wrap"><form id="submitForm"><span class="mui-icon mui-icon-search fix-search"></span><input type="text" class="input-search"></form></div>
+	<a href="javascript:void(0)" id="goHistory"><i class="icon-clock"></i></a>
+</header>
+<div class="mui-content mui-row mui-fullscreen fx">
+	<div class="mui-col-xs-3 bg-white">
+		<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+		</div>
+	</div>
+	<div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+		<!--<div id="item1" class="mui-control-content mui-active">
+		</div>-->
+		<div id="content0" class="mui-control-content mui-active"><ul class="mui-table-view"></ul></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+//	mui.plusReady(function(){
+//		var userId=plus.storage.getItem('userId');
+		var userId="D3924FF954AD4CE69BF587F083530B7C";
+		var menuParams={
+		    body:{
+		       userId:userId
+		    }
+		}
+		getMenu(menuParams,"/SQBusiness/goodsController/selectFunctionsListApp")
+		window.addEventListener('refresh',function(event){
+ 		})
+//	})
+		
+//	window.addEventListener('reload',function(event){
+//		var self=plus.webview.currentWebview();
+//		self.reload();
+//	})
+	
+	jQuery("#goHistory").on('tap',function(){
+		openUrl('history.html');
+	})
+	//查询指标
+	function getMenu(dataParam,apiUrl){
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				var db = openDatabase('sq','1.0','sq db',1024*100);
+				var str='';
+				db.transaction(function(tx){
+					//查询数据
+					//var sql='select * from sqdata where parentid in (select parentid from sqdata group by parentid) order by num desc limit 40'
+					tx.executeSql('select * from sqdata order by num desc limit 40',[],function(tx,rs){							
+						var itemsid=[];						
+						for(var i=0;i<rs.rows.length;i++){
+							str+='<li class="mui-table-view-cell common" data-url="'+rs.rows.item(i).url+'" itemId="'+rs.rows.item(i).itemid+'"><em class="circle">&bull;</em><i>' + rs.rows.item(i).name + '</i></li>'
+							itemsid.push(rs.rows.item(i).itemid);
+						}
+						//console.log(str);
+						jQuery("#content0 .mui-table-view").html(str);
+						for(var k=0;k<itemsid.length;k++){
+							jQuery('li[itemId="'+itemsid[k]+'"]').addClass('active');
+						}
+						jQuery(".mui-table-view-cell").on('tap',function(){
+							var db = openDatabase('sq','1.0','sq db',1024*100);
+							db.transaction(function(tx){
+								//创建表
+						        tx.executeSql('CREATE TABLE IF NOT EXISTS sqdata(itemid CHAR(50) PRIMARY KEY,url TEXT,name TEXT,num INTEGER,parentid CHAR(50))',[],function(tx,res){
+							        //alert('创建成功~');
+							    },function (tx,err){
+							        //alert('创建失败'+err.message);
+							    });
+						    });
+							var url=jQuery(this).attr('data-url');
+							jQuery(this).find('em').addClass('active');
+							var id=jQuery(this).attr('itemId');
+							var name=jQuery(this).find("i").html();
+							var pId=jQuery(this).closest('div').attr('id');
+							var parentid=jQuery(".mui-control-item[href='#"+pId+"']").attr('sid');
+							//alert(parentid);
+							db.transaction(function(tx){
+								//alert(123);
+								//查询数据
+								tx.executeSql('select * from sqdata where itemid=?',[id],function(tx,rs){							
+									//console.log(JSON.stringify(rs.rows.item(0)));
+									if(rs.rows.length==0){
+										//新增数据
+										tx.executeSql('INSERT INTO sqdata VALUES(?,?,?,?,?)',[id,url,name,1,parentid],function(tx,rs){
+					                    	//console.log("保存数据成功");
+						                },function(tx,error){
+						                    //console.log(error.source+"::"+error.message);
+						                });
+						                if(url=='undefined'){
+											return;
+										}
+										var newUrl=url.replace('http://jaaint.f3322.net:28080/SQAppH5/H5/','')
+										var newUrl1=newUrl.split('/')[0];
+										if(newUrl1=="sqmarketsurveyside"){
+											mui.openWindow({
+												url:'sqmarketsurveyside/html/index/page/index.html',
+												id:'sqmarketsurveyside/html/index/page/index.html',
+												show:{
+													duration:'300'
+												}
+											})
+										}else{
+											openUrl(newUrl);
+										}
+										db=null;
+									}else{
+										//修改数据
+										var num=parseInt(rs.rows.item(0).num);
+										//alert(num);
+										num++
+										tx.executeSql('UPDATE sqdata SET num=? where itemid=?',[num,id],function(tx,rs){
+						                    //alert("修改成功");
+						                },function(tx,error){
+						                    //console.log(error.source+"::"+error.message);
+						                });
+						                if(url=='undefined'){
+											return;
+										}
+										var newUrl=url.replace('http://jaaint.f3322.net:28080/SQAppH5/H5/','')
+										var newUrl1=newUrl.split('/')[0];
+										if(newUrl1=="sqmarketsurveyside"){
+											mui.openWindow({
+												url:'sqmarketsurveyside/html/index/page/index.html',
+												id:'sqmarketsurveyside/html/index/page/index.html',
+												show:{
+													duration:'300'
+												}
+											})
+										}else{
+											openUrl(newUrl);
+										}
+										db=null;
+									}							
+				                },function(){
+				                	 //console.log('查询失败'+err.message);
+				                });
+			              })
+							
+						})
+			        },function(err){
+			        	 //console.log('查询失败'+err.message);
+			        });
+			    })
+				db=null;
+				var html='<a class="mui-control-item" href="#content0" sid="common">常用</a>';
+				//console.log(str+"00000");
+				var list='';
+				for(var i=0;i<data.body.data.children.length;i++){
+					html+='<a class="mui-control-item" href="#content' + (i+1) + '" sid="'+data.body.data.children[i].id+'">' + data.body.data.children[i].name+ '</a>'
+					list+='<div id="content' + (i+1) + '" class="mui-control-content"><ul class="mui-table-view">';
+					for(var j=0;j<data.body.data.children[i].children.length;j++){
+						list+='<li class="mui-table-view-cell" data-url="'+data.body.data.children[i].children[j].redirectUrl+'" itemId="'+data.body.data.children[i].children[j].id+'"><em class="circle">&bull;</em><i>' + data.body.data.children[i].children[j].name + '</i></li>'
+					}
+					list+='</ul></div>'
+				}
+				jQuery("#segmentedControls").html(html);
+				jQuery("#segmentedControlContents .mui-control-content").not("#content0").remove();
+				jQuery("#segmentedControlContents").append(list);
+				//console.log(list);
+				 //默认选中第一个
+				jQuery('.mui-control-item').eq(0).addClass('mui-active');
+				jQuery('.mui-control-content').eq(0).addClass('mui-active');
+				jQuery(".mui-table-view-cell").on('tap',function(){
+					var db = openDatabase('sq','1.0','sq db',1024*100);
+					db.transaction(function(tx){
+						//创建表
+				        tx.executeSql('CREATE TABLE IF NOT EXISTS sqdata(itemid CHAR(50) PRIMARY KEY,url TEXT,name TEXT,num INTEGER,parentid CHAR(50))',[],function(tx,res){
+					        //console.log('创建成功~');
+					    },function (tx,err){
+					        //alert('创建失败'+err.message);
+					    });
+				    });
+					var url=jQuery(this).attr('data-url');
+					jQuery(this).find('em').addClass('active');
+					var id=jQuery(this).attr('itemId');
+					var name=jQuery(this).find("i").html();
+					var pId=jQuery(this).closest('div').attr('id');
+					var parentid=jQuery(".mui-control-item[href='#"+pId+"']").attr('sid');
+					//alert(parentid);
+					db.transaction(function(tx){
+						//修改数据
+						tx.executeSql('select * from sqdata where itemid=?',[id],function(tx,rs){							
+							//console.log(JSON.stringify(rs.rows.item(0)));
+							if(rs.rows.length==0){
+								//新增数据
+								tx.executeSql('INSERT INTO sqdata VALUES(?,?,?,?,?)',[id,url,name,1,parentid],function(tx,rs){
+			                    	//console.log("保存数据成功");
+				                },function(tx,error){
+				                    //console.log(error.source+"::"+error.message);
+				                });
+				                if(url=='undefined'){
+									return;
+								}
+								var newUrl=url.replace('http://jaaint.f3322.net:28080/SQAppH5/H5/','')
+								var newUrl1=newUrl.split('/')[0];
+								if(newUrl1=="sqmarketsurveyside"){
+									mui.openWindow({
+										url:'sqmarketsurveyside/html/index/page/index.html',
+										id:'sqmarketsurveyside/html/index/page/index.html',
+										show:{
+											duration:'300'
+										}
+									})
+								}else{
+									openUrl(newUrl);
+								}
+								db=null;
+							}else{
+								//修改数据
+								var num=parseInt(rs.rows.item(0).num);
+								//alert(num);
+								num++
+								tx.executeSql('UPDATE sqdata SET num=? where itemid=?',[num,id],function(tx,rs){
+				                    //alert("修改成功");
+				                },function(tx,error){
+				                    //console.log(error.source+"::"+error.message);
+				                });
+				                if(url=='undefined'){
+									return;
+								}
+								var newUrl=url.replace('http://jaaint.f3322.net:28080/SQAppH5/H5/','')
+								var newUrl1=newUrl.split('/')[0];
+								if(newUrl1=="sqmarketsurveyside"){
+									mui.openWindow({
+										url:'sqmarketsurveyside/html/index/page/index.html',
+										id:'sqmarketsurveyside/html/index/page/index.html',
+										show:{
+											duration:'300'
+										}
+									})
+								}else{
+									openUrl(newUrl);
+								}
+								db=null;
+							}							
+		                },function(){
+		                	// console.log('查询失败'+err.message);
+		                });
+	              })
+					
+				})
+				
+				jQuery("#submitForm").submit(function(event){
+					var event=window.event||event;
+					event.preventDefault();
+					var val=jQuery(".input-search").val();
+					if(val=='') return;
+					var len=jQuery("li:contains('"+val+"')").not(".common").length;
+					var html="";
+					for(var i=0;i<len;i++){
+						html+=jQuery("li:contains('"+val+"')").not(".common").eq(i).prop("outerHTML")
+					}
+					//console.log(html);
+					mui.openWindow({
+						id:'search.html',
+						url:'search.html',
+						show:{
+							duration:'300'
+						},
+						extras:{
+					        html:html
+					    }
+					})
+				})
+				jQuery(".fix-search").bind('tap',function(){
+					var val=jQuery(".input-search").val();
+					//console.log(jQuery("li:contains('"+val+"')").prop("outerHTML"));
+					if(val=='') return;
+					var len=jQuery("li:contains('"+val+"')").not(".common").length;
+					var html="";
+					for(var i=0;i<len;i++){
+						html+=jQuery("li:contains('"+val+"')").not(".common").eq(i).prop("outerHTML")
+					}
+					//console.log(html)
+					mui.openWindow({
+						id:'search.html',
+						url:'search.html',
+						show:{
+							duration:'300'
+						},
+						extras:{
+					        html:html
+					    }
+					})
+				})
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}
+</script>
+</html>

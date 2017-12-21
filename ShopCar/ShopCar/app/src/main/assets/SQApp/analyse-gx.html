@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax2.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <!--<a href="javascript:void(0)" onclick="goBack()"><i class="icon icon-5"></i></a>-->
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>共性商品分析</span>
+        <a href="javascript:void(0)" id="filter" onclick="showModal()"><i class="icon icon-8"></i></a>
+    </div>
+</div>
+<div class="wrap analyse">
+	<div class="section-item bg-white">
+		<div class="item-bottom mg-10 border-table pd-10-2" style="padding-bottom: 5px;border-top:none;">
+		    <table class="base-table no-wrap" id="talbeGx1">
+		        <!--<tr>
+		            <th>序号</th>
+		            <th>货号</th>
+		            <th>商品名称</th>
+		            <th>货商名称</th>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>-->
+		    </table>
+		    <p class="more" style="margin: 0;"><a data-url="analyse-gx-child.html" class="more-info">查看更多&gt;&gt;</a></p>
+		</div>
+	</div>
+	<div class="section-item bg-white">
+		<div class="item-bottom mg-10 border-table pd-10-2" style="padding-bottom: 5px;border-top:none;">
+		    <table class="base-table no-wrap" id="talbeGx2">
+		        <!--<tr>
+		            <th>序号</th>
+		            <th>货号</th>
+		            <th>商品名称</th>
+		            <th>货商名称</th>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>-->
+		    </table>
+		    <p class="more" style="margin: 0;"><a data-url="analyse-gx-child2.html" class="more-info">查看更多&gt;&gt;</a></p>
+		</div>
+	</div>
+</div>
+<div id="modal" style="background: #fff;display: none;position: fixed;left: 0;bottom:0;width: 100%;height: 100%;z-index: 999;">
+	<form id="modalForm">
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">黎明店<i class="icon-ar1"></i></em><span>选择门店</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn" shopId="">黎明店</a></label></li>
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn" shopId="">杨桥店</a></label></li>
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn" shopId="">宝龙店</a></label></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部类别<i class="icon-ar1"></i></em><span>选择类别</span></div>
+			<ul class="list-item list-2">
+				<li><label><input type="radio" name="radio2" class="groupId"><a class="item-btn" groupId="">生鲜-蔬果-蔬菜类</a></label></li>
+				<li><label><input type="radio" name="radio2" class="groupId"><a class="item-btn" groupId="">生鲜-蔬果-水果类</a></label></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><span>商品检索</span><input type="text" class="any-input" placeholder="编码/名称"/></div>
+		</div>
+		<div class="line"></div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部状态<i class="icon-ar1"></i></em><span>选择状态</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio3" class="status"><a class="item-btn" status="">进销</a></label></li>
+				<li><label><input type="radio" name="radio3" class="status"><a class="item-btn" status="">只销</a></label></li>
+				<li><label><input type="radio" name="radio3" class="status"><a class="item-btn" status="">只进</a></label></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部异常<i class="icon-ar1"></i></em><span>选择异常</span></div>
+			<ul class="list-item list-2">
+				<li><label><input type="radio" name="radio4" class="exception"><a class="item-btn" exception="">未售卖商品</a></label></li>
+				<li><label><input type="radio" name="radio4" class="exception"><a class="item-btn" exception="">有档门店数不足50%</a></label></li>
+			</ul>
+		</div>
+		<div class="select-time">
+			<p class="set-time">
+				<em style="margin-right: 10px;">建档时间</em>
+				<input type="date" placeholder="2016-01-01" onfocus="(this.type='date')" class="input-date" id="beginTime"><em>-</em>
+				<input type="date" placeholder="2016-01-01" onfocus="(this.type='date')" class="input-date" id="endTime">
+			</p>
+		</div>
+		<div class="bottom-btn">
+			<a href="javascript:void(0)" class="reset-btn">重置</a>
+			<a href="javascript:void(0)" class="confirm-btn">确定</a>
+		</div>
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init({
+		beforeback: function(){
+			//获得列表界面的webview
+			var list = plus.webview.getWebviewById('fx.html');
+			//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+			mui.fire(list,'refresh');
+			//返回true，继续页面关闭逻辑
+			return true;
+		}
+	})
+	
+	getCommonDataGX("9901","1","","2017-07-01","2017-08-01","","","","2","20")
+	//公共方法
+	function getCommonDataGX(groupId,shopId,type,beginTime,endTime,status,goodsId,exception,page,counts){
+		var dataParam={
+		    body:{
+				groupId:groupId,
+		        shopId:shopId,
+		        type:type,
+		        beginTime:beginTime,
+		        endTime:endTime,
+		        status:status,
+		        goodsId:goodsId,
+		        exception:exception,
+		        page:page,
+		        counts:counts
+		    }
+		}
+		getData5(dataParam,'/SQBusiness/goodsController/selectSameGoodsDetailDataPC');
+	}
+	function goBack(){
+		window.webkit.messageHandlers.NativeMethod.postMessage("我要调用native的方法");
+	}
+	function showModal(){
+		jQuery("#modal").slideDown(500);
+	}
+	jQuery(".confirm-btn").click(function(){
+		var groupId="9901",shopId='1',type="",beginTime="2017-07-01",endTime="2017-08-01",
+			status="",goodsId="",exception="",page="2",counts="20";
+			jQuery(".shopId").each(function(){
+				if(this.checked){
+					shopId=jQuery(this).closest('label').find("a").attr('shopId');
+				}
+			})
+			jQuery(".groupId").each(function(){
+				if(this.checked){
+					groupId=jQuery(this).closest('label').find("a").attr('groupId');
+				}
+			})
+			jQuery(".status").each(function(){
+				if(this.checked){
+					status=jQuery(this).closest('label').find("a").attr('status');
+				}
+			})
+			jQuery(".exception").each(function(){
+				if(this.checked){
+					exception=jQuery(this).closest('label').find("a").attr('exception');
+				}
+			})
+			jQuery("#beginTime").change(function(){
+				beginTime=jQuery(this).val();
+			})
+			jQuery("#endTime").change(function(){
+				endTime=jQuery(this).val();
+			})
+			if(jQuery('.any-input').val()!=''){
+				//alert(123);
+				goodsId=jQuery('.any-input').val();
+			};
+		getCommonDataGX(groupId,shopId,type,beginTime,endTime,status,goodsId,exception,page,counts)
+		jQuery("#modal").slideUp(500);
+	})
+	jQuery(".more-info").on('tap',function(){
+		var url=jQuery(this).attr('data-url');
+		openUrl(url);
+	})
+</script>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	</head>
+	<style type="text/css">
+		input::-webkit-input-placeholder { /* WebKit browsers*/ 
+		　　		color:#CF2D28 !important;
+				font-size:14px;
+		　　}
+		input:-moz-placeholder {  /* Mozilla Firefox 4 to 18*/ 
+		　　		color:#999 !important;
+				font-size:14px;
+		　　}
+		input::-moz-placeholder {  /* Mozilla Firefox 19+*/ 
+		　　		color:#999 !important;
+				font-size:14px;
+		　　}
+		input:-ms-input-placeholder { /* Internet Explorer 10+*/ 
+		　　		color:#999 !important;
+				font-size:14px;
+		}
+		.item-tab{		    
+		    width: 60%;
+		    height: 1.2rem;
+		    display: inline-block;		   
+		    line-height: 2rem;
+		    padding-top: 0.1rem;
+		    font-size: 0.5rem;
+		    box-sizing: border-box;
+		}
+		.hot{
+			border: 1px solid #4CA7D4;
+			border-radius: 1.2rem;
+		}
+		.table tr:nth-child(even){
+			background-color: #E1E1E1;
+		}
+		.table tr:nth-child(2){
+			background-color: white;
+		}
+		.table .th{
+			background-color: white!important;
+		}
+		tr:nth-child(n>2) td:first-child em{
+			width: 2rem;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: inline-block;
+			line-height: 0.6rem;		
+		}
+		tr td:first-child div{
+			margin-left: 0.2rem;
+			text-align: center;
+			display: inline-block;
+			line-height: 1rem;
+		}
+	</style>
+	<body class="add">
+	<div class="header fixed-header">
+	    <div class="top-head">
+	        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+	        <div class="header-time">
+		        <form class="serch" name="formName" action="" enctype='application/json'>
+					<p><input placeholder="请输入商品" style="color: #CCCCCC;" /></p>
+				</form>
+	        </div>                
+	    </div>   
+	</div>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper" style="margin-top: 1.5rem;">
+			<div class="mui-scroll">
+				<!--数据列表-->				
+				<div id="sales_growth" id="pullrefresh">
+				<div class="amplitude_table" >	
+					<table class="table" >
+						<tr class="th">
+							<td><em class="item-tab">热门</em></td>
+							<td><em class="hot item-tab">促销</em></td>
+							<td><em class="item-tab">天天平价</em></td>			
+							<td></td>			
+						</tr>
+						<tr class="tb">
+							<td>商品名</td>
+							<td>销售量</td>
+							<td>销售额</td>
+							<td>增降幅</td>				
+						</tr>
+						<tr class="qk">
+							<td class="three">苹果
+								<em class="org">平</em><em  class="red">A</em>
+							</td>
+							<td>13803</td>
+							<td>69231</td>
+							<td class="green">-3.2%</td>					
+						</tr>
+						<tr class="qk">
+							<td class="three">牛肉
+								<em  class="red">B</em>
+							</td>
+							<td>5308</td>
+							<td>67689</td>
+							<td class="red">+5.6%</td>					
+						</tr>
+						<tr class="qk">
+							<td class="three">西瓜
+								<em class="org">平</em>
+							</td>
+							<td>8030</td>
+							<td>66231</td>
+							<td class="green">-3.2%</td>					
+						</tr>
+						<tr class="qk">
+							<td class="three">白梨
+								<em  class="red">B</em>
+							</td>
+							<td>5860</td>
+							<td>64201</td>
+							<td class="red">+5.6%</td>						
+						</tr>
+						<tr class="qk">
+							<td>饼干</td>
+							<td>3268</td>
+							<td>60231</td>
+							<td class="green">-3.2%</td>					
+						</tr>
+						<tr class="qk">
+							<td class="three">鸡蛋
+								<em  class="red">B</em>
+							</td>
+							<td>5860</td>
+							<td>64201</td>
+							<td class="red">+5.6%</td>		
+						</tr>
+						<tr class="qk">
+							<td class="three">芹菜
+								<em class="org">平</em>
+							</td>
+							<td>8030</td>
+							<td>66231</td>
+							<td class="green">-3.2%</td>			
+						</tr>
+						<tr class="qk">
+							<td>香蕉</td>
+							<td>3268</td>
+							<td>60231</td>
+							<td class="red">-3.2%</td>			
+						</tr>
+						<tr class="qk">
+							<td class="three">白菜
+								<em class="org">平</em><em  class="red">A</em>
+							</td>
+							<td>13803</td>
+							<td>69231</td>
+							<td class="green">-3.2%</td>			
+						</tr>
+						<tr class="qk">
+							<td>洋葱</td>
+							<td>3268</td>
+							<td>60231</td>
+							<td class="red">-3.2%</td>			
+						</tr>
+						<tr class="qk">
+							<td class="add_last"></td>
+							<td class="add_last"></td>
+							<td class="add_last"></td>
+							<td class="add_last"></td>
+						</tr>
+					</table>		
+				 </div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+<!--<script type="text/javascript" src="../js/goods_engine.js"></script>-->
+<script type="text/javascript">
+		var title;
+//		var x;
+//		function you(){
+//		var y=9;
+//		x=y;
+//		return y;
+//		}
+//		you();
+//		console.log(x);
+//		console.log(muid);		
+		document.querySelector('form').onsubmit = function(event) {
+			//var event=window.event||event;
+//			event.preventDefault();
+			//alert(123);
+			title = document.querySelector('input').value;
+			var dataParam = {
+			body: {
+				userId: "D3924FF954AD4CE69BF587F083530B7C",
+				goods: title,
+				type: "2",
+				page: "1",
+				counts: "100",			
+			}
+		};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsByIdOrNameApp', {
+			data: JSON.stringify(dataParam),
+			//			url:'list.html',
+			dataType: 'json', //服务器返回json格式数据
+			crossDomain: true,
+			type: 'post', //HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout: 1000, //超时时间设置为10秒；
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function(res) {
+				console.log(res);
+				var table = document.body.querySelector('.table');
+				var qk = document.body.querySelectorAll('.qk');
+				var ht = document.body.querySelectorAll('.ht');
+				for(var i = 0;i<qk.length;i++){
+					qk[i].innerHTML = '';
+				}
+				for(var i = 0;i<ht.length;i++){
+					ht[i].innerHTML = '';
+				}				
+				var cells = document.body.querySelectorAll('.tb');	
+				for(var i = 1;i<cells.length;i++){
+					cells[i].innerHTML = '';
+				}
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var tr = document.createElement('tr');
+					tr.className = 'tb';
+					tr.innerHTML = '<tr class="tb"><td>'+res.body.data[i].GoodsName+'</td><td>'+parseFloat(res.body.data[i].SaleQty).toFixed(2);
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].SaleValue).toFixed(2)+'</td>';
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].GrowthRate).toFixed(2)+'</td>';
+					table.appendChild(tr, table.firstChild);
+				}				
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();					
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+				})
+			},					
+			error: function(xhr, type, errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});	
+			return false;
+		 	document.formName.reset();
+		};	
+				mui.init({		
+				pullRefresh: {
+					container: '#pullrefresh',			
+					contentrefresh: '正在刷新...',
+					down: {
+		//				auto: true,
+						callback: pulldownRefresh
+					},
+					up: {				
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+		function pulldownRefresh() {	
+		var dataParam = {
+			body: {
+				userId: "D3924FF954AD4CE69BF587F083530B7C",
+				goods: title,
+				type: "2",
+				page: "1",
+				counts: "100",	
+			}
+		};
+		console.log(dataParam);
+		$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsByIdOrNameApp', {
+			data: JSON.stringify(dataParam),
+			//			url:'list.html',
+			dataType: 'json', //服务器返回json格式数据
+			crossDomain: true,
+			type: 'post', //HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout: 1000, //超时时间设置为10秒；
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function(res){
+				console.log(res.body.data[0].GoodsName);
+				var table = document.body.querySelector('.table');
+				var cells = document.body.querySelectorAll('.tb');				
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var tr = document.createElement('tr');
+					tr.className = 'tb';
+					tr.innerHTML = '<tr class="tb"><td>'+res.body.data[i].GoodsName+'</td><td>'+parseFloat(res.body.data[i].SaleQty).toFixed(2);
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].SaleValue).toFixed(2)+'</td>';
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].GrowthRate).toFixed(2)+'</td>';
+					table.appendChild(tr, table.firstChild);
+				}				
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();					
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+					});
+				
+			},
+			error: function(xhr, type, errorThrown) {
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+		};
+			var count = 0;
+	/**
+	 * 上拉加载具体业务实现
+	 */ 
+	function pullupRefresh() {
+			var dataParam = {
+			body: {
+				userId: "D3924FF954AD4CE69BF587F083530B7C",
+				goods: title,
+				type: "2",
+				page: "1",
+				counts: "100",
+			}
+		};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsByIdOrNameApp', {
+			data: JSON.stringify(dataParam),
+			//			url:'list.html',
+			dataType: 'json', //服务器返回json格式数据
+			crossDomain: true,
+			type: 'post', //HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout: 1000, //超时时间设置为10秒；
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function(res) {
+//			mui.plusReady(function() {
+//				var self = plus.webview.currentWebview();
+//				var data = self.data;				
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+				var table = document.body.querySelector('.table');
+				var cells = document.body.querySelectorAll('.tb');				
+				for(var i = cells.length, len = i + 5; i < len; i++) {
+					var tr = document.createElement('tr');
+					tr.className = 'tb';
+					tr.innerHTML = '<tr class="tb"><td>'+res.body.data[i].GoodsName+'</td><td>'+parseFloat(res.body.data[i].SaleQty).toFixed(2);
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].SaleValue).toFixed(2)+'</td>';
+					tr.innerHTML += '</td><td>'+parseFloat(res.body.data[i].GrowthRate).toFixed(2)+'</td>';
+					table.appendChild(tr);
+				}
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();					
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+				})
+	},
+	error: function(xhr, type, errorThrown) {
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	};		 	
+//	$(".table tr").not(":eq(0)").click(function(){
+//	$(".table tr").not(":first").click(function(){
+//	$("ul>li").filter(function(index){
+//		return index!=0;
+	
+	$(".table tr:gt(1)").on('tap',function(){
+//		alert(123)	
+		var goodsName = $(this ).children().first().text();
+		var dataParam = {
+			body: {
+				userId: "D3924FF954AD4CE69BF587F083530B7C",
+				goods: goodsName,
+				type: "2",
+				page: "1",
+				counts: "100",
+			}
+		};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsByIdOrNameApp', {
+			data: JSON.stringify(dataParam),
+			//			url:'list.html',
+			dataType: 'json', //服务器返回json格式数据
+			crossDomain: true,
+			type: 'post', //HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout: 1000, //超时时间设置为10秒；
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function(res) {
+				
+//				alert(goodsName);
+					var k = $(this).index();					
+					var goodsId = res.body.data[0].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+			},
+			error: function(xhr, type, errorThrown) {
+				//异常处理；
+				alert(errorThrown);
+			}
+		});
+//		alert(123);		
+	});
+	$('.item-tab').on('tap',function(){
+//		$('.item-tab').className = 'item-tab';
+//		$('this').addClass('hot').siblings().removeClass('hot')
+		$('.item-tab').on('tap',function(){					
+					$('.item-tab').removeClass('hot');
+					$(this).addClass('hot');
+				});
+		var content = $(this).text();
+		var timeNow=new Date();		
+		var lastDate = timeNow.getFullYear()+'-'+(timeNow.getMonth()+1)+'-'+(timeNow.getDate()-1);
+		var dateStr;		
+		if(localStorage.getItem('storeName')||localStorage.getItem('dateStr')){
+			dateStr = localStorage.getItem('dateStr');
+			storeId = localStorage.getItem('storeId');
+		}else{
+			dateStr=lastDate;
+			storeId = '';
+		}
+		if(content=='热门'){
+			var dataParam = {
+					    "body":{
+					        "userId":"D3924FF954AD4CE69BF587F083530B7C",
+					        "selectDate":dateStr,
+					        "type":"1"
+					    }
+					};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectRankList', {
+				data: JSON.stringify(dataParam),
+				//			url:'list.html',
+				dataType: 'json', //服务器返回json格式数据
+				crossDomain: true,
+				type: 'post', //HTTP请求类型
+				contentType: "application/json; charset=utf-8",
+				timeout: 1000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+			success: function(res) {
+//				console.log(res.body.data);
+				var hotData = res.body.data;
+				var table = document.body.querySelector('.table');
+				var qk = document.body.querySelectorAll('.qk');
+				var tb = document.body.querySelectorAll('.tb');
+				for(var i = 0;i<qk.length;i++){
+					qk[i].innerHTML = '';
+				}
+				for(var i = 0;i<tb.length;i++){
+					tb[i].innerHTML = '';
+				}
+				for(var i = 0;i<hotData.length;i++){
+						var tr = document.createElement('tr');
+						tr.className = 'tb';
+				   		var flag = hotData[i].IndexFlag;				   		
+				    	if(flag){
+				    		var flar = flag.split('-');
+				    		var str = flag.replace(/\b1\b/i,"A").replace(/\b2\b/i,"B").replace(/\b3\b/i,"C").replace(/\b4\b/i,"平").replace(/\b5\b/i,"重").replace(/\b6\b/i,"促");
+				    		var nr = str.split('-');
+				    		//console.log(nr); 
+				    		if(flar[1]*1>3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+hotData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(hotData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(hotData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';				    			   								     	
+				    		}else if(flar[1]*1<3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+hotData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(hotData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(hotData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1>3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+hotData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(hotData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(hotData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1<3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+hotData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(hotData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(hotData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		} 						     	
+				    	}else{
+				    		tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+hotData[i].GoodsName+'</em></td><td>'+parseFloat(hotData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(hotData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';				    				   		
+				    	}
+				    	table.appendChild(tr);
+			   	}
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();
+//					alert(k);
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+				})
+//				
+			},
+			error: function(xhr, type, errorThrown){
+				//异常处理；
+				alert(errorThrown);
+			}
+		});
+	  };
+	  if(content=='促销'){
+//	  	var qk = document.body.querySelectorAll('.qk');
+//		var tb = document.body.querySelectorAll('.tb');
+//		alert(tb.length);
+//		alert(qk.length);
+//		for(var i = 0;i<qk.length;i++){
+//			qk.innerHTML = '';
+//		}
+//		for(var i = 0;i<tb.length;i++){
+//			tb.innerHTML = '';
+//		}
+	  	var dataParam = {
+					    "body":{
+					        "userId":"D3924FF954AD4CE69BF587F083530B7C",
+					        "selectDate":dateStr,
+					        "type":"2"
+					    }
+					};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectRankList', {
+				data: JSON.stringify(dataParam),
+				//			url:'list.html',
+				dataType: 'json', //服务器返回json格式数据
+				crossDomain: true,
+				type: 'post', //HTTP请求类型
+				contentType: "application/json; charset=utf-8",
+				timeout: 1000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+			success: function(res) {
+//				console.log(res.body.data);
+				var  saleData = res.body.data;
+				var table = document.body.querySelector('.table');
+				var qk = document.body.querySelectorAll('.qk');
+				var tb = document.body.querySelectorAll('.tb');
+				for(var i = 0;i<qk.length;i++){
+					qk[i].innerHTML = '';
+				}
+				for(var i = 0;i<tb.length;i++){
+					tb[i].innerHTML = '';
+				}
+				for(var i = 0;i<saleData.length;i++){
+						var tr = document.createElement('tr');
+						tr.className = 'tb';
+				   		var flag = saleData[i].IndexFlag;				   		
+				    	if(flag){
+				    		var flar = flag.split('-');
+				    		var str = flag.replace(/\b1\b/i,"A").replace(/\b2\b/i,"B").replace(/\b3\b/i,"C").replace(/\b4\b/i,"平").replace(/\b5\b/i,"重").replace(/\b6\b/i,"促");
+				    		var nr = str.split('-');
+				    		//console.log(nr); 
+				    		if(flar[1]*1>3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+saleData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(saleData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(saleData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';				    			   								     	
+				    		}else if(flar[1]*1<3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+saleData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(saleData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(saleData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(saleData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1>3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+saleData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(saleData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(saleData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(saleData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1<3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+saleData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(saleData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(saleData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(saleData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		} 						     	
+				    	}else{
+				    		tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+saleData[i].GoodsName+'</em></td><td>'+parseFloat(saleData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(saleData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(saleData[i].GrowthRate).toFixed(2)+'</td></tr>';				    				   		
+				    	}
+				    	table.appendChild(tr);
+			   	}
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();					
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+				})
+//				$('.item-tab').on('tap',function(){					
+//					$('.item-tab').removeClass('hot');
+//					$(this).addClass('hot').siblings().removeClass('hot');
+//				});
+			},
+			error: function(xhr, type, errorThrown){
+				//异常处理；
+				alert(errorThrown);
+			}
+		});
+	  }if(content=='天天平价'){
+	  	var dataParam = {
+					    "body":{
+					        "userId":"D3924FF954AD4CE69BF587F083530B7C",
+					        "selectDate":dateStr,
+					        "type":"3"
+					    }
+					};
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectRankList', {
+				data: JSON.stringify(dataParam),
+				//			url:'list.html',
+				dataType: 'json', //服务器返回json格式数据
+				crossDomain: true,
+				type: 'post', //HTTP请求类型
+				contentType: "application/json; charset=utf-8",
+				timeout: 1000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+			success: function(res) {
+//				console.log(res.body.data);
+				var  dateData = res.body.data;
+				var table = document.body.querySelector('.table');
+				var qk = document.body.querySelectorAll('.qk');
+				var tb = document.body.querySelectorAll('.tb');
+				for(var i = 0;i<tb.length;i++){
+					tb[i].innerHTML = '';
+				}
+				for(var i = 0;i<qk.length;i++){
+					qk[i].innerHTML = '';
+				}
+				for(var i = 0;i<dateData.length;i++){
+				    var tr = document.createElement('tr');
+						tr.className = 'tb';
+				   		var flag = dateData[i].IndexFlag;				   		
+				    	if(flag){
+				    		var flar = flag.split('-');
+				    		var str = flag.replace(/\b1\b/i,"A").replace(/\b2\b/i,"B").replace(/\b3\b/i,"C").replace(/\b4\b/i,"平").replace(/\b5\b/i,"重").replace(/\b6\b/i,"促");
+				    		var nr = str.split('-');
+				    		//console.log(nr); 
+				    		if(flar[1]*1>3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+dateData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(dateData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(dateData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(hotData[i].GrowthRate).toFixed(2)+'</td></tr>';				    			   								     	
+				    		}else if(flar[1]*1<3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+dateData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(dateData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(dateData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(dateData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1>3&&flar[2]*1>3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+dateData[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div></td><td>'+parseFloat(dateData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(dateData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(dateData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		}else if(flar[1]*1<3&&flar[2]*1<3){
+				    			tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+dateData[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div></td><td>'+parseFloat(dateData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(dateData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(dateData[i].GrowthRate).toFixed(2)+'</td></tr>';						     	
+				    		} 						     	
+				    	}else{
+				    		tr.innerHTML+= '<tr class="tb"><td class="turn"><em>'+dateData[i].GoodsName+'</em></td><td>'+parseFloat(dateData[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(dateData[i].SaleValue).toFixed(2)+'</td><td>'+parseFloat(dateData[i].GrowthRate).toFixed(2)+'</td></tr>';				    				   		
+				    	}
+				    	table.appendChild(tr);
+			   	}
+				$('.tb').on('tap',function(){
+					var goodsName = $(this).text();
+					var k = $(this).index();					
+					var goodsId = res.body.data[k].GoodsID;
+//					alert(goodsId);
+					mui.openWindow({
+							id: "product",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode: goodsId
+							}
+						});
+				})
+//				$('.item-tab').on('tap',function(){					
+//					$('.item-tab').removeClass('hot');
+//					$(this).addClass('hot');
+//				});
+			},
+			error: function(xhr, type, errorThrown){
+				//异常处理；
+				alert(errorThrown);
+			}
+		});
+	  }
+	})
+</script>

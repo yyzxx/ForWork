@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--<link href="css/mui.min.css" rel="stylesheet"/>-->
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <div class="header-time product-title">
+            <!--<i class="icon icon-3"></i>-->
+            <p class="title" id="goodsName"></p>
+            <!--<i class="icon icon-4"></i>-->
+        </div>
+        <p class="text-center sub-title1">       	
+        	<!--<em class="tip orange">平</em><em class="tip d-red">A</em><span>全业态</span><span>实时</span>-->       	
+        	<em><i id="dayTime">2017-07-03</i> 9:50</em>
+        </p>
+        <a href="javascript:void(0)" id="filterInfo"><i class="icon icon-8"></i></a>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item pd-10 mb-10 bg-white" id="sectionItem1">
+        
+    </div>
+    <div class="section-item mb-10 bg-white">
+        <div class="tabs tabs-pd" id="timeChart">
+            <ul class="list-card list-5">
+                <li><a href="javascript:void(0);" class="active" timeType="1">分时</a></li>
+                <li><a href="javascript:void(0);" timeType="2">七日</a></li>
+                <li><a href="javascript:void(0);" timeType="3">每日</a></li>
+                <li><a href="javascript:void(0);" timeType="4">每周</a></li>
+                <li><a href="javascript:void(0);" timeType="5">每月</a></li>
+            </ul>
+        </div>
+        <div class="tab-item" style="display: block;overflow: hidden;">
+            <!--<div class="char-line" id="tCanvas1"></div>-->
+            <div class="char-line2" id="tCanvasNew1"></div>
+            <div class="char-line3" id="tCanvasNew2"></div>
+            <div class="char-line4" id="tCanvasNew3"></div>
+            <p class="text-right canvas-tip"><span>售价<i class="i-sale"></i></span><span>销售额<i class="i-sale" style="background: #ff9966;"></i></span><span>进价<i class="i-sale" style="background: #7de875;"></i></span></p>
+            <div class="char-line3" id="tCanvasNew4"></div>
+            <div class="char-bar1" id="tCanvas2"></div>
+            <p class="text-right sale-num"><span>客流<i class="i-sale" style="background: #ff9966;"></i></span>销量<i class="icon-down"></i><i class="icon-up"></i></p>
+        </div>
+    </div>
+    <div class="section-item mb-10 bg-white" id="lisdCard1">
+        <div class="tabs">
+            <ul class="list-card list-3">
+                <li><a href="javascript:void(0);" class="active">分店销售</a></li>
+                <li><a href="javascript:void(0);">采购进货</a></li>
+                <li><a href="javascript:void(0);">销售简析</a></li>
+            </ul>
+        </div>
+        <div class="tab-item" style="display: block">
+            <div class="normal-table pro-table1">
+                <table class="base-table" id="saleTable">
+                    
+                </table>
+                <!--<p class="more"><a href="###">查看更多&gt;&gt;</a></p>-->
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="normal-table pro-table3">
+                <table class="base-table" id="saleTable2">
+                    
+                </table>
+                <!--<p class="more"><a href="###">查看更多&gt;&gt;</a></p>-->
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="char-top" style="overflow: hidden;">
+                <div class="char-left" id="tCanvas3"></div>
+                <div class="char-right">
+                    <p>七日毛利率</p>
+                    <ul id="ProfitRate">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="char-bottom" style="overflow: hidden;">
+                <p class="text-center char-title">七日存销比</p>
+                <div class="char-bar" id="tCanvas4"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section-item mb-10 bg-white" id="lisdCard2">
+        <div class="tabs">
+            <ul class="list-card list-3">
+                <li><a href="javascript:void(0);" class="active">简况</a></li>
+                <li><a href="javascript:void(0);">动态</a></li>
+                <li><a href="javascript:void(0);">分析</a></li>
+            </ul>
+        </div>
+        <div class="tab-item" style="display: block">
+            <div class="product-info" id="productInfo">
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="normal-table pro-table2">
+                <table class="base-table" id="productInfo2">
+                </table>
+                <p class="more"><a href="javascript:void(0);" id="activeMore">查看更多&gt;&gt;</a></p>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="normal-table pro-table2">
+                <table class="base-table" id="productInfo3">
+                </table>
+                <!--<p class="more"><a href="###">查看更多&gt;&gt;</a></p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer fixed-footer">
+    <ul class="list-menu">
+        <li id="gzItem">
+            <!--<a href="javascript:void(0);">
+                <p><i class="menu menu-1"></i></p>
+                <p>关注</p>
+            </a>-->
+        </li>
+        <li>
+            <a href="javascript:void(0);">
+                <p><i class="menu menu-6"></i></p>
+                <p>设置提醒</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" id="share">
+                <p><i class="menu menu-7"></i></p>
+                <p>分享</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="active" id="moreAlert">
+                <p><i class="menu menu-8"></i></p>
+                <p>更多</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="more-alert" style="display: none">
+    <div class="alert-body">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" id="addSet">
+                    <p><i class="menu-add"></i></p>
+                    <p>加到组合</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="alert-foot text-center">
+        <a href="javascript:void(0)" id="closeAlert">取消</a>
+    </div>
+</div>
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">
+    jQuery(function(){
+        menuActive();
+        commonTab("lisdCard1");
+        commonTab("lisdCard2");
+        jQuery("#moreAlert").click(function(){
+            jQuery(".more-alert").slideDown(500);
+        })
+        jQuery("#closeAlert").click(function(){
+            jQuery(".more-alert").slideUp(500);
+        })
+                
+		mui.init();
+		mui.plusReady(function(){
+			var self=plus.webview.currentWebview();
+			var goodsCode=self.goodsCode;
+			var goodsName=self.goodsName;
+			var date=self.date;
+			var groupId=self.groupId;
+			jQuery("#goodsName").html(goodsName);
+			jQuery("#dayTime").html(date);
+			var userId=plus.storage.getItem('userId');
+			//alert(goodsCode);
+			//添加到组合
+			jQuery("#addSet").on('tap',function(){
+				mui.openWindow({
+					url:'select1.html',
+					id:'select1.html',
+					extras:{
+				        groupId:groupId,
+				        userId:userId,
+				        goodsId:goodsCode
+				    },
+				    show:{
+						duration:'300'
+					}
+				})
+			})
+			//条件筛选
+			jQuery("#filterInfo").on('tap',function(){
+				openUrl('datetime1.html');
+			})
+			var shopId="9999";
+			window.addEventListener('refresh',function(event){
+				//alert(123);
+				if(event.detail.dateStr!=undefined){
+					if(event.detail.dateStr==''){
+						return false;
+					}
+					if(event.detail.dateStr=='refresh'){
+						//alert(456);
+						var self=plus.webview.currentWebview();
+						self.reload();
+						return false;
+					}
+					var newDate=event.detail.dateStr;
+					var newShopId=event.detail.shopId;
+					jQuery("#dayTime").html(newDate);
+					//获取新数据
+					getProductData(newDate,newShopId,goodsCode);	
+					//七日分析start
+					jQuery("#timeChart>ul>li>a").off('tap').on('tap',function(){
+						jQuery("#timeChart>ul>li>a").removeClass('active');
+						jQuery(this).addClass('active');
+						var timeType=jQuery(this).attr('timeType');
+						var	dataParam2={
+						    body:{
+								userId:"",
+						        selectDate:newDate,
+						        shopId:newShopId,
+						        goodsCode:goodsCode,
+							    timeType:timeType
+							}
+						}
+						getData(dataParam2,'/SQBusiness/goodsController/selectGoodsDetailByTimeApp')
+					})
+				}
+			})
+			
+			//商品关注
+			var gzParam={
+				body:{
+			        userId:userId,
+			        goodsId:goodsCode
+				}
+			}
+			getGZDate(gzParam,'/SQBusiness/goodsController/selectGoodsIsFocus',goodsCode,groupId,userId)
+			//获取数据	
+			getProductData(date,shopId,goodsCode);	
+			//七日分析start
+			jQuery("#timeChart>ul>li>a").on('tap',function(){
+				jQuery("#timeChart>ul>li>a").removeClass('active');
+				jQuery(this).addClass('active');
+				var timeType=jQuery(this).attr('timeType');
+				var	dataParam2={
+				    body:{
+						userId:"",
+				        selectDate:date,
+				        shopId:shopId,
+				        goodsCode:goodsCode,
+					    timeType:timeType
+					}
+				}
+				getData(dataParam2,'/SQBusiness/goodsController/selectGoodsDetailByTimeApp')
+			})
+			
+			 jQuery("#activeMore").on('tap',function(){
+		    	mui.openWindow({
+					url:'active-more.html',
+					id:'active-more.html',
+					extras:{
+				        date:date,
+				        goodsId:goodsCode
+				    },
+				    show:{
+						duration:'300'
+					}
+				})
+		    })
+		})		
+    })  
+    
+    function menuActive(){
+        var aItems=jQuery('.list-menu li a');
+        aItems.on('tap',function(){
+        	aItems.removeClass('active');
+            jQuery(this).addClass('active');
+        })
+    }
+    //选项卡
+    function commonTab(id){
+        var listA=jQuery("#"+id+" .list-card a");
+        listA.click(function(){
+            var i=$(this).closest("li").index();
+            listA.removeClass("active");
+            jQuery(this).addClass("active");
+            jQuery("#"+id+" .tab-item").hide();
+            jQuery("#"+id+" .tab-item").removeClass('fadeIn');
+            jQuery("#"+id+" .tab-item").eq(i).show();
+            jQuery("#"+id+" .tab-item").eq(i).addClass('fadeIn');
+        })
+    }
+    function getProductData(selectDate,shopId,goodsCode){
+		var	dataParam2={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        shopId:shopId,
+		        goodsCode:goodsCode,
+		        timeType:"1"
+			}
+		}
+		getData(dataParam2,'/SQBusiness/goodsController/selectGoodsDetailByTimeApp')
+		
+		//详情页
+		var dataParam={
+			body:{
+				shopId:shopId,
+				selectDate:selectDate,
+				goodsCode:goodsCode,
+				userId:""
+			}
+		}
+        getData(dataParam,'/SQBusiness/goodsController/selectGoodsDetailApp')
+		
+		//销量start
+		var	dataParam3={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsCode:goodsCode
+			}
+		}	
+		getData(dataParam3,'/SQBusiness/goodsController/selectGoodsBranchsSaleDetailApp')	
+		//采购进货
+		var	dataParam4={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsCode:goodsCode
+			}
+		}	
+		getData(dataParam4,'/SQBusiness/goodsController/selectGoodsBranchsPurchaseDetailApp')
+		//销售简析
+		var	dataParam5={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsId:goodsCode
+			}
+		}	
+		getData(dataParam5,'/SQBusiness/goodsController/selectSaleAnalysisApp');
+		//简况
+		var	dataParam6={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsId:goodsCode
+			}
+		}	
+		getData(dataParam6,'/SQBusiness/goodsController/selectEasySituationApp');
+		//动态
+		var	dataParam7={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsId:goodsCode
+			}
+		}	
+		getData(dataParam7,'/SQBusiness/goodsController/selectDynamicApp');
+		//分析
+		var	dataParam8={
+		    body:{
+				userId:"",
+		        selectDate:selectDate,
+		        goodsId:goodsCode
+			}
+		}	
+		getData(dataParam8,'/SQBusiness/goodsController/selectAnalysisApp');
+	}
+    
+    window.addEventListener('refresh',function(){
+		var self=plus.webview.currentWebview();
+		self.reload();
+	})
+    
+    //分享功能
+	jQuery("#share").on('tap',function(){
+		var actionbuttons=[{title:"微信好友"},{title:"朋友圈"}];
+		var actionstyle={title:"请选择分享类型",cancel:"取消",buttons:actionbuttons};
+		plus.nativeUI.actionSheet(actionstyle,function(e){
+			//console.log(JSON.stringify(e));
+			if(e.index){
+				shareNow(e.index);
+			}
+		})
+	})
+    var shareWx=null;
+    function shareNow(type){
+    	plus.share.getServices(function(services){
+    		//console.log(JSON.stringify(services));
+    		for(var k in services){
+    			if(services[k].id='weixin'){
+    				shareWx=services[k];
+    			}
+    		}
+    		if(shareWx==null){
+    			mui.toast('您没有安装微信');
+    			return;
+    		}
+    		var msg={
+    			content:"123",
+    			href:""
+    		}
+    		if(type==1){
+    			msg.extra={scene:"WXSceneSession"}    			
+    		}else{
+    			msg.extra={scene:"WXSceneTimeline"}
+    		}
+    		shareWx.send(msg,function(){
+    			mui.toast('分享成功');
+    		},function(){
+    			mui.toast('您取消了分享');
+    		})
+    	},function(){
+    		mui.toast("获取分享服务失败");
+    	})
+    }
+</script>
+</html>

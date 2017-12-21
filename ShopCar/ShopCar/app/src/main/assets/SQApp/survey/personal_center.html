@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>personal_center</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<style type="text/css">			
+			.img {
+				width: 100%;
+				margin-top: 1.8rem;
+				height: 7.8rem;
+				background-image: url('../imgs/persona@2xl.png');
+				background-position: 45% 50%;
+				background-repeat: no-repeat;
+			}
+			.img img{
+				display: block;
+				height: 3rem;
+				width: 3rem;
+				border-radius: 50%;
+				margin: 1rem auto;
+			}
+			.text-center{
+				margin-top: 40px;
+			}
+			.text-center a{
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				color:#fff;
+				background: red;
+				display: inline-block;
+			}
+			.img {
+			    width: 100%;
+			    margin-top: 1.8rem;
+			    height: 7.8rem;
+			    background-image: url(../imgs/persona@2xl.png);
+			    background-position: 50% 29%;
+			    background-repeat: no-repeat;
+			}			
+		</style>
+	</head>	
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;color: white;">
+					<p class="title" style="color: white;">个人中心</p>
+				</div>
+			</div>
+		</div>
+		<div class="img">
+		  <label>
+		<!--　　　　<input style="opacity: 0;" type="file" accept="image/*" id="head_img_change"/>-->		
+		　　　　<img id="headimg" src="../imgs/log-bg.png">		
+		<!--　　</label>-->
+		<!--　　　    <img id="headimg" src="../imgs/avatar1.png">-->
+		　　</label>	
+		</div>
+		<ul class="mui-table-view">
+		    <li class="mui-table-view-cell" id="information">
+		    	<a class="mui-navigate-right">基本信息</a>
+		    </li>
+		    <li class="mui-table-view-cell" id="system_notification">
+		    	<a class="mui-navigate-right">系统设置</a>
+		    </li>
+		</ul>
+		
+		<p class="text-center"><a href="javascript:void(0)" id="logout">登出</a></p>
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.min.js" type="text/javascript"></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">	
+	mui.init();
+	mui.plusReady(function(){
+		jQuery("#logout").on('tap',function(){
+			plus.storage.removeItem('userId');
+			plus.storage.removeItem('userName');
+			plus.storage.removeItem('accessToken');
+			localStorage.removeItem('userId');
+//			localStorage.clear();
+//			plus.storage.clear();
+			openUrl('../login.html');
+		});		
+	});
+	jQuery("#information").on('tap',function(){			
+		openUrl('information.html');
+	});
+	jQuery("#system_notification").on('tap',function(){			
+			openUrl('cache.html');
+		});
+//		var storage=window.localStorage;
+//		var url = storage.getItem('src');
+//		alert(url) 
+//		mui.plusReady(function(){
+// $(function(){
+// 	if(url){
+//			var img = $('.img label img');
+////			img.src = url;
+////			alert(img.src);
+////			$('img').attr('src',url);
+//			console.log(url)
+//		};
+//　　　　$("#head_img_change").change(function() {
+//		openUrl('cache.html');
+//	});
+//	var storage=window.localStorage;
+//	var url = storage.getItem('src');		
+//	if(url){
+//		var img = $('.img label img');
+//		//$('img').attr('src',url);
+//	};
+//　　　$("#head_img_change").change(function() {
+//　　　　　　var $file = $(this);
+//　　　　　　var fileObj = $file[0];
+//　　　　　　var windowURL = window.URL || window.webkitURL;
+//　　　　　　var dataURL;
+//　　　　　　var $img = $("#headimg");
+//　　　　　　if(fileObj && fileObj.files && fileObj.files[0]){
+//　　　　　　　　dataURL = windowURL.createObjectURL(fileObj.files[0]);
+//　　　　　　　　$img.attr('src',dataURL);			
+//			storage.setItem('src',dataURL);
+//			//console.log(dataURL)
+//　　　　　　}else{
+//　　　　　　　　dataURL = $file.val();
+//		  //console.log(dataURL)
+//　　　　　　　　var imgObj = document.getElementById("headimg");
+//　　　　　　　　// 1、在设置filter属性时，元素必须已经存在在DOM树中，动态创建的Node，也需要在设置属性前加入到DOM中，先设置属性再加入，无效；
+//　　　　　　　　// 2、src属性需要像下面的方式添加，上面的两种方式添加，无效；
+//　　　　　　　　imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+//　　　　　　　　imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+//　　　　　　}
+//　　　});		　　
+</script>

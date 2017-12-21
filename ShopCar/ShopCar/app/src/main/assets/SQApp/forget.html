@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/login.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body>
+<div class="log-wrap">
+	<div class="text-center header-title"><a href="javascript:void(0)" class="mui-action-back"><i class="sicon-log-arrow"></i></a>忘记密码</div>
+	<form id="logForm" class="log-form">
+		<div class="log-input fix-input">
+			<i class="sicon-phone"></i><input type="text" class="input-item" placeholder="请输入手机号" id="phoneNum">
+			<button class="validate" type="button">获取验证码</button>
+		</div>
+		<div class="log-input">
+			<i class="sicon-valit"></i><input type="text" class="input-item" placeholder="请输入验证码" id="pCode">
+		</div>
+		<p class="text-center" style="margin-top: 2.2rem;"><a href="javascript:void(0)" class="log-sub" id="logSub">登录</a></p>
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();	
+	jQuery('.validate').on('tap',function(){
+		var phoneNum=jQuery("#phoneNum").val();
+		if(phoneNum==''){
+			mui.toast('请输入手机号码');
+			return;
+		}
+		//验证手机号是否正确在执行下面
+		var phoneNumArr=[];
+		phoneNumArr.push(phoneNum);
+		var code="";
+		for(var i=0;i<4;i++){
+			code+=(Math.floor(Math.random()*10)).toString()
+		}
+		sessionStorage.setItem('code',code);		
+		var phoneParam={
+		    body:{
+		        phoneNumArray:phoneNumArr,
+		        signName:"极应数据",
+		        templateCode:"SMS_25355027",
+		        receiverParams:{
+		        	"code":"-#"+code+"#-",
+		        	"product":"-#忘记密码#-"
+		        }
+		    }
+		}	
+		getPhoneCode(phoneParam,"http://openapi.jaaint.com/SQOpenAPI/phoneMsgController/insertSendMsg");
+    	jQuery(this).html("(<em id='codeNum'>50</em>s)后重试");
+    	jQuery(this).attr("disabled",true);
+    	jQuery(this).addClass("active");
+    	timer=setInterval(minutesTime,1000);
+	});
+    var timer=null;
+    function minutesTime(){
+        var num=parseInt(jQuery('#codeNum').html().trim(),10);
+        if(num!=0){
+            num--
+            jQuery('#codeNum').html(num);
+        }else{
+            clearInterval(timer);
+//          $("#message").css("visibility","hidden");
+//          $('#codeNum').html("20");
+            jQuery('.validate').removeAttr("disabled");
+            jQuery('.validate').removeClass("active");
+            jQuery('.validate').html("获取验证码");
+        }
+    }
+    
+	function getPhoneCode(dataParam,apiUrl){   
+	    mui.ajax(apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				if(data.body.code==0){
+					mui.toast('验证码发送成功');
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}   
+    
+    jQuery("#logSub").on('tap',function(){
+    	var localCode=sessionStorage.getItem('code');
+    	//alert(localCode);
+    	var pCode=jQuery("#pCode").val();
+    	if(pCode==''){
+			mui.toast('验证码不能为空!');
+			return;
+		}
+    	if(localCode==pCode){
+    		mui.openWindow({
+				url:'clh/mpassword.html',
+				id:'clh/mpassword.html'
+			})
+    	}else{
+    		mui.toast('验证码错误！');
+    	}
+    })
+</script>
+</html>

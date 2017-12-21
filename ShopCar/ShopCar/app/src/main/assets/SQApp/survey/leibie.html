@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	</head>
+	<style type="text/css">
+		body{
+			background-color: white;
+		}		
+		.serch_body .header-time p.title {
+				    line-height: 1.73rem;
+				    width: 6rem;
+				}
+		.table{
+			margin-top: -0.5rem;
+		}
+		.table tr:nth-child(odd){
+			background-color: #E1E1E1;
+		}
+		.table .th{
+			background-color: white!important;
+		}
+		tr td:first-child em{
+			width: 2rem;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: inline-block;
+			line-height: 0.6rem;		
+		}
+		tr td:first-child div{
+			margin-left: 0.2rem;
+			text-align: center;
+			display: inline-block;
+			line-height: 1rem;
+		}
+		.table{
+			display: -moz-box;
+			display: -webkit-box;
+			display: box;
+			-webkit-box-orient: horizontal;   /*属性值：[horizontal]横向/[vertical]纵向*/
+			-moz-box-orient: horizontal;
+			box-orient: horizontal;
+			width: 100%;
+			height: 8rem;
+		}
+		.table div:nth-child(1){
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			box-flex: 1;
+			background-color: orange;
+			box-sizing: border-box;
+			border: 1px solid #C7C7CC;
+		}
+		.table div:nth-child(2){
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			box-flex: 1;
+			background-color: red;
+			border: 1px solid #C7C7CC;
+		}
+		.table div:nth-child(3){
+			-webkit-box-flex: 1;
+			-moz-box-flex: 1;
+			box-flex: 1;
+			background-color: green;
+			border: 1px solid #C7C7CC;
+		}
+		.leibie{
+			list-style: none;
+			width: 100%;
+			margin-top: 1.9rem;
+		}
+		.leibie li{
+			padding-top: 0.1rem;
+			float: left;
+			width: 33%;
+			height: 5.2rem;
+			border: 1px solid #DDDDDD;
+			border-left: none;
+			border-top: none;
+			text-align: center;
+		}
+		.leibie li:nth-child(3n){
+			border-right: none !important;
+		}
+		.leibie li:nth-last-child{
+			border-right: 1px solid #DDDDDD;
+		}
+		.leibie red{
+			color: #FA3419;
+		}
+		.leibie p{
+			line-height: 0.7rem;
+		}
+		.leibie .p1{
+			font-size: 0.7rem;
+			color: #4B4B4B;
+		}
+	</style>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<a href="javascript:void(0)" class="mui-action-back" id="cbk"><i class="icon icon-8"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;color: white;">
+					<p class="title" style="color: white;">类别</p>
+				</div>
+			</div>
+		</div>
+		<ul class="leibie">
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+		</ul>
+</body>
+<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ajaxFun.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	mui.init();	
+//	(function(){alert(1);})();
+	mui.plusReady(function(){
+		var type=localStorage.getItem('type');
+		var dateStr=localStorage.getItem('date');
+		var storeId=localStorage.getItem('storeId');		
+		var dataParam1={
+				body:{
+						type:type,
+						userId:"D3924FF954AD4CE69BF587F083530B7C",
+				        storeId:storeId,
+				        selectDate:dateStr,
+				        isSelectAll:"0"
+				    }
+			};
+			
+	var leibie_Data = (function(leibie_success){
+		var leibie_detail = {
+			lei_shuju:function(){		
+		var body = new Object();
+			body.type = type;
+			body.userId = "D3924FF954AD4CE69BF587F083530B7C";
+			body.storeId = storeId;
+			body.selectDate = dateStr;
+			body.isSelectAll = "0";
+		var paramData = new Object();
+			paramData.body = body;
+		var url = "http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsAnalysisByType";
+		console.log(ajaxFun);
+		var errorCallBack = function(xhr, textStatus, errorThrown){
+			console.log("错误",xhr, textStatus, errorThrown);
+		}
+		ajaxFun.ajaxPostFunBodyParam(leibie_success, errorCallBack, paramData, url);
+		}
+	};
+		return (leibie_detail.lei_shuju)()
+	})(leibie_success);
+//	leibie_Data(leibie_success);
+
+	
+	function leibie_success(data){
+		console.log(data);
+		var frut_data = data.body.data.mapDataByTypeExtend;
+		console.log(frut_data);
+					var tml = '';
+					for(var i = 0;i<frut_data.length;i++){
+						tml += '<li><p class="p1">'+frut_data[i].CategoryName+'</p><p class="green">';
+						tml += parseFloat(frut_data[i].GrowthRate*100).toFixed(2)+'<p>SKU <span>';
+						tml += parseFloat(frut_data[i].StockSKU).toFixed(2)+'</span></p>';
+						tml += '<p>动销 <span>'+parseFloat(frut_data[0].SaleSKU).toFixed(2)+'</span></p>';
+						tml += '<p>大白菜 <span class="red">(-12%)</span></p></li></ul>';		
+					}
+					$('.leibie').html(tml);
+					$('.leibie li').on('tap',function(){
+						var m = $(this).index();
+						var title = $(this).find('p:nth-child(1)').text();						
+						btp = frut_data[m].BdeptID;
+//						alert(btp);
+						localStorage.setItem('btp',type);						
+						localStorage.setItem('title',title);
+						localStorage.setItem('date',dateStr);
+						openUrl('classes.html');
+					})
+	};		
+//		window.onload = function(){
+//		 $.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsAnalysisByType',{
+//			data: JSON.stringify(dataParam1),
+//			dataType:'json',//服务器返回json格式数据
+//			crossDomain:true,
+//			type:'post',//HTTP请求类型
+//			contentType: "application/json; charset=utf-8",
+//			timeout:10000,//超时时间设置为10秒；
+//			headers:{'Content-Type':'application/json'},	              
+//			success:function(data){
+//					var frut_data = data.body.data.mapDataByTypeExtend;
+//					var tml = '';
+//					for(var i = 0;i<frut_data.length;i++){
+//						tml += '<li><p class="p1">'+frut_data[i].CategoryName+'</p><p class="green">';
+//						tml += parseFloat(frut_data[i].GrowthRate*100).toFixed(2)+'<p>SKU <span>';
+//						tml += parseFloat(frut_data[i].StockSKU).toFixed(2)+'</span></p>';
+//						tml += '<p>动销 <span>'+parseFloat(frut_data[0].SaleSKU).toFixed(2)+'</span></p>';
+//						tml += '<p>大白菜 <span class="red">(-12%)</span></p></li></ul>';		
+//					}
+//					$('.leibie').html(tml);
+//					$('.leibie li').on('tap',function(){
+//						var m = $(this).index();
+//						var title = $(this).find('p:nth-child(1)').text();						
+//						btp = frut_data[m].BdeptID;
+////						alert(btp);
+//						localStorage.setItem('btp',type);						
+//						localStorage.setItem('title',title);
+//						localStorage.setItem('date',dateStr);
+//						openUrl('classes.html');
+//					})
+//				},
+//			error:function(xhr,type,errorThrown){
+//				//异常处理；
+//				console.log(errorThrown);
+//			}			
+//		});
+});
+	$('#cbk').on('tap',function(){
+		 mui.init({
+		    beforeback: function() {
+//		　　　　 //获得父页面的webview
+		        var sur = plus.webview.currentWebview().opener();
+//		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+		        mui.fire(sur, 'clash');
+//		        //返回true,继续页面关闭逻辑
+		        return true;
+				    }
+		});		
+		mui.back();
+	});
+</script>
+</html>

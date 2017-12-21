@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>survery</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />    
+    <style>
+    	.cache {
+		    margin-top: 1.9rem;
+		}
+		.cache .cache_detail{
+			border-bottom: 1px solid #e1e1e1;
+		}
+    </style>
+</head>
+<body class="cache_set" style="background: #fff;">
+<div class="header fixed-header">
+    <div class="top-head">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+        <div class="header-time" style="width: 6rem;">           
+            <p class="p_title">系统设置</p>                        
+        </div>        
+        <!--<a href="###"><i class="icon icon-14"></i></a>-->
+    </div>   
+</div>
+<div class="cache">
+	<div class="cache_detail" id="crash">
+		<div class="left_text">
+			<p>刷新设置</p>
+		</div>	
+		<div class="right_arrow">
+			<img src="../imgs/arrow-right.png"/>
+		</div>
+	</div>
+	<div class="cache_detail" id="clear">
+		<div class="left_text" id="clear_cache">
+		<p>清除缓存</p>
+		</div>
+		<div class="right_arrow" id="calculate">
+			<p>0M</p>
+		</div>
+	</div>
+	<div class="cache_detail" id="password">
+		<div class="left_text">
+		<p>修改密码</p>
+		</div>
+		<div class="right_arrow">
+			<img src="../imgs/arrow-right.png"/>
+		</div>
+	</div>
+</div>
+</html>
+<!--<script type="text/javascript" src="../js/goods_engine.js"></script>-->
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	mui.plusReady(function() {
+	plus.cache.calculate(function(size) {
+            //console.log(size)
+            sizeCache = size;          
+            var p = '<p>'+parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + 'M</p>';
+            $('#caleculate').html(p);
+//          mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+//              if(e.index == 1) {} else {
+//                  plus.cache.clear(function() {
+//                      alert("缓存清除完毕")
+//                  });
+//              }
+//          });
+        });
+     });
+}
+document.querySelector('#clear_cache').onclick = function(){
+	plus.cache.calculate(function(size) {
+            console.log(size)
+            sizeCache = size;
+            mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+                if(e.index == 1) {} else {
+                    plus.cache.clear(function() {
+                        alert("缓存清除完毕")
+                    });
+                }
+            });
+       });
+	};
+	$('#crash').on('tap',function(){
+		openUrl('crash.html');
+	});
+	$('#password').on('tap',function(){
+		openUrl('mpassword.html');
+	})
+</script>

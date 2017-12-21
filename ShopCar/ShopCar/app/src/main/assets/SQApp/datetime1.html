@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0;">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>筛选时间</span>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item bg-white pl-20 border-b">
+        <div class="date-title">设置时间</div>
+        <div class="date-body">
+            <ul class="list-item2">
+            	<li><label for="now"><input type="radio" name="radio1" id="now" checked><a class="date-btn">实时</a></label></li>
+            	<li><label for="yestoday"><input type="radio" name="radio1" id="yestoday"><a class="date-btn">昨天</a></label></li>
+            	<li><label for="others"><input type="radio" name="radio1" id="others"><a class="date-btn">上月最后一天</a></label></li>
+            </ul>
+            <p><span>自定义</span><em class="date-btn1"><input type="text" class="date-input" value=""  onfocus="(this.type='date')" id="dateTime" placeholder="输入日期" style="line-height: 0.6rem;height: 0.6rem;"></em><i class="icon-date"></i></p>
+        </div>
+    </div>
+    <div class="section-item bg-white pl-20 mt-10 border-b">
+        <div class="date-title"><em class="fr" id="setShop"><span id="shopName">全部</span><i class="icon-ar1"></i></em>设置门店</div>
+        <div class="date-body">
+            <ul class="list-radios">
+            	<li><label class="radio-item"><input type="radio" name="radio2" class="radios" checked><em shopId="9999" id="storeId">全部门店</em></label></li>
+            </ul>
+        </div>
+    </div>
+    <p class="text-center mt-120"><a href="javascript:void(0)" class="input-btn" id="confirm">确认</a></p>
+</div>
+</body>
+<script type="text/javascript">
+   mui.init();
+   mui.plusReady(function(){
+   	  jQuery("#confirm").on('tap',function(){
+   	  	  var dateStr='';
+   	  	  var timeNow=new Date();
+   	  	  var shopId=jQuery("#storeId").attr('shopId');
+   	  	  jQuery(".list-item2 li input").each(function(){
+   	  	  	 if(this.checked){
+   	  	  	 	if(this.id=='now'){
+   	  	  	 		dateStr=timeNow.getFullYear()+'-'+(timeNow.getMonth()+1)+'-'+timeNow.getDate();
+   	  	  	 	}
+   	  	  	 	if(this.id=='yestoday'){
+   	  	  	 		var yestoday=new Date(timeNow.getFullYear()+'-'+(timeNow.getMonth()+1)+'-'+(timeNow.getDate()-1));
+   	  	  	 		dateStr=yestoday.getFullYear()+'-'+(yestoday.getMonth()+1)+'-'+yestoday.getDate();
+   	  	  	 	}
+   	  	  	 	if(this.id=='others'){
+   	  	  	 		var lastMonth=new Date(timeNow.getFullYear(),timeNow.getMonth(),0);
+   	  	  	 		dateStr=lastMonth.getFullYear()+'-'+(lastMonth.getMonth()+1)+'-'+lastMonth.getDate();
+   	  	  	 	}
+   	  	  	 }
+   	  	  })
+   	  	  if(jQuery(".date-input").val()!=''){
+   	  	  	  dateStr=jQuery(".date-input").val()
+   	  	  }
+   	  	  jQuery(".radios").each(function(i,o){
+   	  	  	  if(this.checked){
+   	  	  	  	shopId=jQuery(this).closest('.radio-item').find("em").attr('shopId');
+   	  	  	  }
+   	  	  })
+   	  	  //alert(shopId);
+		  var prev=plus.webview.getWebviewById('product.html');
+   		  mui.fire(prev,'refresh',{
+   			  dateStr:dateStr,
+   			  shopId:shopId
+   		  });
+   	  	 //prev.evalJS("refresh('"+dateStr+"')");
+   	  	  mui.back();
+   	  })
+   	  jQuery("#setShop").on('tap',function(){
+   	  		openUrl('list-select.html');
+   	  })
+   	  window.addEventListener('refresh',function(event){
+			if(event.detail.dateStr!=undefined){
+				if(event.detail.dateStr==''){
+					return false;
+				}
+				if(event.detail.dateStr=='refresh'){
+					var self=plus.webview.currentWebview();
+					self.reload();
+					return false;
+				}
+				jQuery("#shopName").html(event.detail.dateStr);
+				jQuery("#storeId").html(event.detail.dateStr);
+				jQuery("#storeId").attr('shopId',event.detail.storeId);
+			}
+		})
+   })
+</script>
+</html>

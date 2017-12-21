@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body style="background: #000;width: 100%;height: 100%;">
+<div class="header">
+    <div class="top-head edit" style="background: #555;height: 40px;line-height: 40px;">
+        <a href="javascript:void(0)" class="" id="goBack"><i class="icon icon-5"></i></a>
+        <span>扫一扫</span>
+    </div>
+</div>
+<div id="qrCode" style="width: 100%;height: 100%;min-height: 400px;margin: 0 auto;">
+	
+</div>
+</body>
+<script type="text/javascript">
+	jQuery("#qrCode").css({
+		height:jQuery(window).height()-60+'px',
+		width:jQuery(window).width()+'px'
+	})
+	mui.init();
+	mui.plusReady(function(){
+		var scan=null;
+		if(scan!=null){
+			closeScan(scan)
+		}else{
+			scan=new plus.barcode.Barcode("qrCode",'',{
+				frameColor:'#0000ff',
+				scanbarColor:'#0000ff',
+				background:'#000000'
+			});
+			QRcode(scan);
+			//关闭等待框
+		    //plus.nativeUI.closeWaiting();
+		    //显示当前页面
+		    //mui.currentWebview.show();
+		}	
+		jQuery("#goBack").on('tap',function(){
+			//closeScan(scan);
+			mui.back();
+		})
+	})	
+	function QRcode(scan){		
+		scan.start();
+		scan.onmarked=function(type,result,file){
+			var barcode=result;
+			mui.alert(result, '查询信息',function(){
+				var barcodeParams={
+				    body:{
+				        barCode:barcode
+				    }
+				}
+				var apiUrl="/SQBusiness/goodsController/selectGoodsByBarCode";
+				mui.ajax(baseUrl+apiUrl,{
+					data: JSON.stringify(barcodeParams),
+					dataType:'json',//服务器返回json格式数据
+					//crossDomain:true,
+					type:'post',//HTTP请求类型
+					contentType: "application/json; charset=utf-8",
+					timeout:10000,//超时时间设置为10秒；
+					//headers:{'Content-Type':'application/json'},	              
+					success:function(data){
+						//查询关键指标
+						//console.log(JSON.stringify(data));
+						//var tip="名称："+data.body.data.name+"，Id:"+data.body.data.id
+	//					var tip="信息："+data.body.info
+	//					mui.alert(tip, '查询信息', function() {
+	//						closeScan(scan)
+	//						mui.back();
+	//					});				
+					},
+					error:function(xhr,type,errorThrown){
+						//异常处理；
+						console.log(errorThrown);
+					}
+				});
+				scan.cancel();
+				scan.start();
+				//scan.close();
+				//scan=null;
+			});
+		}
+		scan.onerror=function(error){
+			mui.toast(error.code+":"+error.message);
+			scan.cancel();
+			scan.close();
+			scan=null;
+		}
+	}
+	function closeScan(scan){
+		scan.cancel();
+		scan.close();
+		scan=null;
+	}
+</script>
+</html>

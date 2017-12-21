@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>serch</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link href="css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			/*html{
+				width: 100%;
+			}
+			.serch_body{
+				width: 100%;
+			}*/
+			body{
+				background-color: #EEEEEE;
+				/*width: 330px;*/
+			}
+			.header-time .title {
+			    font-size: 0.7rem;
+			    letter-spacing: 2px;
+			}
+			.serch_body .header-time p.title{
+				color: white;
+			}
+			.hot{
+				width: 100%;
+				height: 2rem;
+				line-height: 2rem;
+				margin: 0.3rem auto 0;
+			}
+			.hot p{
+				line-height: 2rem;
+				font-size: 0.68rem;
+			}
+			.hot_table{
+				padding-left: 0;
+    			margin-top: 0;
+    			overflow: hidden;
+			}
+			.hot_table li{
+				width: 33%;
+				border: none;
+				box-sizing: border-box;
+				border-top:1px solid #e1e1e1;
+				border-right: 1px solid #e1e1e1;
+				font-size: 0.72rem;
+			}
+			.hot_table li:nth-child(3n+2){
+				width: 34%;
+			}
+			.hot_table li:nth-child(3n){
+				border-right: none;
+			}
+			.hot_table ul{
+				border-bottom: 1px solid #e1e1e1;
+				overflow: hidden;
+			}
+			.search-product{
+				color: #CCCCCC;
+				width: 90%;
+				height: 1.3rem;
+				font-size: 0.65rem;
+				text-indent: 4px;
+			}
+			.top-head{
+				height: 5rem;
+				background-color: #2181D2;
+			}
+			.rate{
+				color: #FFFFFF;
+				font-size: 0.8rem;
+				margin-top: 0.1rem;
+				margin-left: 0.35rem;
+			}
+			.num{
+			    color: white;
+			    font-size: 1.2rem;
+			    margin-top: 0.8rem;
+			    margin-left: 0.35rem;
+			    display: block;
+			}
+			.increace{
+				height: 30pt;
+				width: 100%;
+				background-color: #0B73BF;
+				margin-top: 5rem;
+				position: fixed;
+				top: 0;
+				z-index: 2000;
+			}
+			.increace p{
+				margin-left: 0.35rem;
+				line-height: 30pt;
+			}
+			.increace span{
+				line-height: 17pt;
+				color: #FFFFFF;				
+			}
+			.leftBar{
+				display: inline-block;
+				width: 0.3rem;
+				height: 1rem;
+				background-color: #1FDBFF;
+				margin-top: 0.25rem;
+			}
+			.reportContain{
+				width: 96%;
+				margin: 0.2rem auto;
+				background-color: white;
+				border-radius: 0.2rem;
+				margin-top: 0.5rem;
+			}
+			.portIitle{
+				height: 1.5rem;
+				position: relative;
+				width: 100%;
+				border-radius: 0.2rem 0.2rem 0 0;
+				background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Opera 11.1 - 12*/
+			 	background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Firefox 3.6 - 15*/
+			  	background: linear-gradient(to right, #F9FFFE, #E9FFFA);  标准的语法 *
+			}
+			.portIitle span{
+				/*line-height: 1.5rem;*/
+				font-size: 16pt;
+				color: #333;
+			}
+			.portIitle span:nth-child(1){
+				line-height: none;
+				margin-left: 0.5rem;
+			}
+			.portText{
+				position: absolute;
+				left: 1.2rem;
+				top: 0.3rem;
+			}
+			.portIitle .date{
+				position: absolute;
+				top: 0.3rem;
+				right: 0.8rem;
+			}
+			.mui-progressbar{
+				width: 94%;
+			}
+			.shop{
+				width: 100%;
+				display: flex;
+				text-align: center;
+				border-top: 1px solid #FDF3DD;
+				/*border-bottom: 1px solid #FDF3DD;*/
+			    padding: 0.8rem 0 0.8rem 0;
+			}
+			.all_shop {
+				width: 30%;
+				/*background-color: red;*/
+				/*font-size: 14pt;
+				color: #333;*/
+			}.all_shop p{
+				font-size: 14pt;
+				color: #333;
+			}
+			.win{
+				width: 70%;
+			}
+			.sale{
+				width: 100%;
+				text-align: left;
+				display: -webkit-box;
+				display: -moz-box;
+				display: box;
+				/*margin-top: 0.3rem;*/
+				-webkit-box-orient: horizontal;   /*属性值：[horizontal]横向/[vertical]纵向*/
+				-moz-box-orient: horizontal;
+				box-orient: horizontal;
+			}
+			.saleValue{
+				-webkit-box-flex: 2;
+				-moz-box-flex: 2;
+				box-flex: 2;
+				/*background-color: royalblue;*/
+			}
+			.salePort{
+				-webkit-box-flex: 2;
+				-moz-box-flex: 2;
+				box-flex: 2;
+				/*background-color: brown;*/
+			}
+			.saleRate{
+				-webkit-box-flex: 1;
+				-moz-box-flex: 1;
+				box-flex: 1;
+				/*background-color: rosybrown;*/
+			}
+			.maoli{
+				margin-top: 0.3rem;
+			}
+			#fresh{
+				background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Opera 11.1 - 12*/
+			 	background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Firefox 3.6 - 15*/
+			  	background: linear-gradient(to right, #FFFBF3, #FDF3DD);  
+			}
+			.mk{
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;	
+				text-align: center;			
+			}
+			.mk p{
+				line-height: 1.2rem;
+			}
+			.sale_value{
+				width: 50%;
+				height: 6rem;
+				/*background-color: red;*/
+				padding-top: 0.7rem;
+				border-right: 1px solid #F2F2F2;
+				border-bottom: 1px solid #F2F2F2;
+			}
+			.sale_rate{
+				width: 50%;
+				height: 6rem;
+				background-color: yellow;
+			}
+			.xse{
+				color: #333333;			
+			}
+			.nm{
+				color: #338FFF;
+				font-size: 0.7rem;
+			}
+			.shl{
+				color: #FDA607;
+			}
+			.mlv{
+				color: #FDA607;
+			}
+			#mle{
+				border-right: none;
+			}
+			#mlv{
+				border-right: none;
+			}
+			#unnormoal{
+				background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Opera 11.1 - 12*/
+			 	background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Firefox 3.6 - 15*/
+			  	background: linear-gradient(to right, #FFF6F6, #FFE5E5);  
+			}
+			.ntiltle{
+				margin: 12pt;
+				margin-left: 0.9rem;
+				font-size: 0.65rem;
+				color: #333;
+			}
+			div#demo11 {
+			    height: 0.55rem;
+			    width: 83%;
+			    margin: 0 auto;
+			    margin-left: 0.9rem;
+			    /*color: green;*/
+			}
+			.bar{
+				width: 100%;
+				display: flex;
+			}
+			.barn{
+				width: 25%;
+				text-align: left;
+				margin-left: 0.5rem;
+				position: absolute;
+				top: 2.3rem;
+   				right: -1.5rem;
+			}
+			.barn p {
+			    line-height: 0.5rem;
+			}
+			#first{
+				margin-top: 7rem;
+			}
+			#tree{
+				background-color: white;
+				height: 11.5rem;
+				position: relative;
+				/*position: relative;*/
+    			border-radius: 0.2rem;
+    			margin-bottom: 1rem;
+			}
+			#tree ul li{
+				list-style: none;
+			    float: left;
+			    width: 33.3%;
+			    background-color: white;
+			    margin-top: 0.5rem;
+			}
+			#tree ul li p{
+				margin-left: 1rem;
+			}
+			.reportContain{
+				background-color: white;
+			}
+			.ntt{
+				color: #333;
+			}
+			.ns{
+				font-size: 0.7rem;
+				color: #333;
+			}
+			.stitle{
+				color: #333;
+			}
+		</style>
+	</head>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				 <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-1"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;">
+					<p class="title" style="line-height: 1.52rem;">快报</p>
+				</div>
+				<p class="rate">品效总值</p>
+				<span class="num">581245</span>
+			</div>
+		</div>
+		<div class="increace">
+			<p>
+				<span>上个月</span>&nbsp;
+				<span>3000</span>&nbsp;&nbsp;
+				<span>增加</span>&nbsp;
+				<span>12304</span>
+			</p>
+		</div>
+		<div class="reportContain" id="first">
+			<div class="portIitle">
+				<p>
+					<span class="leftBar"></span>
+					<span class="portText">业绩指标</span>
+					<span class="date">2017.12.08</span>
+				</p>
+			</div>
+			<div class="shop">
+				<div class="all_shop">
+					<p>所有门店</p>
+				</div>				
+				<div class="win">
+					<div class="sale">
+						<div class="saleValue">
+							<p class="stitle">销售额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">销售指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo1" class="mui-progressbar">
+					    <span></span>
+					</div>
+					<div class="sale maoli">
+						<div class="saleValue">
+							<p class="stitle">毛利额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">毛利指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo2" class="mui-progressbar">
+					    <span></span>
+					</div>
+				</div>				
+			</div>
+			<div class="shop">
+				<div class="all_shop">
+					<p class="stitle">白马店</p>
+				</div>				
+				<div class="win">
+					<div class="sale">
+						<div class="saleValue">
+							<p class="stitle">销售额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">销售指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo3" class="mui-progressbar">
+					    <span></span>
+					</div>
+					<div class="sale maoli">
+						<div class="saleValue">
+							<p class="stitle">毛利额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">毛利指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo4" class="mui-progressbar">
+					    <span></span>
+					</div>
+				</div>				
+			</div>
+			<div class="shop">
+				<div class="all_shop">
+					<p class="stitle">环南店</p>
+				</div>				
+				<div class="win">
+					<div class="sale">
+						<div class="saleValue">
+							<p class="stitle">销售额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">销售指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo5" class="mui-progressbar">
+					    <span></span>
+					</div>
+					<div class="sale maoli">
+						<div class="saleValue">
+							<p class="stitle">毛利额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">毛利指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo6" class="mui-progressbar">
+					    <span></span>
+					</div>
+				</div>				
+			</div>
+			<div class="shop">
+				<div class="all_shop">
+					<p>丞相坊店</p>
+				</div>				
+				<div class="win">
+					<div class="sale">
+						<div class="saleValue">
+							<p class="stitle">销售额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">销售指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo7" class="mui-progressbar">
+					    <span></span>
+					</div>
+					<div class="sale maoli">
+						<div class="saleValue">
+							<p class="stitle">毛利额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">毛利指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo8" class="mui-progressbar">
+					    <span></span>
+					</div>
+				</div>				
+			</div>
+			<div class="shop">
+				<div class="all_shop">
+					<p>电商平台</p>
+				</div>				
+				<div class="win">
+					<div class="sale">
+						<div class="saleValue">
+							<p class="stitle">销售额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">销售指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo9" class="mui-progressbar">
+					    <span></span>
+					</div>
+					<div class="sale maoli">
+						<div class="saleValue">
+							<p class="stitle">毛利额</p>
+							<span>12345678</span>
+						</div>
+						<div class="salePort">
+							<p class="stitle">毛利指标</p>
+							<span>12345678</span>
+						</div>
+						<div class="saleRate">
+							<p class="stitle">完成率</p>
+							<span>75%</span>
+						</div>
+					</div>
+					<div id="demo10" class="mui-progressbar">
+					    <span></span>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="reportContain" id="second">
+			<div class="portIitle" id="fresh">
+				<p>
+					<span class="leftBar"></span>
+					<span class="portText">生鲜</span>
+					<span class="date">2017.12.08</span>
+				</p>
+			</div>
+			<div class="mk">
+				<div class="sale_value">
+					<p class="xse">销售额</p>
+					<p class="nm">12345678</p>
+					<p class="trate">同比增长率</p>
+					<p class="rn">23.5%</p>
+				</div>
+				<div class="sale_value" id="mle">
+					<p class="xse">毛利额</p>
+					<p class="nm">12345678</p>
+					<p class="trate">同比增长率</p>
+					<p class="rn">23.5%</p>
+				</div>
+				<div class="sale_value">
+					<p class="xse">损耗率</p>
+					<p class="nm shl">12345678</p>
+					<p class="trate">同比增长率</p>
+					<p class="rn">23.5%</p>
+				</div>
+				<div class="sale_value" id="mlv">
+					<p class="xse">毛利率</p>
+					<p class="nm mlv">12345678</p>
+					<p class="trate">同比增长率</p>
+					<p class="rn">23.5%</p>
+				</div>
+			</div>
+		</div>
+		<div class="reportContain" id="tree">
+			<div class="portIitle" id="unnormoal">
+				<p>
+					<span class="leftBar"></span>
+					<span class="portText">商品异常分析</span>
+					<span class="date">2017.12.08</span>
+				</p>
+			</div>			
+			<p class="ntiltle">品项健康度</p>	
+			<div class="bar">
+				<div id="demo11" class="mui-progressbar">
+				    <span></span>
+				</div>
+				<div class="barn">
+					<p>77</p>
+				</div>
+			</div>
+			<ul >
+				<li>
+					<p class="ntt">缺货</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+				<li>
+					<p class="ntt">负毛利</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+				<li>
+					<p class="ntt">无销售</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+				<li>
+					<p class="ntt">高库存</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+				<li>
+					<p class="ntt">缺货</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+				<li>
+					<p class="ntt">异常商品</p>
+					<p class="ns">66666</p>
+					<p>较前日7%</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>		
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/ajaxFun.js"></script>
+	<script type="text/javascript" src="js/search/jsLib/goodSurveyAnalysis.js"></script>
+	<!--<script type="text/javascript" src="../js/search/search.js"></script>-->
+	<script type="text/javascript">
+		mui.init();
+		mui.plusReady(function(){
+			mui('#demo1').progressbar({progress:75}).show();
+		mui('#demo2').progressbar({progress:75}).show();
+		mui('#demo3').progressbar({progress:75}).show();
+		mui('#demo4').progressbar({progress:75}).show();
+		mui('#demo5').progressbar({progress:75}).show();
+		mui('#demo6').progressbar({progress:75}).show();
+		mui('#demo7').progressbar({progress:75}).show();
+		mui('#demo8').progressbar({progress:75}).show();
+		mui('#demo9').progressbar({progress:75}).show();
+		mui('#demo10').progressbar({progress:75}).show();
+		mui('#demo11').progressbar({progress:77}).show();
+			var gSwidth = localStorage.getItem('s_width');			
+			var bw = document.body.style.width;
+			bw = plus.display.resolutionWidth;
+			console.log(bw);
+		})
+		
+	</script>
+</html>

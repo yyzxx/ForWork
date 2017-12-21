@@ -1,0 +1,625 @@
+body{
+				background-color: #EEEEEE;
+			}
+			.header-time .title {
+			    font-size: 0.7rem;
+			    letter-spacing: 2px;
+			}
+			.serch_body .header-time p.title{
+				color: white;
+			}
+			.hot{
+				width: 100%;
+				height: 2rem;
+				line-height: 2rem;
+				margin: 0.3rem auto 0;
+			}
+			.hot p{
+				line-height: 2rem;
+				font-size: 0.68rem;
+			}
+			.hot_table{
+				padding-left: 0;
+    			margin-top: 0;
+    			overflow: hidden;
+			}
+			.hot_table li{
+				width: 33%;
+				border: none;
+				box-sizing: border-box;
+				border-top:1px solid #e1e1e1;
+				border-right: 1px solid #e1e1e1;
+				font-size: 0.72rem;
+			}
+			.hot_table li:nth-child(3n+2){
+				width: 34%;
+			}
+			.hot_table li:nth-child(3n){
+				border-right: none;
+			
+			}
+			.hot_table ul{
+				border-bottom: 1px solid #e1e1e1;
+				overflow: hidden;
+			}
+			.search-product{
+				color: #CCCCCC;
+				width: 90%;
+				height: 1.3rem;
+				font-size: 0.65rem;
+				text-indent: 4px;
+			}
+			.top-head{
+				height: 44pt;
+				background-color: #2181D2;
+			}
+			.rate{
+				color: #FFFFFF;
+				font-size: 0.8rem;
+				margin-top: 0.3rem;
+				margin-left: 0.35rem;
+			}
+			.num{
+			    color: white;
+			    font-size: 42pt;
+			    margin-top: 1.5rem;
+			    margin-left: 0.35rem;
+			    display: block;
+			}
+			.increace{
+				height: 37px;
+				width: 100%;
+				/*background-color: #0B73BF;*/
+				margin-top: 44pt;
+				position: fixed;
+				top: 0;
+				z-index: 2000;
+				font-size: 12pt;
+				background-color: white;
+			  	margin-bottom: 91pt;
+			}
+			.increace p{
+				margin-left: 0.35rem;
+				line-height: 30pt;
+			}
+			.increace span{
+				line-height: 17pt;
+				color: #FFFFFF;				
+			}
+			.leftBar{
+				display: inline-block;
+			    width: 3px;
+			    height: 15px;
+			    background-color: #4BB7FF;
+			    margin-top: 13px;
+			    border-radius: 3px;
+			}
+			.reportContain{
+				width: 100%;
+				margin: 0.2rem auto;
+				background-color: white;
+				border-radius: 5pt;
+				margin-top: 0.5rem;
+			}
+			.portIitle{
+				height: 45px;
+				position: relative;
+				width: 100%;
+				background-color: white;
+			}
+			.portIitle span{
+				/*line-height: 1.5rem;*/
+				font-size: 16px;
+				color: #333;
+				line-height: 30px;
+			}
+			.portIitle span:nth-child(1){
+				line-height: none;
+				margin-left: 0.5rem;
+			}
+			.portText{
+				position: absolute;
+				left: 1.2rem;
+				top: 0.3rem;
+			}
+			.portIitle .date{
+				position: absolute;
+				top: 0.3rem;
+				right: 0.8rem;
+				font-size: 14px;
+			}
+			.mui-progressbar{
+				width: 94%;
+			}
+			.shop{
+				width: 100%;
+				display: flex;
+				text-align: center;
+				border-top: 1px solid #E6E6E6;
+				/*border-bottom: 1px solid #FDF3DD;*/
+			    padding: 0.8rem 0 0.8rem 0;
+			    border-radius: 5pt;
+			}
+			.all_shop {
+				width: 30%;
+				/*background-color: red;*/
+				/*font-size: 14pt;
+				color: #333;*/
+				text-align: left;
+			}
+			.all_shop p{
+				font-size: 11pt;
+				color: #333;
+				margin-left: 0.6rem;
+			}
+			.win{
+				width: 70%;
+			}
+			.sale{
+				width: 100%;
+				text-align: left;
+				display: -webkit-box;
+				display: -moz-box;
+				display: box;
+				/*margin-top: 0.3rem;*/
+				-webkit-box-orient: horizontal;   /*属性值：[horizontal]横向/[vertical]纵向*/
+				-moz-box-orient: horizontal;
+				box-orient: horizontal;
+			}
+			.saleValue{
+				-webkit-box-flex: 2;
+				-moz-box-flex: 2;
+				box-flex: 2;
+				/*background-color: royalblue;*/
+			}
+			.saleValue span{
+				font-size: 13pt;
+			}
+			.salePort{
+				-webkit-box-flex: 2;
+				-moz-box-flex: 2;
+				box-flex: 2;
+				/*background-color: brown;*/
+			}
+			.salePort span{
+				font-size: 13pt;
+			}
+			.saleRate{
+				-webkit-box-flex: 1;
+				-moz-box-flex: 1;
+				box-flex: 1;
+				/*background-color: rosybrown;*/
+				margin-right: 0.5rem;
+			}
+			.maoli{
+				margin-top: 0.3rem;
+			}
+			#fresh{
+				background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Opera 11.1 - 12*/
+			 	background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Firefox 3.6 - 15*/
+			  	background: linear-gradient(to right, #4378FF, #4BB7FF);  
+			}
+			.mk{
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;	
+				text-align: center;			
+			}
+			.mk p{
+				line-height: 1.4rem;
+			}
+			.sale_value{
+				width: 50%;
+				height: 118.5pt;
+				/*background-color: red;*/
+				padding-top: 0.7rem;
+				border-right: 1px solid #F2F2F2;
+				border-bottom: 1px solid #F2F2F2;
+			}
+			.sale_rate{
+				width: 50%;
+				height: 6rem;
+				background-color: yellow;
+			}
+			.xse{
+				color: #333333;	
+				font-size: 12pt;		
+			}
+			.nm{
+				color: #338FFF;
+				font-size: 18pt;
+			}
+			.trate{
+				font-size: 12pt;
+			}
+			.rm{
+				font-size: 12pt;
+			}
+			.shl{
+				color: #FDA607;
+			}
+			.mlv{
+				color: #FDA607;
+			}
+			#mle{
+				border-right: none;
+			}
+			#mlv{
+				border-right: none;
+			}
+			#unnormoal{
+				background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Opera 11.1 - 12*/
+			 	background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /* Firefox 3.6 - 15*/
+			  	background: linear-gradient(to right, #FFF6F6, #FFE5E5);  
+			}
+			.ntiltle{
+				margin: 12pt;
+				margin-left: 0.9rem;
+				font-size: 0.65rem;
+				color: #333;
+			}
+			div#demo11 {
+			    height: 0.55rem;
+			    width: 83%;
+			    margin: 0 auto;
+			    margin-left: 0.9rem;
+			    /*color: green;*/
+			}
+			.bar{
+				width: 100%;
+				display: flex;
+			}
+			.barn{
+				width: 25%;
+				text-align: left;
+				margin-left: 0.5rem;
+				position: absolute;
+				top: 2.3rem;
+   				right: -1.5rem;
+			}
+			.barn p {
+			    line-height: 0.5rem;
+			}
+			#first{
+				margin-top: 113pt;
+			}
+			div#second {
+			    margin-top: 90pt;
+			}
+			#fresh .portText{
+				color: white;
+				/*margin-left: -1rem;*/
+			}
+			#tree{
+				background-color: white;
+				height: 13rem;
+				position: relative;
+				/*position: relative;*/
+    			border-radius: 5pt;
+    			margin-bottom: 1rem;
+			}
+			.finNum{
+				display: block;
+				float: right;
+				margin-right: 1rem;
+			}
+			#tree ul li{
+				list-style: none;
+			    float: left;
+			    width: 33.33%;
+			    background-color: white;
+			    margin-top: 0.5rem;
+			}
+			#tree ul li p{
+				margin-left: 1rem;
+				line-height: 1.2rem;
+			}
+			.reportContain{
+				background-color: white;
+			}
+			.ntt{
+				color: #333;
+				font-size: 14px;
+				line-height: 1.6rem;
+			}
+			.ns{
+				font-size: 18px;
+				color: #4378FF;
+			}
+			div#xso{
+				display: none;
+			}
+			div#xso span{
+			    line-height: 45px;
+			    font-size: 0.65rem;
+			    display: inline-block;
+			    text-align: left;
+			    width: 30%;
+			    margin-left: -0.01rem;
+			    margin-right: 0.4rem;
+			}
+			#second{
+				background-color: #4378FF;
+			}
+			#second .mui-icon{
+				font-size: 16px;
+			}			
+			#second .mui-table-view-cell>a:not(.mui-btn).mui-active{
+				background-color: #4378FF;
+			}
+			#second .mui-table-view{
+				background-color: #4378FF;				
+			}
+			#second .mui-table-view-cell.mui-active{
+				background-color: #4378FF;
+			}
+			.stitle{
+				color: #333;
+				margin-bottom: 0.5rem;
+				font-size: 10pt;
+			}
+			#fresh .leftBar{
+				background-color: #FFBB1F; 
+			}
+			#unnormoal .leftBar{
+				background-color: #FF1F89; 
+			}
+			.mui-progressbar{
+				margin-top: 0.3rem;
+			}
+			.compare{
+				font-size: 10pt;
+				color: #A1A1A1;
+			}
+			.mk{
+				height: 237pt;
+				border-radius: 5pt;
+			}
+			.gjx {
+				height: 18.1rem;
+				/*border-radius: 5pt;*/
+				background-color: #F7FCFE;
+			}
+			.gjx li{
+				float: left;
+				width: 33.33%;
+				text-align: center;
+				height: 4.5rem;
+				/*background-color: white;*/
+				background-color: #F7FCFE;
+				border-right: 1px solid #E3E3E3;
+				border-bottom:  1px solid  #F0F0F0;
+			}
+			.gjx li p{
+				line-height: 1.5rem;				
+			}
+			.gjx li p span{
+				line-height: 10px;
+			}
+			#xso p{
+				line-height: 45px;
+				font-size: 0.55rem;
+			}
+			.bn{
+				border-bottom: none !important;
+			}
+			.hx{
+				background-color: #FFF0F0 !important;
+			}
+			#yj{
+				border-bottom: 1px solid #E1E1E1;
+			}
+			#xso{
+				border-bottom: 1px solid #E1E1E1;
+			}
+			.mui-table-view-cell>a:not(.mui-btn){
+				color: white;
+			}
+			.chart .mui-table-view{
+				background-color: #F0AD4E;
+			}
+			.chart{
+				background-color: white;
+				margin-top: -0.2rem;
+			}
+			#store{
+				margin-top: 0.5rem;
+			}
+			#chart2{
+				height: 6rem;
+				width: 100%;
+				background-color: white;
+			}
+			.chart .mui-icon{
+				font-size: 17px;
+			}
+			.chart .mui-table-view-cell>a:not(.mui-btn).mui-active{
+				background-color: #F0AD4E;
+			}
+			.chart .mui-table-view-cell.mui-active{
+				background-color: #F0AD4E;
+			}	
+			.table{
+				margin-top: -0.5rem;
+			}
+			.table tr{
+				background-color: white;
+			}
+			table tr:first-child td{
+				font-size: 14px !important;
+			}
+			.table tr:nth-child(1){
+				background-color: white;
+				font-size: 14px !important;
+			}
+			tr td:first-child em{
+				width: 2rem;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: inline-block;
+				line-height: 0.6rem;				
+			}
+			tr td:first-child div{
+				margin-left: 0.2rem;
+				text-align: center;
+				display: inline-block;
+				line-height: 1rem;
+			}
+			table tr td:first-child {
+			    text-align: center;
+			    padding-left: 0.6rem;
+			    width: 32%;
+			   font-size: 12px !important;	 
+			}			
+			table tr td{
+				font-size: 16px !important;
+				/*color: #333 !important;*/
+			}
+			span.sdate{
+				padding-left: 0.3rem;
+			}
+			.mui-table-view-cell:nth-child(even){
+				background-color: #F3FBFF;
+			}
+			.date-body p span {
+			    color: #666;
+			    font-size: 0.69rem;
+			    margin-right: 0.5rem;
+			    line-height: 1.5rem;
+			}
+			.mt-120{
+				margin-top: 0.6rem;
+			}
+			#excel{
+				background-color: #FF6278;
+			}
+			#excel .mui-icon{
+				font-size: 17px;
+			}
+			#excel .mui-table-view-cell>a:not(.mui-btn).mui-active{
+				background-color: #FF6278;
+			}
+			#excel .mui-table-view-cell.mui-active{
+				background-color: #FF6278;
+			}
+			#increaseList{
+				margin-top: 0.01rem;
+			}
+			#ft{
+				font-size: 14px !important;
+			}
+			.org{
+				color: #F0AD4E;
+			}
+			.mui-slider-indicator.mui-segmented-control{
+		        padding: 5px 10px;
+		        background: #FFF;
+		    }
+		    .mui-segmented-control.mui-scroll-wrapper{
+		        height: 45px;
+		    }
+		    .mui-segmented-control.mui-scroll-wrapper .mui-control-item{
+		        width: 148px;
+		        /*border: 1px solid #ccc;
+		        box-shadow:0 0 5px #aaa;*/
+		       font-size: 15px;
+		        line-height: 30px;
+		        position: relative;
+		    }
+		    .mui-fullscreen .mui-segmented-control~.mui-slider-group{
+		        top: 45px;
+		    }
+		    .mui-slider-group .mui-scroll-wrapper{
+		        padding-top: 5px;
+		    }
+		    .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			    color: #333;
+			    border-bottom: none;
+			    background: 0 0;
+			}
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item div{
+				width: 1px;
+				height: 52px;
+				background-color: #E3E3E3;
+				position: absolute;
+				top: -8px;
+				right: 2px;
+				-webkit-transform: rotate(30deg);/*Safari 4+,Google Chrome 1+  */
+				-moz-transform: rotate(30deg);/*Firefox 3.5+*/
+				/*filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.30);*/
+			}
+			.mui-segmented-control .mui-control-item{
+				overflow: visible;
+			}
+			.wrap{
+				position: absolute;
+				/*background-color: red;*/.store{
+				width: 100%;
+				margin-top: 0.5rem;
+				top: 25rem;
+				height: 3rem;
+				background-color: white;
+				position: relative;
+				color: #A6A6A6;
+				/*display: none !important;*/
+			}
+			.date-title{
+				margin-left: 0.5rem !important;
+			}	
+			div#wrap{
+				display: none;
+			}
+			.date-btn1{
+				height: 1.5rem !important;
+			}
+			.date-input{
+				border: none;
+				padding: none;
+				height: 18px;
+			}
+			.store img{
+				width: 0.6rem !important;
+				height: 0.6rem !important;
+				margin-left: 0.3rem;
+			}
+			.store .right{
+				position: absolute;
+				right: 0.5rem;
+			}
+			input[type=date]{
+			    line-height: 21px;
+			    width: 100%;
+			    height: 16px !important;
+			    margin-bottom: 15px;
+			    padding: none !important;
+			    -webkit-user-select: text;
+			    border: none !important;
+			    /* border: 1px solid rgba(0,0,0,.2); */
+			    border-radius: 3px;
+			    outline: 0;
+			    background-color: #fff;
+			    /* -webkit-appearance: none; */
+			}
+			.store .left{
+				position: absolute;
+				left: 0.5rem;
+			}
+			.store .all_shop{
+				width: 3.5rem;
+				height: 1.5rem;
+				background-color: #279ACE;
+				position: absolute;
+				top: 1.2rem;
+				left: 0.5rem;
+				color: #242424;
+				line-height: 1.5rem;
+				text-align: center;
+				border-radius: 0.8rem;
+			}
+			.edit{
+				font-size:0.7rem;
+			}
+			ul#store {
+			    background-color: white;
+			}

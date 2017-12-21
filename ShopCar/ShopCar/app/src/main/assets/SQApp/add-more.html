@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <style type="text/css">
+    	.add-card li a:link,.add-card li a:visited{
+    		min-width: 70px;
+    		padding: 2px 0px;
+    		font-size: 0.6rem;
+    	}
+    	.cell-title{
+    		text-align: left;
+    		text-indent: 8px;
+    		white-space: nowrap;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+    		display: inline-block;
+    		max-width: 57%;
+    	}
+    	.cell-title1{
+    		text-align: left;
+    		text-indent: 8px;
+    		white-space: nowrap;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+    		display: inline-block;
+    		width: 100%;
+    	}
+    	.tip{
+    		vertical-align: top;
+    		margin-top: 0.12rem!important;
+    	}
+    	.input-search{
+    		width: 100%!important;
+    		height: 20px!important;
+    		margin-top: 1px!important;
+    		padding: 5px 0!important;
+    		box-sizing: content-box;
+    		line-height: 24px!important;
+    	}
+    	.pro-table1 td, .pro-table1 th{
+    		font-size: 0.6rem;
+    		color: #666;
+    	}
+    	.pro-table1 td{
+    		color: #333!important;
+    	}
+    	.mui-bar-nav~.mui-content .mui-pull-top-pocket {
+		     top: 0px; 
+		}
+		.add-more{
+			position: fixed;
+			left: 0;
+			top:44px;
+			z-index: 10;
+			background: #fff;
+		}
+		.base-table tr td:first-child,.base-table tr th:first-child{
+			width: 30%;
+		}
+		.base-table tr td:first-child{
+			text-align: left;
+		}
+    </style>
+</head>
+<body style="padding-top: 3.33rem">
+<header class="mui-bar mui-bar-nav header">
+	<a href="javascript:void(0)"  class="mui-action-back"><i class="icon icon-5-n"></i></a>
+    <div class="search-wrap" style="margin-left: 34px;">
+		<form id="submitForm">
+			<span class="mui-icon mui-icon-search fix-search" style="top:6px;"></span>
+			<input type="text" class="input-search" placeholder="请输入">
+		</form>
+	</div>
+</header>
+<div class="mui-content">
+	<div class="section-item mb-10 bg-white" id="lisdCard1">
+		<div class="add-more">
+	        <div class="tabs">
+	            <ul class="list-card list-3 add-card">
+	                <li><a href="javascript:void(0);" class="active" type="1">热门</a></li>
+	                <li><a href="javascript:void(0);" type="2">促销</a></li>
+	                <li><a href="javascript:void(0);" type="3">天天平价</a></li>
+	            </ul>
+	        </div>
+	        <div class="normal-table pro-table1">
+	            <table class="base-table">
+	                <tr>
+	                	<th>商品名</th>
+	                	<th>销售量</th>
+	                	<th>销售额</th>
+	                	<th>增降幅</th>
+	                </tr>
+	            </table>
+	        </div>
+        </div>
+        <div class="add-table relative" id="refreshContainer">
+        	<div class="tab-item" style="display: block">
+	            <div class="normal-table pro-table1">
+	                <table class="base-table" id="addTable1">
+	                    <!--<tr>
+	                    	<td class="cell-title">R芭乐</td>
+	                    	<td>2</td>
+	                    	<td>3</td>
+	                    	<td>47</td>
+	                    </tr>-->
+	                </table>
+	            </div>
+	        </div>
+	        <!--<div class="tab-item">
+	            <div class="normal-table pro-table1">
+	                <table class="base-table" id="addTable2">
+	                    <tr>
+	                    	<td class="cell-title">R芭乐</td>
+	                    	<td>2</td>
+	                    	<td>3</td>
+	                    	<td>47</td>
+	                    </tr>
+	                </table>		                
+	            </div>
+	        </div>
+	        <div class="tab-item">
+	            <div class="normal-table pro-table1">
+	                <table class="base-table" id="addTable3">
+	                    <tr>
+	                    	<td class="cell-title">R芭乐</td>
+	                    	<td>2</td>
+	                    	<td>3</td>
+	                    	<td>47</td>
+	                    </tr>
+	                </table>
+	            </div>
+	        </div>-->
+        </div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+    mui.init({
+		pullRefresh : {
+			container : "#refreshContainer",
+			down: {
+				height:50, 
+	            auto: true,
+	            offset:'0',
+	            contentdown : "下拉可以刷新",
+	            contentover : "释放立即刷新",
+	            contentrefresh : "正在刷新...",
+	            callback : getNewsList,
+	            style:'circle'
+			},
+			up : {
+	            height:50,
+	            auto:false,
+	            contentrefresh : "正在加载...",
+	            contentnomore:'没有更多数据了',
+	            callback : getListByPage
+	        }
+		}
+	});
+//	mui.plusReady(function(){
+	    var page1=1;
+	    var page2=1;
+	    var page3=1;
+	    var page4=1;
+	    //var userId="D3924FF954AD4CE69BF587F083530B7C";
+	    //var userId=plus.storage.getItem('userId');
+	    var userId=localStorage.getItem('userId');
+	    //alert(userId);
+	    var goodsName='';
+	    function getNewsList(){
+	    	page1=1;
+	    	page2=1;
+	    	page3=1;
+	    	//getCommonData(1,'down');
+	    	var listA=jQuery("#lisdCard1 .list-card a");
+	        listA.off('tap').on('tap',function(){
+	            var type=jQuery(this).attr('type');
+	            getCommonData(type,'down');
+	            listA.removeClass("active");
+	            jQuery(this).addClass("active");
+	        })
+	        jQuery(".fix-search").off('tap').on('tap',function(){
+	        	page4=1;
+				goodsName=jQuery(".input-search").val();
+				getSearchData(goodsName,page4,'down');
+				listA.removeClass("active");
+			})
+	        jQuery("#submitForm").off('submit').on('submit',function(event){
+	        	page4=1;
+	        	var event=window.event||event;
+	        	event.preventDefault();
+				goodsName=jQuery(".input-search").val();
+				getSearchData(goodsName,page4,'down');
+				listA.removeClass("active");
+			})
+	        if(jQuery(".list-card li a.active").attr('type')==1){
+				getCommonData(1,'down');
+			}
+			if(jQuery(".list-card li a.active").attr('type')==2){
+				getCommonData(2,'down');
+			}
+			if(jQuery(".list-card li a.active").attr('type')==3){
+				getCommonData(3,'down');
+			}
+			if(jQuery(".list-card li a.active").length==0){
+				page4=1;
+				goodsName=jQuery(".input-search").val();
+				getSearchData(goodsName,page4,'down');
+				listA.removeClass("active");
+			}
+		}
+	    
+	    function getListByPage(){
+			if(jQuery(".list-card li a.active").attr('type')==1){
+				getCommonData(1,'up');
+			}
+			if(jQuery(".list-card li a.active").attr('type')==2){
+				getCommonData(2,'up');
+			}
+			if(jQuery(".list-card li a.active").attr('type')==3){
+				getCommonData(3,'up');
+			}
+			if(jQuery(".list-card li a.active").length==0){
+				getSearchData(goodsName,page4,'up');
+			}
+		}
+//  })
+    function getCommonData(type,direct){   	
+    	var selectDate=getDate();
+    	var sParam = {
+		    "body":{
+		        "userId":userId,
+		        "selectDate":selectDate,
+		        "type":type
+		    }
+		};
+		getAddData(sParam,"/SQBusiness/goodsController/selectRankList",type,direct);
+    }
+    
+    function getSearchData(goodsName,page,direct){
+		var searchParam = {
+		    "body":{
+		        "userId":userId,
+		        "goods":goodsName,
+		        "type":"2",
+		        "page":page,
+		        "counts":"10"
+		    }
+		};	
+		getAddData(searchParam,"/SQBusiness/goodsController/selectGoodsByIdOrNameApp",4,direct);	
+    }
+    
+    function getAddData(dataParam,apiUrl,type,direct){
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				if(apiUrl=='/SQBusiness/goodsController/selectRankList'){
+					//商品关注排行
+					if(type==1){
+						if(direct=='down'){
+							//console.log(data);
+							var html='';
+							for(var i=0;i<data.body.data.length;i++){
+								html+='<tr goodid="'+data.body.data[i].GoodsID+'" class="goProduct">';                    	
+		                    	if(data.body.data[i].IndexFlag){
+		                    		//console.log(data.body.data[i].IndexFlag);
+							   		html+='<td><em class="cell-title">'+data.body.data[i].GoodsName+"</em>";
+							   		var nArr=data.body.data[i].IndexFlag.split('-');
+							   		nArr.splice(0,1);
+							   		for(var j=0;j<nArr.length;j++){
+							   			//console.log(nArr);
+							   			if(nArr[j]==1){
+							   				html+='<em class="tip d-red">A</em>';
+							   			}
+							   			if(nArr[j]==2){
+							   				html+='<em class="tip orange">B</em>';
+							   			}
+							   			if(nArr[j]==3){
+							   				html+='<em class="tip d-red">C</em>';
+							   			}
+							   			if(nArr[j]==4){
+							   				html+='<em class="tip orange">平</em>';
+							   			}
+							   			if(nArr[j]==5){
+							   				html+='<em class="tip d-red">重</em>';
+							   			}
+							   			if(nArr[j]==6){
+							   				html+='<em class="tip orange">促</em>';
+							   			}
+							   		}					   		
+							   	}else{
+							   		html+='<td><em class="cell-title1">'+data.body.data[i].GoodsName+'</em>';
+							   	}		                    	
+		                    	html+='</td><td>'+(data.body.data[i].SaleQty==undefined?0:data.body.data[i].SaleQty)+'</td>';
+		                    	html+='<td>'+(data.body.data[i].SaleValue==undefined?0:parseFloat(data.body.data[i].SaleValue).toFixed(1))+'</td>';
+		                    	html+='<td>'+(data.body.data[i].GrowthRate==undefined?0:(parseFloat(data.body.data[i].GrowthRate).toFixed(2)))+'</td>';
+			                    html+='</tr>';
+							}
+							jQuery("#addTable1").html(html);
+							mui("#refreshContainer").pullRefresh().endPulldownToRefresh();
+							page1++;
+							mui("#refreshContainer").pullRefresh().refresh(true);
+						}
+						if(direct=='up'){
+							mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+							return false;
+						}
+						
+					}
+					//商品销售排行
+					if(type==2){
+						if(direct=='down'){
+							var html='';
+							for(var i=0;i<data.body.data.length;i++){
+								html+='<tr goodid="'+data.body.data[i].GoodsID+'" class="goProduct">';
+		                    	if(data.body.data[i].IndexFlag){
+		                    		//console.log(data.body.data[i].IndexFlag);
+							   		html+='<td><em class="cell-title">'+data.body.data[i].GoodsName+"</em>";
+							   		var nArr=data.body.data[i].IndexFlag.split('-');
+							   		nArr.splice(0,1);
+							   		for(var j=0;j<nArr.length;j++){
+							   			//console.log(nArr);
+							   			if(nArr[j]==1){
+							   				html+='<em class="tip d-red">A</em>';
+							   			}
+							   			if(nArr[j]==2){
+							   				html+='<em class="tip orange">B</em>';
+							   			}
+							   			if(nArr[j]==3){
+							   				html+='<em class="tip d-red">C</em>';
+							   			}
+							   			if(nArr[j]==4){
+							   				html+='<em class="tip orange">平</em>';
+							   			}
+							   			if(nArr[j]==5){
+							   				html+='<em class="tip d-red">重</em>';
+							   			}
+							   			if(nArr[j]==6){
+							   				html+='<em class="tip orange">促</em>';
+							   			}
+							   		}					   		
+							   	}else{
+							   		html+='<td><em class="cell-title1">'+data.body.data[i].GoodsName+'</em>';
+							   	}
+		                    	html+='</td><td>'+(data.body.data[i].SaleQty==undefined?0:data.body.data[i].SaleQty)+'</td>';
+		                    	html+='<td>'+(data.body.data[i].SaleValue==undefined?0:parseFloat(data.body.data[i].SaleValue).toFixed(1))+'</td>';
+		                    	html+='<td>'+(data.body.data[i].GrowthRate==undefined?0:(parseFloat(data.body.data[i].GrowthRate).toFixed(2)))+'</td>';
+			                    html+='</tr>';
+							}
+							jQuery("#addTable1").html(html);
+							mui("#refreshContainer").pullRefresh().endPulldownToRefresh();
+							page2++;
+							mui("#refreshContainer").pullRefresh().refresh(true);
+						}
+						if(direct=='up'){
+							mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+							return false;
+						}
+					}
+					//天天平价
+					if(type==3){
+						if(direct=='down'){
+							var html='';
+							for(var i=0;i<data.body.data.length;i++){
+								html+='<tr goodid="'+data.body.data[i].GoodsID+'" class="goProduct">';
+		                    	if(data.body.data[i].IndexFlag){
+		                    		//console.log(data.body.data[i].IndexFlag);
+							   		html+='<td><em class="cell-title">'+data.body.data[i].GoodsName+"</em>";
+							   		var nArr=data.body.data[i].IndexFlag.split('-');
+							   		nArr.splice(0,1);
+							   		for(var j=0;j<nArr.length;j++){
+							   			//console.log(nArr);
+							   			if(nArr[j]==1){
+							   				html+='<em class="tip d-red">A</em>';
+							   			}
+							   			if(nArr[j]==2){
+							   				html+='<em class="tip orange">B</em>';
+							   			}
+							   			if(nArr[j]==3){
+							   				html+='<em class="tip d-red">C</em>';
+							   			}
+							   			if(nArr[j]==4){
+							   				html+='<em class="tip orange">平</em>';
+							   			}
+							   			if(nArr[j]==5){
+							   				html+='<em class="tip d-red">重</em>';
+							   			}
+							   			if(nArr[j]==6){
+							   				html+='<em class="tip orange">促</em>';
+							   			}
+							   		}					   		
+							   	}else{
+							   		html+='<td><em class="cell-title1">'+data.body.data[i].GoodsName+'</em>';
+							   	}
+		                    	html+='</td><td>'+(data.body.data[i].SaleQty==undefined?0:data.body.data[i].SaleQty)+'</td>';
+		                    	html+='<td>'+(data.body.data[i].SaleValue==undefined?0:parseFloat(data.body.data[i].SaleValue).toFixed(1))+'</td>';
+		                    	html+='<td>'+(data.body.data[i].GrowthRate==undefined?0:(parseFloat(data.body.data[i].GrowthRate).toFixed(2)))+'</td>';
+			                    html+='</tr>';
+							}
+							jQuery("#addTable1").html(html);
+							mui("#refreshContainer").pullRefresh().endPulldownToRefresh();
+							page3++;
+							mui("#refreshContainer").pullRefresh().refresh(true);
+						}
+						if(direct=='up'){
+							mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+							return false;
+						}
+					}
+				}
+				if(apiUrl=='/SQBusiness/goodsController/selectGoodsByIdOrNameApp'){
+					if(direct=='down'){
+						var html='';
+						for(var i=0;i<data.body.data.length;i++){
+							html+='<tr goodid="'+data.body.data[i].GoodsID+'" class="goProduct">';
+	                    	if(data.body.data[i].IndexFlag){
+	                    		//console.log(data.body.data[i].IndexFlag);
+						   		html+='<td><em class="cell-title">'+data.body.data[i].GoodsName+"</em>";
+						   		var nArr=data.body.data[i].IndexFlag.split('-');
+						   		nArr.splice(0,1);
+						   		for(var j=0;j<nArr.length;j++){
+						   			//console.log(nArr);
+						   			if(nArr[j]==1){
+						   				html+='<em class="tip d-red">A</em>';
+						   			}
+						   			if(nArr[j]==2){
+						   				html+='<em class="tip orange">B</em>';
+						   			}
+						   			if(nArr[j]==3){
+						   				html+='<em class="tip d-red">C</em>';
+						   			}
+						   			if(nArr[j]==4){
+						   				html+='<em class="tip orange">平</em>';
+						   			}
+						   			if(nArr[j]==5){
+						   				html+='<em class="tip d-red">重</em>';
+						   			}
+						   			if(nArr[j]==6){
+						   				html+='<em class="tip orange">促</em>';
+						   			}
+						   		}					   		
+						   	}else{
+						   		html+='<td><em class="cell-title1">'+data.body.data[i].GoodsName+'</em>';
+						   	}
+	                    	html+='</td><td>'+(data.body.data[i].SaleQty==undefined?0:(data.body.data[i].SaleQty).toFixed(2))+'</td>';
+	                    	html+='<td>'+(data.body.data[i].SaleValue==undefined?0:parseFloat(data.body.data[i].SaleValue).toFixed(1))+'</td>';
+	                    	html+='<td>'+(data.body.data[i].GrowthRate==undefined?0:(parseFloat(data.body.data[i].GrowthRate).toFixed(2)))+'</td>';
+		                    html+='</tr>';
+						}
+						jQuery("#addTable1").html(html);
+						mui("#refreshContainer").pullRefresh().endPulldownToRefresh();
+						page4++;
+						mui("#refreshContainer").pullRefresh().refresh(true);
+					}
+					if(direct=='up'){
+						if(data.body.data.length==0){
+							mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+							return false;
+						}
+						for(var i=0;i<data.body.data.length;i++){
+							var html='';
+							html+='<tr goodid="'+data.body.data[i].GoodsID+'" class="goProduct">';
+	                    	if(data.body.data[i].IndexFlag){
+	                    		//console.log(data.body.data[i].IndexFlag);
+						   		html+='<td><em class="cell-title">'+data.body.data[i].GoodsName+"</em>";
+						   		var nArr=data.body.data[i].IndexFlag.split('-');
+						   		nArr.splice(0,1);
+						   		for(var j=0;j<nArr.length;j++){
+						   			//console.log(nArr);
+						   			if(nArr[j]==1){
+						   				html+='<em class="tip d-red">A</em>';
+						   			}
+						   			if(nArr[j]==2){
+						   				html+='<em class="tip orange">B</em>';
+						   			}
+						   			if(nArr[j]==3){
+						   				html+='<em class="tip d-red">C</em>';
+						   			}
+						   			if(nArr[j]==4){
+						   				html+='<em class="tip orange">平</em>';
+						   			}
+						   			if(nArr[j]==5){
+						   				html+='<em class="tip d-red">重</em>';
+						   			}
+						   			if(nArr[j]==6){
+						   				html+='<em class="tip orange">促</em>';
+						   			}
+						   		}					   		
+						   	}else{
+						   		html+='<td><em class="cell-title1">'+data.body.data[i].GoodsName+'</em>';
+						   	}
+	                    	html+='</td><td>'+(data.body.data[i].SaleQty==undefined?0:(data.body.data[i].SaleQty).toFixed(2))+'</td>';
+	                    	html+='<td>'+(data.body.data[i].SaleValue==undefined?0:parseFloat(data.body.data[i].SaleValue).toFixed(1))+'</td>';
+	                    	html+='<td>'+(data.body.data[i].GrowthRate==undefined?0:(parseFloat(data.body.data[i].GrowthRate).toFixed(2)))+'</td>';
+		                    html+='</tr>';
+		                    jQuery("#addTable1").append(html);
+						}
+						page4++;
+						mui("#refreshContainer").pullRefresh().endPullupToRefresh(false);
+					}
+				}
+				jQuery(".goProduct").off('tap').on('tap',function(){
+					var goodsCode=jQuery(this).attr("goodid");
+					var goodsName=jQuery(this).find(".cell-title").text();
+					var date=getDate();
+					mui.openWindow({
+		    			url:'product.html',
+		    			id:'product.html',
+		    			show:{
+							duration:'300'
+						},
+						extras:{
+					        goodsCode:goodsCode,
+					        goodsName:goodsName,
+					        date:date,
+					        groupId:''
+					    }
+		    		})
+				})
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		});
+	}
+    
+    function getDate(){
+		var currentTime=new Date();
+		var year=currentTime.getFullYear();
+		var month=currentTime.getMonth();
+		var day=currentTime.getDate();
+		var yesToday=new Date(year,month,day-2);
+		var sYear=yesToday.getFullYear();
+		var sMonth=yesToday.getMonth()+1;
+		var sDay=yesToday.getDate();
+		return sYear+'-'+sMonth+'-'+sDay;
+	}
+</script>
+</html>

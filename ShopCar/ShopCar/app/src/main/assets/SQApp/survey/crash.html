@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>crash</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<style type="text/css">								
+			.mui-table-view{
+				margin-top: 1.8rem;
+			}
+			#wifi{  
+				margin-top: 0.2rem;
+			}
+			.mui-badge-green, .mui-badge-success {
+			    color: #007aff;
+			    background-color: white;
+			}
+			.mui-badge-green, .mui-badge-success input{
+				width: 1rem;
+				height: 1rem;
+				color: red;
+				outline: none;
+			}
+		</style>
+	</head>	
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;color: white;">
+					<p class="title" style="color: white;">刷新设置</p>
+				</div>
+			</div>
+		</div>		
+		<ul class="mui-table-view" id="phone">
+		    <li class="mui-table-view-cell" >2G/3G/4G</li>
+		    <li class="mui-table-view-cell" id="dont_crash1">不刷新
+		    	 <label class="mui-badge mui-badge-success"></label>
+		    </li>
+		    <li class="mui-table-view-cell" id="crash1">自动刷新
+		    	 <label class="mui-badge mui-badge-success"></label>
+		    </li>
+		</ul>
+		<ul class="mui-table-view" id="wifi">
+		    <li class="mui-table-view-cell" >wifi</li>
+		    <li class="mui-table-view-cell" id="dont_crash2">不刷新
+		    	<label class="mui-badge mui-badge-success"></label>
+		    </li>	    
+		    <li class="mui-table-view-cell" id="crash2">自动刷新
+		    	<label class="mui-badge mui-badge-success"></label>
+		    </li>	    		    
+		</ul>
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/echart/echarts.js"></script>
+<!--<script src="ctrl_ajax.js"></script>-->
+<script src="../js/ctrl_ajax.js"></script>
+<script src="../js/g_engine.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/ajax1.js"></script>
+<script src="../js/ajax2.js"></script>
+<script src="../js/myChart.js"></script>
+<script type="text/javascript">	
+	mui.init();
+	var storage=window.localStorage;
+	mui.plusReady(function(){
+	$('#dont_crash1').on('tap',function(){		
+		$('#dont_crash1 label').addClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+		$('#crash1 label').removeClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+			var netInfo = plus.networkinfo.getCurrentType();
+//			alert(netInfo);
+	       	if(netInfo==4||netInfo==5||netInfo==6){
+	       		storage.setItem("4g",1);
+	       	}
+	})
+	$('#crash1').on('tap',function(){		
+		$('#crash1 label').addClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+		$('#dont_crash1 label').removeClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});		
+			var netInfo = plus.networkinfo.getCurrentType();
+	       	if(netInfo==4||netInfo==5||netInfo==6){
+	       		storage.setItem("4g",0);
+	       	}
+	})
+	$('#dont_crash2').on('tap',function(){
+		$('#dont_crash2 label').addClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+		$('#crash2 label').removeClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});		
+			var netInfo = plus.networkinfo.getCurrentType();
+			
+	       	if(netInfo==3){
+	       		storage.setItem("wifi",1);
+	       	}
+	})
+	$('#crash2').on('tap',function(){		
+		$('#crash2 label').addClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+		$('#dont_crash2 label').removeClass('mui-icon mui-icon-checkmarkempty').css({fontSize:'1.5rem',color:'orange'});
+			var netInfo = plus.networkinfo.getCurrentType();
+//			alert(netInfo);
+	       	if(netInfo==3){
+	       	storage.setItem("wifi",0);
+	       	}		
+	});
+});
+</script>

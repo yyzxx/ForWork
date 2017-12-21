@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>survery</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>   
+    <link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />      
+</head>
+<style type="text/css">
+	tr td:first-child em{
+		width: 2rem;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		line-height: 0.6rem;		
+	}
+	tr td:first-child div{
+		margin-left: 0.2rem;
+		text-align: center;
+		display: inline-block;
+		line-height: 1rem;
+	}
+	tr td:first-child{
+		text-align: left;
+		margin-left: 0.3rem;
+	}
+	#sales_growth{
+		margin-top: 0.3rem;
+	}
+	.drink li{
+		height: 4.8rem;
+		border-bottom:1px solid #9F9F9F !important;
+	}
+</style>
+<body class="fixed-padding1">	
+<div class="header fixed-header">
+    <div class="top-head">
+        <div class="header-time" style="width: 6rem;">           
+            <p class="title">商品分析</p>                        
+        </div>
+          <div class="pa">            	
+            	<div class="qyt">
+            		<p>全业态</p>
+            	</div>
+            	<div class="time">
+            		<p>实时</p>
+            	</div>
+            	<div class="real_time">
+            		<p>5-26 9:50</p>           		
+            	</div>
+           </div>
+         <a href="javascript:void(0)"id="select"><i class="icon icon-14"></i></a>
+    </div>   
+</div>
+<div id="branch">
+	<div class="branch_detail">
+		<div class="b_sails">
+			<p class="all_shop">全店</p>
+		</div>		
+			<div>
+				<p>生鲜</p>
+			</div>		
+		<div>
+			<p>食品</p>
+		</div>
+		<div>
+			<p>百货</p>
+		</div>
+		<div>
+			<p>餐饮</p>
+		</div>
+	</div> 
+	<ul class="salse_amount" id="sale_amount">		
+	</ul>	
+</div>
+<div class="shop_data">
+	<div class="all_data">
+		<div id="echart1">
+			<div id="sales_ratio" style="width: 55%;height: 8rem;"></div>	
+			<div class="data">
+				<p><em class="grey">生鲜</em><em>611.52万</em>&nbsp;&nbsp;<em class="green">(-3.2%)</em></p>
+				<p><em class="grey">食品</em><em>438.36万</em>&nbsp;&nbsp;<em class="re">(+1.1%)</em></p>
+				<p><em class="grey">百货</em><em>148.20万</em>&nbsp;&nbsp;<em class="re">(+5.2%)</em></p>
+				<p><em class="grey">餐饮</em><em>361.92万</em>&nbsp;&nbsp;<em class="re">(+1.3%)</em></p>
+			</div>	
+		</div>
+		<hr />		
+		<div class="echrts_title">
+			<p>三周销售与库存</p>
+		</div>
+		<div id="echart2">
+			<div id="three_sale" style="width: 100%;height: 12rem;">				
+			</div>
+		</div>
+		<div id="echart4" style="width: 100%;height: 10rem;">	
+		</div>
+	</div>
+	<hr />
+</div>
+<div id="echart5" style="width: 100%;height: 10rem;">		
+</div>
+<br />
+<!--<hr />-->
+<div class="fresh">
+</div>
+<div id="echart6" style="width: 100%;height: 10rem;">		
+</div>
+<br />
+<div class="food">	
+</div>
+<div id="echart7" style="width: 100%;height: 10rem;">		
+</div>
+<br />
+<div class="goods">	
+</div>
+<div id="echart8" style="width: 100%;height: 10rem;">		
+</div>
+<br />
+<div class="drink">	
+</div>
+<div id="sales_growth">
+	<div class="amplitude_table">
+	<p class="title">商品销售增幅表</h4>
+	<table class="table" id="increaseList">
+		<tr class="th">
+			<td>品  名</td>
+			<td>销售量</td>
+			<td>销售额</td>
+			<td>增幅</td>
+			<td>毛利率</td>
+			<td>库存天数</td>			
+		</tr>		
+	</table>
+	<div class="more_a">
+		<p>查看更多 >></p>
+	</div>
+	<hr />
+</div>
+<div class="amplitude_table">
+	<p class="title">商品销售降幅表</p>
+	<table class="table" id="reduce">
+		<tr class="th">
+			<td>品  名</td>
+			<td>销售量</td>
+			<td>销售额</td>
+			<td>增幅</td>
+			<td>毛利率</td>
+			<td>库存天数</td>			
+		</tr>
+		<tr>
+			<td><em>-26%</em></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>			
+		</tr>
+		<tr>
+			<td><em>商品2商品2商品2商品2商品2商品2商品2商品2商品2</em><div class="org">A</div><div class="org">重</div></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品3</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品4</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品5</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品6</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品7</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品8</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品9</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td><em>商品10</em></td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+	</table>
+</div>
+	<div class="more_b">
+		<p>查看更多 >></p>
+	</div>
+	<hr />
+</body>
+<!--<script src="js/echart/echarts.js"></script>-->
+<script type="text/javascript" src="../js/jquery.js"></script>   
+<script type="text/javascript" src="../js/rem.js"></script> 
+<script type="text/javascript" src="../js/mui.min.js"></script> 
+<!--<script type="text/javascript" src="../js/template.js"></script> -->
+<script src="../js/echart/echarts.js"></script>
+<script type="text/javascript" src="../js/goods_engine.js"></script>
+<script type="text/javascript" src="../js/ctrl_ajax.js"></script>
+<script type="text/javascript">
+	mui.init();
+	$('#select').on('tap',function(){
+		openUrl('datetime.html');
+	});
+	window.addEventListener('refresh', function(e){//执行刷新
+	    location.reload();
+	});
+	window.addEventListener('cresh', function(e){//执行刷新
+	    location.reload();
+	});
+	
+</script>
+</html>

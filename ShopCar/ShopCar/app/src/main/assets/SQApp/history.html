@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)"  class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>历史记录</span>
+    </div>
+</div>	
+<div class="mui-content">
+    <ul class="mui-table-view">
+            <!--<li class="mui-table-view-cell">
+                <a class="mui-navigate-right">
+                    Item 1
+                </a>
+            </li>-->
+        </ul>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		
+	})
+	var db = openDatabase('sq','1.0','sq db',1024*100);
+	db.transaction(function(tx){
+		//查询数据
+		tx.executeSql('select * from sqdata',[],function(tx,rs){							
+			//console.log(JSON.stringify(rs.rows.item(0)));
+			if(rs.rows.length==0){
+				jQuery(".mui-table-view").html('<li class="mui-table-view-cell">当前暂无历史记录</li>');
+			}else{
+				var html='';
+				for(var i=0;i<rs.rows.length;i++){
+					html+='<li class="mui-table-view-cell" data-url="'+rs.rows.item(i).url+'" itemId="'+rs.rows.item(i).itemid+'"><em class="circle">&bull;</em><i>' + rs.rows.item(i).name + '</i></li>'
+				}
+				jQuery(".mui-table-view").html(html);
+				jQuery(".mui-table-view-cell").on('tap',function(){
+					//alert(123);
+					var url=jQuery(this).attr('data-url');
+					if(url=='undefined'){
+						return;
+					}
+					var newUrl=url.replace('http://jaaint.f3322.net:28080/SQAppH5/H5/','')
+					openUrl(newUrl);
+				})
+			}
+        },function(tx,err){
+        	 console.log('查询失败'+err.message);
+        });
+    })
+	db=null;
+	
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ajax1.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0;">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>设置组合</span>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item mb-10 relative">
+        <div class="set-title">首页默认展示</div>
+        <div class="checkbox">
+            <input type="checkbox" id="checkbox3"><label for="checkbox3"></label>
+        </div>
+    </div>
+    <div class="section-item border-b">
+        <div class="set-title"><a href="javascript:void(0)" id="setName"><span>组合名称</span><span class="fr sub-title"><em>组合名称</em><i class="icon-ar"></i></span></a></div>
+    </div>
+    <div class="section-item mb-10">
+        <div class="set-title"><a href="javascript:void(0)" id="setDescript"><span>组合描述</span><span class="fr"><em id="description"></em><i class="icon-ar"></i></span></a></div>
+    </div>
+    <div class="section-item ">
+        <div class="set-title">指标设置</div>
+        <ul class="list-set" id="listSet">
+            <!--<li><a href="setting-item.html">销售量</a></li>
+            <li><a href="setting-item.html">销售额</a></li>
+            <li><a href="setting-item.html">增降幅</a></li>-->
+        </ul>
+    </div>
+    <div class="section-item text-center mt-20">
+    	<a href="javascript:void(0)" class="delete-btn" id="deleteItem">删除组合</a>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var userId=plus.storage.getItem('userId');
+		getCommonData(self.groupId,'/SQBusiness/goodsController/selectGoodsGroupByIdApp',0);
+		
+		jQuery("#setName").on('tap',function(){
+			mui.openWindow({
+				url:'setting-name.html',
+				id:'setting-name.html',
+				extras:{
+			        groupId:self.groupId
+			    }
+			})
+		})
+		
+		jQuery("#setDescript").on('tap',function(){
+			mui.openWindow({
+				url:'setting-desc.html',
+				id:'setting-desc.html',
+				extras:{
+			        groupId:self.groupId
+			    }
+			})
+		})
+		
+		jQuery("#deleteItem").on('tap',function(){
+			getCommonData(self.groupId,"/SQBusiness/goodsController/deleteGoodsGroupByIdApp",'deleteItem')
+		})
+		
+		jQuery("#checkbox3").change(function(){
+			var isDefault;
+			if(this.checked){
+				isDefault=1
+			}else{
+				isDefault=0
+			}
+			var dataParam={
+				body:{
+					isDefault:isDefault,
+					groupId:self.groupId,
+					userId:userId
+				}
+			}
+			getData2(dataParam,'/SQBusiness/goodsController/updateGoodsGroupApp','isDefault')
+		})
+		
+		var pointParam={
+		    body:{
+		        groupId:self.groupId
+		    }
+		}
+		//console.log(self.groupId);
+		getPoint(pointParam,'/SQBusiness/normController/selectCruxNormList',self.groupId);
+		
+		window.addEventListener('refresh',function(){
+			//var self=plus.webview.currentWebview();
+			//self.reload();
+			getCommonData(self.groupId,'/SQBusiness/goodsController/selectGoodsGroupByIdApp',0);
+			getPoint(pointParam,'/SQBusiness/normController/selectCruxNormList',self.groupId);
+		})
+		
+	})
+	
+	function getCommonData(groupId,url,index){
+		var gzParam={
+			body:{
+				groupId:groupId
+			}
+		}
+        getData2(gzParam,url,index);
+	}
+	
+	
+</script>
+</html>

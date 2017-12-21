@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>car</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="SQApp/js/jquery.min.js"></script>
+    <script type="text/javascript" src="SQApp/js/rem.js"></script>
+    <script src="SQApp/js/mui.min.js"></script>
+    <script src="SQApp/js/ajax.js"></script>
+</head>
+<body style="background: #f0f0f0">
+<table class="base-table" id="bookInfo">
+</table>
+<input type="checkbox" checked value="全选" onclick="checkAll(this.checked)" id="select_all">
+<label for="select_all">全选</label>
+<input type="button" value="删除选中图书" onclick="del()">
+<span id="total_show">--</span>
+</body>
+<script type="text/javascript">
+
+    var data = new Array();
+    var carData = new Array();
+    var dataString = '';
+    var sum = 0;
+
+    function gets(){
+        dataString = control.getArray();
+        data = toJson(dataString);
+        getData();
+    }
+    function toJson(str){
+        var json = eval('(' + str + ')');
+        return json;
+    }
+
+	function getData(mdata){
+
+
+            var html5='';
+			for(var i=0;i<data.length;i++){
+			    if(data[i]!=null){
+                    html5+='<tr><td><input type="checkbox" name="select" value = "'+i+'"></td>';
+                    html5+= '<td><i><span>'+data[i].title+'</span></i></td><td><span>'+data[i].author+ '</span></td>';
+                    html5+= '<td><i><span>'+data[i].publisher+'</span></i></td><td>'+data[i].price+'</td><td><img src="' +data[i].images.small+ '"></td>';
+                    html5+='<td><input type=button value="+" onclick="add(this)" id = "'+i+'"></br><span id="number'+i+'">'+0+'</span></br><input type=button value="-" onclick="sub(this)" id = "'+i+'"></td></tr>';
+			    }
+			}
+			$("#bookInfo").html(html5);
+		    $("#bookInfo").css("font-size",12);
+		    $("#bookInfo").width(200);
+		    total();
+	}
+
+        <!--删除选中行-->
+        function del() {
+            var allCheckBoxs=document.getElementsByName("select") ;
+            var flag = true;
+            for (var i=0;i< allCheckBoxs.length ;i++){
+                if(allCheckBoxs[i].type=="checkbox"&&allCheckBoxs[i].checked){
+                    var tbody = allCheckBoxs[i].parentNode.parentNode.parentNode;
+                    var index = parseInt(allCheckBoxs[i].value);
+
+                    var ids = "#number"+index;
+                    var number = ($(ids).text());
+                    // 删除数据
+                    tbody.removeChild(allCheckBoxs[i].parentNode.parentNode);
+                    i--;
+
+                    sum-=(parseFloat(data[index].price.substring(0,5))*number);
+                    data[index]='a';
+                    flag=false;
+                }
+            }
+            if(flag){
+                alert("请选择图书！")
+            }else{
+                // 传递修改后的数据返回android
+                var postData = '';
+                postData = JSON.stringify(data);
+                control.setData(postData)
+                total();
+            }
+        }
+        <!--修改数量-->
+        function add(obj){
+            var index =parseInt(obj.id);
+            var ids = "#number"+index;
+            $(ids).text(parseInt($(ids).text())+1);
+            sum+=parseFloat(data[index].price.substring(0,5));
+            total();
+        }
+        function sub(obj){
+            var index =parseInt(obj.id);
+            var ids = "#number"+index;
+            if(parseInt($(ids).text())>0){
+                $(ids).text(parseInt($(ids).text())-1);
+                sum-=parseFloat(data[index].price.substring(0,5));
+                total();
+            }
+        }
+        <!--金额计算-->
+        function total(){
+
+            <!--for(var i = 0;i<data.length;i++){-->
+
+                <!--if(data[i]!=null&&data[i]!='a'){-->
+                    <!--&lt;!&ndash;alert(parseFloat(data[i].price.substring(0,5)));&ndash;&gt;-->
+                    <!--sum+=parseFloat(data[i].price.substring(0,5));-->
+                <!--}-->
+            <!--}-->
+            $("#total_show").text("总计:"+sum);
+        }
+
+        <!--全选-->
+        function checkAll(checked){
+
+            <!--根据名字获取所有checkbox控件-->
+            var allCheckBoxs=document.getElementsByName("select") ;
+            <!--循环设置控件为选中状态-->
+                for (var i=0;i<allCheckBoxs.length ;i++){
+                    if(allCheckBoxs[i].type=="checkbox"){
+                        allCheckBoxs[i].checked=checked;
+                        alert(1);
+                    }
+                }
+
+        }
+</script>
+</html>

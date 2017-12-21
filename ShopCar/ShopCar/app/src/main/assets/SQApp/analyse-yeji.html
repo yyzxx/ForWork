@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="css/mui.min.css">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/ajax2.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <!--<a href="javascript:void(0)" class="" onclick="goBack()"><i class="icon icon-5"></i></a>-->
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>业绩分析</span>
+    </div>
+</div>
+<div class="wrap">
+	<div class="section-item mb-10 bg-white relative">
+        <ul class="list-days">
+        	<li><a href="javascript:void(0)" id="today">今天</a></li>
+        	<li><a href="javascript:void(0)"  id="month">14天</a></li>
+        	<li><i class="icon-cal btn"></i><input type="text" value="" onfocus="(this.type='date')" class="input-date2" id="selectDate"></li>
+        </ul>
+        <a href="###"><i class="icon-que" id="iconQue"></i></a>
+    </div>
+    <div class="section-item mb-10 bg-white" id="lisdCard4">
+        <div class="tabs a-tab">
+            <ul class="list-card1" id="yeji">
+                <li><a href="javascript:void(0);" class="active" tabindex="0">销售额</a></li>
+                <li><a href="javascript:void(0);" tabindex="1">客流</a></li>
+                <li><a href="javascript:void(0);" tabindex="2">客单</a></li>
+                <li><a href="javascript:void(0);" tabindex="3">毛利</a></li>
+            </ul>
+        </div>
+        <div class="tab-item" style="display: block;overflow:hidden;">
+            <div class="char-line1" id="tCanvas1" style="margin-top: 10px;"></div>
+            <div class="item-bottom mg-10 border-table" id="yejiDetail">
+            	<p><em>当日：5989.1(万元)</em><em>同比：5.7%<i class="icon-at"></i></em></p>
+	            <!--<table class="base-table">
+	                <tr>
+	                	<th>大区-门店</th>
+	                	<th>当日</th>
+	                	<th>去年同期</th>
+	                	<th>VS去年同期</th>
+	                </tr>
+	                <tr>
+	                	<td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+	                	<td>108.2</td>
+	                	<td>289.3</td>
+	                	<td>7.1%</td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+	                	<td>108.2</td>
+	                	<td>289.3</td>
+	                	<td>7.1%</td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+	                	<td>108.2</td>
+	                	<td>289.3</td>
+	                	<td>7.1%</td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+	                	<td>108.2</td>
+	                	<td>289.3</td>
+	                	<td>7.1%</td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+	                	<td>108.2</td>
+	                	<td>289.3</td>
+	                	<td>7.1%</td>
+	                </tr>
+	            </table>-->
+        	</div>
+        </div>
+    </div>
+</div>
+<div class="tip-alert">
+	<div class="tip-cover"></div>
+	<div class="tip-info">
+		<div class="tip-title">指标说明</div>
+		<div class="tip-body">
+			<p><span>销售额</span><em>销售金额</em></p>
+			<p><span>客流</span><em>进店客户人数</em></p>
+			<p><span>客单</span><em>客单=销售额/客流</em></p>
+			<p><span>去年同期</span><em>去年同时期段数据</em></p>
+			<p><span>VS去年同期</span><em>本周同期统计数据与去年同期相比较</em></p>
+		</div>
+		<div class="tip-foot">
+			<a href="javascript:void(0);" class="tip-btn">确定</a>
+		</div>
+	</div>
+</div>
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">	
+	mui.init({
+		beforeback: function(){
+			//获得列表界面的webview
+			var list = plus.webview.getWebviewById('fx.html');
+			//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+			mui.fire(list,'refresh');
+			//返回true，继续页面关闭逻辑
+			return true;
+		}
+	})
+    window.onresize = function(){
+       //echartLine('tCanvas1');
+    }
+    
+    jQuery("#iconQue").click(function(){
+    	jQuery(".tip-alert").show();
+    })
+    
+    jQuery(".tip-btn").click(function(){
+    	jQuery(".tip-alert").hide();
+    })
+    
+    
+	var now=new Date();
+	var year=now.getFullYear();
+	var month=now.getMonth()+1;
+	var day=now.getDate();
+	lastTowWeek=new Date(year,now.getMonth(),(day-14));
+	currentTime=year+'-'+month+'-'+day;
+	lastTowWeekTime=lastTowWeek.getFullYear()+'-'+(lastTowWeek.getMonth()+1)+'-'+lastTowWeek.getDate();
+	lastMonth=new Date(year,now.getMonth()-1,day);
+	lastMonthTime=lastMonth.getFullYear()+'-'+(lastMonth.getMonth()+1)+'-'+lastMonth.getDate();
+	jQuery("#selectDate").val(currentTime);
+	//分析
+	getCommonDataYJ("","1","9901",lastTowWeekTime,currentTime);
+	jQuery("#today").bind('click',function(){
+		getCommonDataYJ("","1","9901",currentTime,currentTime)
+	})
+	jQuery("#month").bind('click',function(){
+		getCommonDataYJ("","1","9901",lastMonthTime,currentTime)
+	})
+	jQuery("#selectDate").bind('change',function(){
+		var beginTime=jQuery(this).val();
+		getCommonDataYJ("","1","9901",beginTime,beginTime)
+	})
+	function getCommonDataYJ(userId,shopId,groupId,beginTime,endTime,bool){
+		if(bool==undefined){
+			bool=true;
+		}
+		var	dataParam1={
+			    body:{
+					userId:userId,
+		        	shopId:shopId,
+					groupId:groupId,
+		        	beginTime:beginTime,
+		        	endTime:endTime
+				}
+			}
+		getData2(dataParam1,'/SQBusiness/goodsController/selectAchievementApp',bool);
+	}
+	
+	function goBack(){
+		window.webkit.messageHandlers.NativeMethod.postMessage("我要调用native的方法");
+	}
+</script>
+</html>

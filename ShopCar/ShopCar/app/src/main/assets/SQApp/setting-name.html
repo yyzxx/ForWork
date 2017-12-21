@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ajax1.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0;">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>组合名称</span>
+        <a href="javascript:void(0)" id="done"><i class="icon icon-7"></i></a>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item mt-10">
+        <div class="set-title relative">
+        	<input type="text" name="title" id="sTitle" value="" class="input-txt1"><i class="icon-close"></i>
+        </div>
+        <p class="text-right"><span class="font-tip1"><em id="fontNum">0</em>/6</span></p>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		getCommonData(self.groupId);
+		jQuery("#done").on('tap',function(){
+			var name=jQuery("#sTitle").val();
+			var dataParam={
+				body:{
+					name:name,
+					groupId:self.groupId,
+					userId:"D3924FF954AD4CE69BF587F083530B7C"
+				}
+			}
+			getData2(dataParam,'/SQBusiness/goodsController/updateGoodsGroupApp','name')
+		})
+	})	
+	function getCommonData(groupId){
+		var gzParam={
+			body:{
+				groupId:groupId
+			}
+		}
+        getData2(gzParam,'/SQBusiness/goodsController/selectGoodsGroupByIdApp',1);
+	}
+	jQuery("#sTitle").focus(function(){
+		jQuery('.icon-close').show();
+	})
+	jQuery("#sTitle").blur(function(){
+		jQuery('.icon-close').hide();
+	})
+	jQuery("#sTitle").keyup(function(){
+		var len=jQuery("#sTitle").val().length;
+		var newLen=len>=6?6:len;
+		jQuery("#fontNum").html(newLen);
+		var str=jQuery("#sTitle").val();
+		var newStr=str.substr(0,6);
+		jQuery("#sTitle").val(newStr);
+	})
+	jQuery(".icon-close").on('tap',function(){
+		jQuery("#sTitle").val("");
+	})
+</script>
+</html>

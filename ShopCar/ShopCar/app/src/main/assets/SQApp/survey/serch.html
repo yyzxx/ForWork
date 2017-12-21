@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>serch</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			.header-time .title {
+			    font-size: 0.7rem;
+			    letter-spacing: 2px;
+			}
+			.hot{
+				width: 100%;
+				height: 2rem;
+				line-height: 2rem;
+				margin: 0.3rem auto 0;
+			}
+			.hot p{
+				line-height: 2rem;
+				font-size: 0.68rem;
+			}
+			.hot_table{
+				padding-left: 0;
+    			margin-top: 0;
+    			overflow: hidden;
+			}
+			.hot_table li{
+				width: 33%;
+				border: none;
+				box-sizing: border-box;
+				border-top:1px solid #e1e1e1;
+				border-right: 1px solid #e1e1e1;
+				font-size: 0.72rem;
+			}
+			.hot_table li:nth-child(3n+2){
+				width: 34%;
+			}
+			.hot_table li:nth-child(3n){
+				border-right: none;
+			}
+			.hot_table ul{
+				border-bottom: 1px solid #e1e1e1;
+				overflow: hidden;
+			}
+			.search-product{
+				color: #CCCCCC;
+				width: 90%;
+				height: 1.3rem;
+				font-size: 0.65rem;
+				text-indent: 4px;
+			}
+		</style>
+	</head>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				 <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;">
+					<p class="title" style="line-height: 1.52rem;">商品搜索</p>
+				</div>
+			</div>
+		</div>
+		<form class="serch" action="" enctype='application/json'>
+			<p><img src="../imgs/serch.png" /><input type="search" placeholder="请输入商品" class="search-product"/></p>
+		</form>
+		<div class="hot">
+			<p>热门商品</p>
+		</div>
+		<div class="hot_table">
+			<ul>
+				<li class="b_left">火龙果</li>
+				<li>水果</li>
+				<li class="b_right">哈密瓜</li>
+				<li class="b_left">百香果</li>
+				<li>水蜜桃</li>
+				<li class="b_right">黄金梨</li>
+				<li class="b_left">苹果</li>
+				<li>西瓜</li>
+				<li>榴莲</li>
+			</ul>
+		</div>			
+	</body>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/rem.js"></script>		
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/ajaxFun.js"></script>
+	<script type="text/javascript" src="../js/search/jsLib/goodSurveyAnalysis.js"></script>
+	<script type="text/javascript" src="../js/search/search.js"></script>
+</html>

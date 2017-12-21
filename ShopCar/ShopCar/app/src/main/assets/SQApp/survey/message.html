@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>information</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--<link href="css/dstyle.css?v=1" rel="stylesheet" type="text/css" />-->     
+    <link href="../css/dstyle.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    	.message-body{
+    		margin-top: 1.8rem;
+    		padding: 0 0.43rem;
+    	}
+    	.list-message li{
+    		overflow: hidden;
+    		border-bottom: 1px solid #e1e1e1;
+    		padding: 0.5rem 0;
+    	}
+    	.msg-img{
+    		width: 1.73rem;
+    		height: 1.73rem;
+    		float: left;
+    		margin-right: 0.6rem;
+    	}
+    	.msg-content h4{
+    		font-size: 0.7rem;
+    		font-weight: normal;
+    		color: #000;
+    		line-height: 1rem;
+    		margin-top: -0.08rem;
+    	}
+    	.msg-content p{
+    		font-size: 0.65rem;
+    		color: #999;
+    		line-height: 1rem;
+    	}
+    </style>
+</head>
+<body class="message">
+<div class="header fixed-header">
+    <div class="top-head">        
+        <div class="header-time" style="width: 6rem;">           
+            <p class="p_title">消息中心</p>                        
+        </div>                
+    </div>   
+</div>
+<div class="message-body">
+	<ul class="list-message">
+		<li>
+			<a href="javascript:void(0)" id="msgMine">
+				<img src="../imgs/xx.png" class="msg-img">
+				<div class="msg-content">
+					<h4>消息提醒</h4>
+					<p>暂无新消息</p>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" id="sysTion">
+				<img src="../imgs/xt.png" class="msg-img">
+				<div class="msg-content">
+					<h4>系统通知</h4>
+					<p>暂无新消息</p>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script> 
+<!--<script type="text/javascript" src="../js/echart/echarts.js"></script> 
+<script type="text/javascript" src="../js/goods_engine.js"></script>-->
+ <script src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	function goBack(){
+		history.go(-1);
+	}
+	jQuery("#msgMine").on('tap',function(){
+		openUrl("message_remind.html");
+	})
+	jQuery("#sysTion").on('tap',function(){
+		openUrl("system_notification.html");
+	})
+</script>

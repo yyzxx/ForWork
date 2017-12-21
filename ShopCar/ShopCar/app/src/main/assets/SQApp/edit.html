@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="js/default.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/index.min.js"></script>
+    <script src="js/scroll-behaviour.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+<body class="fixed-padding1">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="###" class="mui-action-back"><i class="icon-font">完成</i></a>
+        <span>编辑</span>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item">
+        <div class="normal-table edit-table">
+            <table class="base-table" id="dragTable">
+                <!--<tr>
+                    <th></th>
+                    <th>全部商品</th>
+                    <th>提醒</th>
+                    <th>置顶</th>
+                    <th>拖动</th>
+                </tr>
+                <tr draggable="true">
+                    <td><label class="zx-check"><input type="checkbox" class="check-item"><span></span></label></td>
+                    <td>苹果苹果苹果苹果苹果苹果</td>
+                    <td><i class="eicon-1"></i></td>
+                    <td><i class="eicon-2 top-order"></i></td>
+                    <td><i class="eicon-3"></i></td>
+                </tr>
+                <tr draggable="true">
+                    <td><label class="zx-check"><input type="checkbox" class="check-item" checked><span></span></label></td>
+                    <td>牛肉</td>
+                    <td><i class="eicon-1"></i></td>
+                    <td><i class="eicon-2 top-order"></i></td>
+                    <td><i class="eicon-3"></i></td>
+                </tr>
+                <tr draggable="true">
+                    <td><label class="zx-check"><input type="checkbox" class="check-item" checked><span></span></label></td>
+                    <td>芒果</td>
+                    <td><i class="eicon-1"></i></td>
+                    <td><i class="eicon-2 top-order"></i></td>
+                    <td><i class="eicon-3"></i></td>
+                </tr>-->
+            </table>
+        </div>
+    </div>
+</div>
+<div class="footer fixed-footer">
+    <ul class="list-menu1">
+        <li>
+            <a href="javascript:void(0)" id="selectAll">
+                <p>全选</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" id="moveItem">
+                <p>移动(<em id="moveNum">0</em>)</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" id="deleteItem">
+                <p>删除(<em id="deleteNum">0</em>)</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+   mui.init();
+   mui.plusReady(function(){
+   		var self=plus.webview.currentWebview();
+   		var groupId=self.groupId;
+   		//console.log(self.groupId)
+   		var gzParams={
+			    body:{
+			        groupId:groupId
+			    }
+			}
+		getGZDate(gzParams,'/SQBusiness/goodsController/selectFocusGoodsByGroupId',"",groupId)
+   })
+   window.addEventListener('refresh',function(){
+		var self=plus.webview.currentWebview();
+		self.reload();
+	})
+// jQuery(".list-menu1 li a").click(function(){
+// 		jQuery(".list-menu1 li a").removeClass('active');
+// 		jQuery(this).addClass('active');
+// })
+</script>
+</body>
+</html>

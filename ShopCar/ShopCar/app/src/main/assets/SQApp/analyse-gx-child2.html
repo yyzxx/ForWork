@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax2.js"></script>
+</head>
+<body class="fixed-padding3" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>共性商品分析</span>
+        <!--<a href="javascript:void(0)" id="filter" onclick="showModal()"><i class="icon icon-8"></i></a>-->
+    </div>
+</div>
+<!--下拉刷新容器-->
+<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="margin-top: 2.2rem;">
+  <div class="mui-scroll">
+    <!--数据列表-->
+    <div class="section-item bg-white">
+		<div class="item-bottom mg-10 border-table pd-10-2" style="padding-bottom: 5px;border-top:none;">
+		    <table class="base-table no-wrap" id="talbeGx2">
+				<tr>
+					<th style="width:12%;">序号</th>
+					<th>货号</th>
+					<th>商品名称</th>
+					<th>4周销售额</th>
+					<th>4周毛利率</th>
+					<th>90天销售额</th>
+					<th>90天毛利率</th>
+				</tr>
+				<!--<tr>
+		            <th>序号</th>
+		            <th>货号</th>
+		            <th>商品名称</th>
+		            <th>货商名称</th>
+		        </tr>-->
+		        <!--<tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>
+		        <tr>
+		            <td><a href="###"><i class="icon-arrow"></i>三明区</a></td>
+		            <td></td>
+		            <td></td>
+		            <td></td>
+		        </tr>-->
+		    </table>
+		    <!--<p class="more" style="margin: 0;"><a href="###">查看更多&gt;&gt;</a></p>-->
+		</div>
+	</div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">	
+	mui.init({
+		pullRefresh:{
+			container:"#refreshContainer",
+			down:{
+				style:'circle',
+				color:'#2bd009',
+				height:'50px',
+				range:'100px',
+				offset:'0',
+				auto:true,
+				contentdown:'下拉可以刷新',
+				contentover:'释放立即刷新',
+				contentrefresh:'正在刷新...',
+				callback:getNewsList
+			},
+			up : {
+	            height:50,
+	            auto:false,
+	            contentrefresh : "正在加载...",
+	            contentnomore:'没有更多数据了',
+	            callback:getContent
+	        }
+		}
+//		subpages:[{
+//			url:'analyse-gx-sub.html',
+//			id:'analyse-gx-sub.html',
+//			style:{
+//				top:'48px'
+//			}
+//		}]
+	});
+	var page=1;	
+	function getNewsList(){
+		page=1;
+		getCommonDataGX("9901","1","","2017-07-01","2017-08-01","","","",page,"10",1)
+	}
+	//getNewsList();
+	function getContent(){
+		getCommonDataGX("9901","1","","2017-07-01","2017-08-01","","","",page,"10",2)
+	}
+	//公共方法
+	function getCommonDataGX(groupId,shopId,type,beginTime,endTime,status,goodsId,exception,page,counts,direct){
+		var dataParam={
+		    body:{
+				groupId:groupId,
+		        shopId:shopId,
+		        type:type,
+		        beginTime:beginTime,
+		        endTime:endTime,
+		        status:status,
+		        goodsId:goodsId,
+		        exception:exception,
+		        page:page,
+		        counts:counts
+		    }
+		}
+		getData6(dataParam,'/SQBusiness/goodsController/selectSameGoodsDetailDataPC',direct);
+	}
+	function getData6(dataParam,apiUrl,direct){
+		//var _self = this;
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				//console.log(data);
+				//业绩分析
+				if(apiUrl=='/SQBusiness/goodsController/selectSameGoodsDetailDataPC'){
+					//console.log(data);
+					if(direct==1){
+						//var len=data.body.data.length>10?10:data.body.data.length;
+						//html1+='<tr><th style="width:12%;">序号</th><th style="width:16%;">货号</th><th>商品名称</th><th style="width:12%;">状态</th><th>货商</th><th style="width:13%;">期末金额</th><th style="width:13%;">总销售额</th></tr>'  	
+				        for(var i=0;i<data.body.data.length;i++){
+				        	var html2="";
+				        	html2+='<tr><td>'+(i+1)+'</td>';
+				        	html2+='<td><em>'+data.body.data[i].GoodsID+'</em></td>';
+				        	html2+='<td><em>'+data.body.data[i].GoodsName+'</em></td>';
+				        	html2+='<td>'+data.body.data[i].SaleValue_30+'</td>';
+				        	html2+='<td>'+(data.body.data[i].ProfitRate_30*100).toFixed(0)+'%</td>';
+				        	html2+='<td>'+data.body.data[i].SaleValue_90+'</td>';
+				        	html2+='<td>'+(data.body.data[i].ProfitRate_90*100).toFixed(0)+'%</td>';
+				        	html2+='</tr>';
+				        	jQuery("#talbeGx2").append(html2);   
+				        }
+				        mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+						page++;
+						//重置上拉
+			            mui('#refreshContainer').pullRefresh().refresh(true);
+				   	}				        
+			       	if(direct==2){
+						if(data == 'null'){
+							//_self.endPullupToRefresh(true);
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+							return false;
+						}
+						//var len=data.body.data.length>10?10:data.body.data.length;
+						//html1+='<tr><th style="width:12%;">序号</th><th style="width:16%;">货号</th><th>商品名称</th><th style="width:12%;">状态</th><th>货商</th><th style="width:13%;">期末金额</th><th style="width:13%;">总销售额</th></tr>'
+				        for(var i=0;i<data.body.data.length;i++){
+				        	var html2="";
+				        	html2+='<tr><td>'+(i+1)+'</td>';
+				        	html2+='<td><em>'+data.body.data[i].GoodsID+'</em></td>';
+				        	html2+='<td><em>'+data.body.data[i].GoodsName+'</em></td>';
+				        	html2+='<td>'+data.body.data[i].SaleValue_30+'</td>';
+				        	html2+='<td>'+(data.body.data[i].ProfitRate_30*100).toFixed(0)+'%</td>';
+				        	html2+='<td>'+data.body.data[i].SaleValue_90+'</td>';
+				        	html2+='<td>'+(data.body.data[i].ProfitRate_90*100).toFixed(0)+'%</td>';
+				        	html2+='</tr>';
+				        	jQuery("#talbeGx2").append(html2);   
+				        } 	
+				        
+				        page++;
+						//_self.endPullupToRefresh(false);
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+					}     	
+					
+						            		        
+				}
+				
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+					console.log(errorThrown);
+				}
+		});
+}
+</script>
+</html>

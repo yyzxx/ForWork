@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>information</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+</head>
+	<style type="text/css">
+		.cache{
+			margin-top: -0.5rem;
+			color: #666666;
+		}
+		.information .cache_detail {
+		    border-top: 1px solid #BBBBBB;
+		}
+		.information .cache_detail:last-child{
+		    border-bottom: 1px solid #BBBBBB;
+		}
+	</style>
+<body class="information">
+<div class="header fixed-header">
+    <div class="top-head">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+        <div class="header-time" style="width: 6rem;">           
+            <p class="p_title">基本信息</p>                        
+        </div>               
+    </div>   
+</div>
+<div class="cache">
+	<div class="cache_detail">
+		<div class="left_text">
+			<p>用户名</p>
+		</div>	
+		<div class="right_arrow">
+			<p></p>
+		</div>
+	</div>
+	<div class="cache_detail">
+		<div class="left_text">
+			<p>所属门店</p>
+		</div>
+		<div class="right_arrow">
+			<p>黎明店</p>
+		</div>
+	</div>
+	<div class="cache_detail">
+		<div class="left_text" id="clear_cache">
+		<p>所属部门</p>
+		</div>		
+	</div>
+	<div class="cache_detail">
+		<div class="left_text">
+		<p>职位</p>
+		</div>		
+	</div>
+	<div class="cache_detail">
+		<div class="left_text">
+			<p>手机</p>
+		</div>		
+	</div>
+	<div class="cache_detail">
+		<div class="left_text">
+			<p>电话</p>
+		</div>		
+	</div>
+</div>
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script> 
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	var accessToken;
+	mui.plusReady(function(){
+		accessToken = plus.storage.getItem('accessToken');
+	});
+	var dataParam = {
+				    head:{
+				        accessToken:accessToken
+				    }
+				}
+			$.ajax('http://jaaint.f3322.net:28080/SQBusiness/userController/selectUserByUserIdOrAccessToken', {
+				data: JSON.stringify(dataParam),
+				//			url:'list.html',
+				dataType: 'json', //服务器返回json格式数据
+				crossDomain: true,
+				type: 'post', //HTTP请求类型
+				contentType: "application/json; charset=utf-8",
+				timeout: 1000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(res) {
+					//console.log(res);
+					var tml = '<div class="cache_detail"><div class="left_text"><p>用户名';
+						tml+= '</p></div><div class="right_arrow"><p>'+res.body.data.realName;
+						tml+= '</p></div></div><div class="cache_detail"><div class="left_text"><p>所属门店</p></div><div class="right_arrow"><p>'+res.body.data.homeAddress;
+						tml+= '</p></div></div><div class="cache_detail"><div class="left_text" id="clear_cache"><p>所属部门</p></div><div class="right_arrow">';
+						tml+= '<p>部门</p></div></div><div class="cache_detail"><div class="left_text"><p>职位</p></div>';
+						tml+= '<div class="right_arrow"><p>总经理</p></div></div><div class="cache_detail"><div class="left_text">';
+						tml+= '<p>手机</p></div><div class="right_arrow"><p>'+res.body.data.mobilePhone+'</div></div><div class="cache_detail">';
+						tml+= '<div class="left_text"><p>邮箱</p></div><div class="right_arrow"><p>'+res.body.data.email+'</p></div></div></div>';
+						$('.cache').html(tml);
+				},
+				error: function(xhr, type, errorThrown){
+					//异常处理；
+					console.log(errorThrown);
+				}
+			});	
+</script>

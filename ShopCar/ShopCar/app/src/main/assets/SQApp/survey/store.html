@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	</head>
+	<style type="text/css">
+		 .mui-badge-success {
+		    color: #fff;
+		     background-color: white; 
+		 }
+		.mui-badge {
+		    font-size: 12px;
+		    line-height: 1;
+		    display: inline-block;
+		    padding: 3px 6px;
+		    color: #333;
+		    border-radius: 100px;
+		    background-color: white; 
+		}
+	</style>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-8"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;color: white;">
+					<p class="title" style="color: white;">门店</p>
+				</div>
+			</div>
+		</div>
+		<ul class="mui-table-view" id="store">
+		    <!--<li class="mui-table-view-cell" >wifi</li>
+		    <li class="mui-table-view-cell" id="dont_crash2">不刷新
+		    	<label class="mui-badge mui-badge-success"></label>
+		    </li>	    
+		    <li class="mui-table-view-cell" id="crash2">自动刷新
+		    	<label class="mui-badge mui-badge-success"></label>
+		    </li>	    		    -->
+		</ul>
+	</body>
+
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+<!--<script type="text/javascript" src="../js/goods_engine.js"></script>-->
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function() {
+		var accessToken=plus.storage.getItem('accessToken');
+		console.log(accessToken);
+		var self = plus.webview.currentWebview();
+		var dataParam = {
+						    head:{
+						        accessToken:accessToken
+						    }
+			}
+		$.ajax('http://jaaint.f3322.net:28080/SQBusiness/storeController/selectUserBelongStores', {
+					data:JSON.stringify(dataParam),
+					//			url:'list.html',
+					dataType: 'json', //服务器返回json格式数据
+					crossDomain: true,
+					type: 'post', //HTTP请求类型
+					contentType: "application/json; charset=utf-8",
+					timeout: 1000, //超时时间设置为10秒；
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					success: function(res){
+						console.log(res.body.data);
+						var tml='';
+						var storeData=res.body.data;						
+						for(var i=0;i<storeData.length;i++){
+							tml+='<li class="mui-table-view-cell" >'+storeData[i].storeName+'</li>';
+						}
+				$('#store').html(tml);
+				$('#store li').on('tap',function(){
+					var storeName = $(this).text();
+					alert(storeName);
+					var k = $(this).index();
+					var storeId = storeData[k].storeId;
+//					alert(storeId);
+					localStorage.setItem("storeName",storeName);
+					localStorage.setItem("storeId",storeId);
+//					location.href='datetime.html';					
+					mui.init({
+					    beforeback: function() {
+					　　　　 //获得父页面的webview
+					        var list = plus.webview.currentWebview().opener();
+					　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+					        mui.fire(list, 'refresh');
+					        //返回true,继续页面关闭逻辑
+					        return true;
+							    }
+					});
+					mui.back();
+				})
+				
+		},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(errorThrown);
+				}
+			});
+	});	
+	function pySegSort(arr,empty) {
+		if(!String.prototype.localeCompare)return null;
+		var letters ="*abcdefghjklmnopqrstwxyz".split('');
+		var zh ="啊把差大额发噶哈级卡啦吗那哦爬器然啥他哇西呀咋".split('');
+		var segs = [];
+		var curr;
+		$.each(letters, function(i){
+			curr = {letter: this, data:[]};
+			$.each(arr, function() {
+				if((!zh[i-1] || zh[i-1].localeCompare(this) <= 0) && this.localeCompare(zh[i]) == -1) {
+					curr.data.push(this);
+				}
+			});
+			if(empty || curr.data.length) {
+				segs.push(curr);
+				curr.data.sort(function(a,b){
+					return a.localeCompare(b);
+				});
+			}
+		});
+		return segs;
+	}
+</script>

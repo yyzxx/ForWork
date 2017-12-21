@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ajax1.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0;">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>指标设置</span>
+        <a href="javascript:void(0)" id="done"><i class="icon icon-7"></i></a>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item">
+        <ul class="list-set1" id="listSet1">
+            <!--<li><label><input type="radio" name="set-item"><em>销售量</em></label></li>
+            <li><label><input type="radio" name="set-item"><em>销售额</em></label></li>
+            <li><label><input type="radio" name="set-item"><em>客流</em></label></li>-->
+            <!--<li>增降幅</li>
+            <li>负毛利</li>
+            <li>滞销</li>
+            <li>最高进</li>
+            <li>最低进</li>
+            <li>缺货</li>
+            <li>在售店</li>
+            <li>客单量</li>
+            <li>进价</li>
+            <li>铺市率</li>
+            <li>动销店</li>
+            <li>售价</li>
+            <li>最高售</li>
+            <li>最低售</li>
+            <li>昨售</li>
+            <li>新进价</li>
+            <li>新售价</li>
+            <li>日均</li>
+            <li>七日进量</li>
+            <li>七日销量</li>
+            <li>库存总量</li>-->
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var userId=plus.storage.getItem('userId');
+		var normId=self.normId;
+		var obj={
+			normId:self.normId,
+			groupId:self.groupId,
+			idArr:self.idArr
+		}
+		var pointParam={
+		    head:{
+		        userId:userId
+		    }
+		}	
+		getPoint(pointParam,'/SQBusiness/normController/selectNormList',obj);
+	})
+	
+</script>
+</html>

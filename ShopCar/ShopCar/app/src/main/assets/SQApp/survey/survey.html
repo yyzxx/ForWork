@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>survery</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>   
+    <link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />      
+</head>
+<style type="text/css">
+	tr td:first-child em{
+		width: 2rem;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		line-height: 0.6rem;		
+	}
+	tr td:first-child div{
+		margin-left: 0.2rem;
+		text-align: center;
+		display: inline-block;
+		line-height: 1rem;
+	}
+	tr td:first-child{
+		text-align: left;
+		margin-left: 0.3rem;
+	}
+	#sales_growth{
+		margin-top: -2rem;		
+	}
+	.drink li{
+		height: 4.8rem;
+		border-bottom:1px solid #E1E1E1 !important;
+	}
+	.table tr:nth-child(2n+2){
+		background-color: #F9F9F9!important;
+	}
+	#fresh_u2 li:nth-child(3){
+		border-bottom: 1px solid #E1E1E1;
+	}	
+	.leibie{
+			list-style: none;
+			width: 100%;
+			margin-top: 0 !important;
+		}
+	.leibie li{
+		padding-top: 0.1rem;
+		float: left;
+		width: 33%;
+		height: 5.5rem;
+		border: 1px solid #DDDDDD;
+		border-left: none;
+		border-top: none;
+		text-align: center;
+	}
+	.leibie li:nth-child(3n){
+		border-right: none !important;
+	}
+	.leibie li:nth-last-child{
+		border-right: 1px solid #DDDDDD;
+	}
+	.leibie red{
+		color: #FA3419;
+	}
+	.leibie p{
+		line-height: 1.1rem;
+		color: #666;
+	}
+	.leibie p:nth-child(2){
+		font-size: 0.7rem;
+	}
+	.redd{
+		color: #FF5722 !important;
+	}
+	.gree{
+		color: #4caf50 !important;
+	}
+	.leibie .p1{
+		font-size: 0.7rem;
+		color: #4B4B4B;
+	}
+	.lb_z{
+		width: 100%;
+		height: 2rem;
+		border-bottom: 1px solid #DDDDDD;
+	}
+	.lb_z .tex{
+		float: left;
+		margin-left: 1rem;
+		font-size: 0.8rem;
+		line-height: 2rem;
+		color: #666;
+	}
+	.lb_z .img{
+		float: right;			
+		margin-right: 0.5rem;
+	}
+	.lb_z .img img{
+		margin-top: 0.2rem;
+		height: 1.5rem !important;
+		width: 1.5rem !important;
+	}				
+	.tbb{
+		display: block;
+		width: 80%;
+		border: 1px solid white;
+		height: 1.5rem;
+		margin: 0 auto;
+		border-radius: 0.5rem;
+	}
+	#branch .salse_amount li p:nth-child(2){
+		font-size: 0.65rem;
+	}
+	#branch .salse_amount li p:nth-child(1){
+		color: #A6A6A6;
+	}
+	#branch .salse_amount li p:nth-child(3){
+		color: #A6A6A6;
+		font-size: 0.55rem!important;
+	}
+	.leibie li p:nth-child(5){
+		display: block;
+		height: 1.3rem;
+		width: 100%;
+		position: relative;
+		text-align: center;		
+	}
+	.long {
+	    width: 45%;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    line-height: 1.2rem;
+	    padding-top: -1.5rem;
+	    padding-bottom: -0.9rem;
+	    float: left;
+	}
+	.l_sib{
+		width: 55%;
+		margin-top: -0.2rem;
+	}
+	.tap_top{
+	    width: 100%;
+	    height: 2rem;
+	    position: fixed;
+	    top: 1.8rem;
+	    z-index: 1000;
+	    background-color: white;
+	}
+	.l_sib {
+	    display: block;
+	    width: 55%;
+	    margin-top: 2.8rem;
+	    line-height: 1.2rem;
+	    margin-top: 0rem;
+	    float: right;		  
+	}
+</style>
+<body class="fixed-padding1">	
+	<div class="header fixed-header">
+	    <div class="top-head">
+	        <div class="header-time" style="width: 6rem;">           
+	            <p class="title">商品分析</p>                        
+	        </div>
+	          <div class="pa">            	
+	            	<div class="qyt">
+	            		<p>全业态</p>
+	            	</div>
+	            	<div class="time">
+	            		<p>实时</p>
+	            	</div>
+	            	<div class="real_time">
+	            		<p>5-26 9:50</p>           		
+	            	</div>
+	           </div>
+	         <a href="javascript:void(0)"id="select"><i class="icon icon-14"></i></a>
+	    </div>   
+	</div>
+	<div id="branch">
+		<div class="tap_top">
+			<div class="branch_detail" id="allShop">		
+				<div >
+					<p class="all_shop tbb b_sails">全店</p>
+				</div>		
+				<div id="fresh">
+					<p class="tbb">生鲜</p>
+				</div>		
+				<div id="food">
+					<p class="tbb">食品</p>
+				</div>
+				<div id="good">
+					<p class="tbb">百货</p>
+				</div>
+				<div id="drink">
+					<p class="tbb">餐饮</p>
+				</div>
+			</div>
+		</div> 
+		<ul class="salse_amount" id="sale_amount">
+			<li><p>销售额</p><p>966275.16<em class="grey">万</em></p><p class="grey">1.04%&nbsp;&nbsp;<span class="gree">(+0.04%)</span></p></li>
+			<li><p>客流</p><p class="black">31516.00<em class="grey">人次</em></p><p>0.85%&nbsp;&nbsp;<span class="gree">(-0.15%)</span></p></li>
+			<li class="right"><p>库存</p><p class="black">4464531.08<em class="grey">万</em></p><p class="grey">14.69天<span class="gree">(+0.25%)</span></p></li>
+		</ul>	 
+	</div>
+	<div class="shop_data">
+		<div class="all_data">
+			<div id="echart1">
+				<div class="sales_ratio" id="sales_ratio" ></div>	
+				<div class="data">
+					<p><em class="grey">生鲜</em><em>611.52万</em>&nbsp;&nbsp;<em class="green">(-3.2%)</em></p>
+					<p><em class="grey">食品</em><em>438.36万</em>&nbsp;&nbsp;<em class="re">(+1.1%)</em></p>
+					<p><em class="grey">百货</em><em>148.20万</em>&nbsp;&nbsp;<em class="re">(+5.2%)</em></p>
+					<p><em class="grey">餐饮</em><em>361.92万</em>&nbsp;&nbsp;<em class="re">(+1.3%)</em></p>
+				</div>	
+			</div>
+			<hr />		
+			<div class="echrts_title">
+				<p>四周销售与库存</p>
+			</div>
+			<div id="echart2">
+				<div class="three_sale" id="three_sale">				
+				</div>
+			</div>
+			<div class="echart4" id="echart4">	
+			</div>
+		</div>
+		<hr />
+	</div>
+	<div class="echart5" id="echart5">		
+	</div>
+	<br />
+	<!--生鲜的类别-->
+	<div class="fresh">
+		<hr />
+		<div class="lb_z">
+			<p class="tex">类别</p>
+			<p class="img"><img src="../imgs/left_dot.png"/></p>
+		</div>
+		<ul class="leibie">
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+			<li>
+				<p class="p1">肉课</p>
+				<p class="green">-4.00%</p>
+				<p>SKU <span>201.00</span></p>
+				<p>动销 <span>2452.00</span></p>
+				<p>大白菜 <span class="red">(-12%)</span></p>
+			</li>
+		</ul>
+		<hr />
+	</div>
+	<!--生鲜图表-->
+	<div class="echart6" id="echart6" >		
+	</div>
+	<br />
+	<!--食品的类别-->
+	<div class="food">
+		<hr />
+		<div class="lb_z">
+			<p class="tex">类别</p>
+			<p class="img"><img src="../imgs/left_dot.png"/></p>
+		</div>
+		<ul class="leibie">
+		</ul>
+		<hr />
+	</div>
+	<!--食品图表-->
+	<div class="echart7" id="echart7">		
+	</div>
+	<br />
+	<!--百货的类别-->
+	<div class="goods">
+		<hr />
+		<div class="lb_z">
+			<p class="tex">类别</p>
+			<p class="img"><img src="../imgs/left_dot.png"/></p>
+		</div>
+		<ul class="leibie">
+		</ul>
+		<hr />
+	</div>
+	<!--百货的图表-->
+	<div class="echart8" id="echart8">		
+	</div>
+	<br />
+	<!--餐饮的类别-->
+	<div class="drink">
+		<hr />
+		<div class="lb_z">
+			<p class="tex">类别</p>
+			<p class="img"><img src="../imgs/left_dot.png"/></p>
+		</div>
+		<ul class="leibie">
+		</ul>
+		<hr />
+	</div>
+<div id="sales_growth">
+	<div class="amplitude_table">
+		<p class="title">商品销售增幅表</h4>
+		<table class="table" id="increaseList">
+			<tr class="th">
+				<td>品  名</td>
+				<td>销售量</td>
+				<td>销售额</td>
+				<td>增幅</td>
+				<td>毛利率</td>
+				<td>库存天数</td>			
+			</tr>			
+		</table>
+		<div class="more_a">
+			<p>查看更多 >></p>
+		</div>
+		<hr />
+	</div>
+	<div class="amplitude_table">
+		<p class="title">商品销售降幅表</p>
+		<table class="table" id="reduce">
+			<tr class="th">
+				<td>品  名</td>
+				<td>销售量</td>
+				<td>销售额</td>
+				<td>增幅</td>
+				<td>毛利率</td>
+				<td>库存天数</td>			
+			</tr>			
+		</table>
+	</div>
+	<div class="more_b">
+		<p>查看更多 >></p>
+	</div>
+	<hr />
+</body>
+<script type="text/javascript" src="../js/jquery.js"></script>   
+<script type="text/javascript" src="../js/rem.js"></script> 
+<script type="text/javascript" src="../js/mui.min.js"></script> 
+<script src="../js/echart/echarts.js"></script>
+<script src="../js/ajaxFun.js"></script>
+<script src="../js/surveyData/jsLib/goodSurveyAnalysis.js"></script>
+<script src="../js/surveyData/successGet.js"></script>
+<script src="../js/surveyData/surveyChart.js"></script>
+<script src="../js/surveyData/chartData.js"></script>
+<script src="../js/surveyData/surveyData.js"></script> 
+<script src="../js/surveyData/surveyLeibie.js"></script> 
+<script src="../js/surveyData/IncreaseAndDecrease.js"></script> 
+<script src="../js/surveyData/goodEngine.js"></script>
+<script src="../js/ctrl_ajax.js"></script>
+<script type="text/javascript">
+	mui.init();	 
+	$('#select').on('tap',function(){
+		openUrl('datetime.html');
+	});
+	window.addEventListener('refresh', function(e){//执行刷新
+	    location.reload();
+	});
+	window.addEventListener('cresh', function(e){//执行刷新
+	    location.reload();
+	});
+	window.addEventListener('presh', function(e){//执行刷新
+	    location.reload();
+	});
+//	window.addEventListener('clash', function(e){//执行刷新
+//	    location.reload();
+//	});	
+	window.addEventListener('gfresh', function(e){//执行刷新
+	    location.reload();
+	});
+	var arr_1 =['32.12','32.55','32.34','0.21'];
+	var dot_a = ['9.25',' ',' ',' ',' ',' ',' ',' ','10.02',' ',' ',' ',' ',' ',' ',' ','10.09',' ',' ',' ',' ',' ',' ',' ','10.16',' ',' ',' ',' ',' ',' ',' '];
+	var arr_5 = ['87.57','87.70','87.41','84.27','85.11','86.95','98.76','0','120.85','121.97','128.98','95.03','95.81','110.05','147.75','0','96.34','111.11','96.12','94.65','97.87','93.82','99.05','0','94.99','99.49','92.99','89.15','91.88','94.55','116.51'];
+	var arr_3 = ['51.35','43.61','43.05','44.65','44.08','46.23','70.00','68.23','76.71','83.68','79.13','66.51','60.12','79.54','68.07','52.86','88.25','80.43','72.27','64.38','78.11','64.66','72.03','69.74','72.38','71.34','74.40','63.03'];
+	var arr_2 = ['49.31','41.94','41.26','41.26','41.14','44.08','75.80','90.42','102.59','118.34','82.45','69.87','72.55','128.86','71.90','64.40','93.01','83.48','77.55','66.23','84.84','67.35','78.58','71.11','70.75','71.87','77.13','80.52'];
+	var new_a3 = ['186.35','178.61','178.05','179.65','179.08','181.23','205.00','135.00','203.23','211.71','218.68','214.13','201.51','195.12','214.54','135.00','203.07','187.86','223.25','215.43','207.27','199.38','213.11','135.00','199.66','207.03','204.74','207.38','206.34','209.40','198.03','135.00'];
+	var new_a2 = ['229.31','221.94','221.26','221.26','221.14','224.08','255.80','180.00','270.42','282.59','298.34','262.45','249.87','252.55','308.86','180.00','251.90','244.40','273.01','263.48','257.55','246.23','264.84','180.00','247.35','258.58','251.11','250.75','251.87','257.13','260.52','180.00'];
+	var arr_9 = ['110.935','102.900','98.615','103.981','101.635','112.104','199.946','0','189.715','250.123','272.108','190.331','179.623','167.269','227.485','0','191.854','171.208','236.431','212.031','179.315','181.862','199.038','0','178.662','220.877','207.769','193.231','209.108','208.169','169.008','0'];
+	var new_a8 = ['162.63','174.54','177.74','177.16','176.78','176.10','198.71','120.00','184.76','181.85','169.83','171.34','198.97','190.06','162.59','120.00','194.37','193.32','185.86','182.55','184.32','207.26','184.89','120.00','194.72','213.21','193.98','182.52','210.97','207.52','194.99','120.00'];
+	//获取全店最上面图表的宽度		
+	var w = (gSwidth*0.55).toString();
+	var s_w = (gSwidth).toString();
+	//全店最上面图表的样式
+	$('#sales_ratio').css({
+		height: '8rem',	
+//		width: '55%'
+		width: w + 'px'
+	});
+	//全店的第二个图表的样式
+	$('#three_sale').css({
+		height: '12rem',
+//		width: '100%'
+		width: s_w + 'px'
+	});
+	//全店第三个图表的样式
+	$('#echart4').css({
+		height: '10rem',
+//		width: '100%'
+		width: s_w + 'px'
+	});
+	require.config({
+        paths: {
+            echarts: '../js/echart'
+        }
+   });   
+//	allShop_char('sales_ratio','three_sale','echart4',arr_1,dot_a,arr_5,arr_3,arr_2,new_a3,new_a2,dot_a,arr_9,new_a8);
+</script>
+</html>

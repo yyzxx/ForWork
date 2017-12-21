@@ -1,0 +1,1291 @@
+{
+    "@platforms": ["android", "iPhone", "iPad"],
+    "id": "H5E286032",/*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name": "极应数据",/*应用名称，程序桌面图标名称*/
+    "version": {
+        "name": "1.0",/*应用版本名称*/
+        "code": ""
+    },
+    "description": "",/*应用描述信息*/
+    "icons": {
+        "72": "icon.png"
+    },
+    "launch_path": "login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer": {
+        "name": "",/*开发者名称*/
+        "email": "",/*开发者邮箱地址*/
+        "url": ""/*开发者个人主页地址*/
+    },
+    "permissions": {
+        "Accelerometer": {
+            "description": "访问加速度感应器"
+        },
+        "Audio": {
+            "description": "访问麦克风"
+        },
+        "Messaging":{
+        	"description": "短彩邮件插件"
+        },
+        "Cache": {
+            "description": "管理应用缓存"
+        },
+        "Camera": {
+            "description": "访问摄像头"
+        },
+        "Console": {
+            "description": "跟踪调试输出日志"
+        },
+        "Contacts": {
+            "description": "访问系统联系人信息"
+        },
+        "Device": {
+            "description": "访问设备信息"
+        },
+        "Downloader": {
+            "description": "文件下载管理"
+        },
+        "Events": {
+            "description": "应用扩展事件"
+        },
+        "File": {
+            "description": "访问本地文件系统"
+        },
+        "Gallery": {
+            "description": "访问系统相册"
+        },
+        "Geolocation": {
+            "description": "访问位置信息"
+        },
+        "Invocation": {
+            "description": "使用Native.js能力"
+        },
+        "Orientation": {
+            "description": "访问方向感应器"
+        },
+        "Proximity": {
+            "description": "访问距离感应器"
+        },
+        "Storage": {
+            "description": "管理应用本地数据"
+        },
+        
+        "Uploader": {
+            "description": "管理文件上传任务"
+        },
+        "Runtime": {
+            "description": "访问运行期环境"
+        },
+        "XMLHttpRequest": {
+            "description": "跨域网络访问"
+        },
+        "Zip": {
+            "description": "文件压缩与解压缩"
+        },
+        "Barcode": {
+            "description": "管理二维码扫描插件"
+        },
+        "Maps": {
+            "description": "管理地图插件"
+        },
+        "Speech": {
+            "description": "管理语音识别插件"
+        },
+        "Webview":{
+        	"description": "窗口管理"
+        },
+        "NativeUI":{
+        	"description": "原生UI控件"
+        },
+        "Navigator":{
+        	"description": "浏览器信息"
+        },
+        "NativeObj":{
+        	"description": "原生对象"
+        },"Share":{}
+    },
+    "plus": {
+        "splashscreen": {
+            "autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting": true/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+        },
+        "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+        "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+        "distribute": {"plugins":{"share":{"weixin":{"appid":"wx751b958d466d92b8","appsecret":"5623eaa6db6364652453e2ff1e1493b9","description":"可选，微信分享"}}},
+            "apple": {
+                "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision": "",/*iOS应用打包配置文件*/
+                "password": "",/*iOS应用打包个人证书导入密码*/
+                "p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks":[
+                ]/*调用Native.js调用原生Objective-c API需要引用的FrameWork，如需调用GameCenter，则添加"GameKit.framework"*/
+            },
+            "google": {
+                "packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore": "",/*Android应用打包使用的密钥库文件*/
+                "password": "",/*Android应用打包使用密钥库中证书的密码*/
+                "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+               "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+				/*使用Native.js调用原生安卓API需要使用到的系统权限*/
+            },
+            "orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons": {
+                "ios": {
+                    "prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+                    "auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone": {
+                        "normal": "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
+                        "retina": "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
+                        "retina7": "unpackage/res/icons/120x120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
+			"retina8": "unpackage/res/icons/180x180.png", /*iPhone6 Plus程序图标，分辨率：180x180*/
+                        "spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+                        "spotlight-retina7": "unpackage/res/icons/80x80.png", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
+                        "settings-retina": "unpackage/res/icons/58x58.png", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+			"settings-retina8": "unpackage/res/icons/87x87.png" /*iPhone6Plus设置页面程序图标，分辨率：87x87*/
+                    },
+                    "ipad": {
+                        "normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+                        "normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+                        "retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+                        "spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+                        "spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+                        "settings-retina": "unpackage/res/icons/58x58.png" /*iPad高分屏设置页面程序图标，分辨率：58x58*/
+                    }
+                },
+                "android": {
+                    "mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"/*1080P 高分屏程序图标，分辨率：144x144*/
+                }
+            },
+            "splashscreen": {
+                "ios": {
+                    "iphone": {
+                        "default": "", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35": "C:/Users/VM510LF/Desktop/商/8-24logo/640x960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40": "C:/Users/VM510LF/Desktop/商/8-24logo/640x1136.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+                        "retina47": "C:/Users/VM510LF/Desktop/商/8-24logo/750x1334.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+                        "retina55": "C:/Users/VM510LF/Desktop/商/8-24logo/1242x2208.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+                        "retina55l": "C:/Users/VM510LF/Desktop/商/8-24logo/2208x1242.png"/*5.5 英寸设备(iPhone6 Plus)横屏启动图片，分辨率：2208x1242*/
+                    },
+                    "ipad": {
+                        "portrait": "C:/Users/VM510LF/Desktop/商/8-24logo/768x1004.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+                        "portrait-retina": "C:/Users/VM510LF/Desktop/商/8-24logo/1536x2008.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+                        "landscape": "C:/Users/VM510LF/Desktop/商/8-24logo/1024x748.png", /*iPad横屏启动图片，分辨率：1024x748*/
+                        "landscape-retina": "C:/Users/VM510LF/Desktop/商/8-24logo/2048x1496.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7": "C:/Users/VM510LF/Desktop/商/8-24logo/768x1024.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+                        "portrait-retina7": "C:/Users/VM510LF/Desktop/商/8-24logo/1536x2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7": "C:/Users/VM510LF/Desktop/商/8-24logo/1024x768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+                        "landscape-retina7": "C:/Users/VM510LF/Desktop/商/8-24logo/2048x1536.png"/*iPad iOS7高分屏横屏启动图片，分辨率：2048x1536*/
+                    }
+                },
+                "android": {
+                    "mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi": "", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi": "C:/Users/VM510LF/Desktop/商/8-24logo/480x762.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi": "C:/Users/VM510LF/Desktop/商/8-24logo/720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi": "C:/Users/VM510LF/Desktop/商/8-24logo/1080x1882.png"/*1080P高分屏启动图片，分辨率：1080x1882*/
+                }
+            }
+        }
+    },
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"imgs/ficon-2.png",
+					"js/jquery-1.11.1.js",
+					"imgs/ficon-h1.png",
+					"imgs/ficon-3.png",
+					"css/style.css",
+					"js/rem.js",
+					"imgs/icon-4.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"imgs/icon-7.png",
+					"imgs/ficon-4.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/ficon-h4.png",
+					"setting.html",
+					"product.html",
+					"datetime.html",
+					"imgs/ficon-h2.png",
+					"imgs/ficon-h3.png",
+					"edit.html",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"a.html",
+					"gz.html",
+					"imgs/ficon-1.png",
+					"gz1.html",
+					"clh/survey.html",
+					"js/jquery.min.js",
+					"imgs/loading.gif",
+					null,
+					"survey/firstPort.html"
+				],
+				"refer": [
+					"b.html",
+					"d.html",
+					"c.html",
+					"xi.html",
+					"fx.html",
+					"gk.html",
+					"clh/message.html",
+					"message.html",
+					"survey.html",
+					"login.html",
+					"survey/message.html",
+					"survey/survey.html"
+				],
+				"priority": 0
+			},
+			"setting.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"imgs/arrow-right.png",
+					"index.html",
+					"setting-name.html",
+					"setting-item.html",
+					"setting-desc.html",
+					"js/ajax1.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/jquery.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"product.html": {
+				"resources": [
+					"js/echart/chart/pie.js",
+					"imgs/ficon-6.png",
+					"js/echart/chart/bar.js",
+					"imgs/icon-16.png",
+					"js/echart/chart/line.js",
+					"imgs/ficon-h8.png",
+					"js/echart/echarts.js",
+					"imgs/icon-14.png",
+					"imgs/icon-15.png",
+					"imgs/ficon-7.png",
+					"index.html",
+					"imgs/icon-8.png",
+					"imgs/ficon-1.png",
+					"gz.html",
+					"imgs/ficon-h6.png",
+					"imgs/icon-3.png",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"imgs/icon-4.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"gk.html",
+					"imgs/ficon-h1.png",
+					"imgs/ficon-9.png",
+					"imgs/ficon-h7.png",
+					"imgs/ficon-8.png",
+					"js/ajax.js",
+					"js/jquery.min.js",
+					null
+				],
+				"refer": [
+					"datetime1.html",
+					"select1.html"
+				],
+				"priority": 0
+			},
+			"datetime.html": {
+				"resources": [
+					"imgs/icon-11.png",
+					"index.html",
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"edit.html": {
+				"resources": [
+					"imgs/eicon-3.png",
+					"imgs/eicon-2.png",
+					"js/default.css",
+					"js/index.min.js",
+					"imgs/eicon-1.png",
+					"js/scroll-behaviour.min.js",
+					"index.html",
+					"select.html",
+					"imgs/eicon-2a.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/ajax.js",
+					"js/jquery.min.js",
+					null
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"select.html": {
+				"resources": [
+					"imgs/icon-9.png",
+					"new-add.html",
+					"edit.html",
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"js/ajax.js",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"new-add.html": {
+				"resources": [
+					"select.html",
+					"imgs/icon-8.png",
+					"js/ajax1.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"setting-name.html": {
+				"resources": [
+					"imgs/icon-13.png",
+					"setting.html",
+					"imgs/icon-12.png",
+					"imgs/icon-8.png",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/mui.min.js",
+					"js/ajax1.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"setting-item.html": {
+				"resources": [
+					"setting.html",
+					"imgs/icon-12.png",
+					"imgs/icon-8.png",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/ajax1.js",
+					"js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"setting-desc.html": {
+				"resources": [
+					"setting.html",
+					"imgs/icon-12.png",
+					"imgs/icon-8.png",
+					"js/ajax1.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/jquery.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"a.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"imgs/icon-7.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/icon-4.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"gk.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"imgs/icon-7.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/icon-4.png",
+					"product.html",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"js/echart/chart/pie.js",
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"imgs/icon-14.png",
+					"js/echart/echarts.js",
+					"js/goods_engine.js",
+					"js/jquery.js",
+					"survey.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"gz.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"imgs/icon-7.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/icon-4.png",
+					"gz1.html",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"product.html",
+					"fonts/mui.ttf",
+					"js/ajax1.js",
+					"clh/add.html"
+				],
+				"refer": [
+					"datetime.html",
+					"setting.html",
+					"edit.html",
+					"person.html",
+					"clh/information.html"
+				],
+				"priority": 0
+			},
+			"fx.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"imgs/arrow-right1.png",
+					"imgs/arrow-bottom.png",
+					"imgs/eicon-1s.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"js/jquery.min.js",
+					"fx.html",
+					null
+				],
+				"refer": [
+					"analyse-yeji.html",
+					"analyse-jx.html",
+					"analyse-yk.html",
+					"analyse-yic.html",
+					"analyse-gx.html",
+					"analyse-gx2.html",
+					"search.html",
+					"history.html",
+					"analyse-now.html",
+					"sqmarketsurveyside/html/index/page/index.html"
+				],
+				"priority": 0
+			},
+			"xi.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"imgs/icon-7.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/icon-4.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"css/dstyle.css",
+					"js/goods_engine.js",
+					"js/jquery.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"gz1.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.1.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"product.html",
+					"imgs/icon-3.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"js/ajax1.js",
+					"imgs/icon-7.png",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png",
+					"imgs/icon-4.png",
+					"fonts/mui.ttf",
+					"js/jquery.min.js",
+					"imgs/loading.gif"
+				],
+				"refer": [
+					"datetime.html",
+					"setting.html",
+					"edit.html",
+					"new-add.html",
+					"person.html",
+					"clh/information.html",
+					"clh/add.html",
+					"clh/serch.html",
+					"qr.html",
+					"clh/personal_center.html",
+					"add-more.html"
+				],
+				"priority": 0
+			},
+			"person.html": {
+				"resources": [
+					"imgs/icon-8.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-yeji.html": {
+				"resources": [
+					"js/echart/chart/pie.js",
+					"imgs/icon-17.png",
+					"js/mui.picker.min.js",
+					"imgs/ficon-6.png",
+					"imgs/icon-18.png",
+					"js/echart/echarts.js",
+					"imgs/ficon-7.png",
+					"imgs/icon-19.png",
+					"imgs/icon-8.png",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"css/mui.picker.min.css",
+					"imgs/ficon-h8.png",
+					"imgs/icon-20.png",
+					"js/ajax2.js",
+					"js/jquery.min.js",
+					"css/style.css",
+					"js/rem.js",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-gx2.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"imgs/icon-14.png",
+					"imgs/icon-22.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-yk1.html": {
+				"resources": [
+					"imgs/icon-21.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-yk.html": {
+				"resources": [
+					"imgs/icon-21.png",
+					"imgs/icon-14.png",
+					"js/echart/chart/pie.js",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"js/ajax2.js",
+					"imgs/icon-8.png"
+				],
+				"refer": [
+					"analyse-yk1.html"
+				],
+				"priority": 0
+			},
+			"analyse-jx.html": {
+				"resources": [
+					"imgs/icon-21.png",
+					"imgs/icon-19.png",
+					"imgs/icon-8.png",
+					"js/ajax2.js",
+					"imgs/icon-20.png"
+				],
+				"refer": [
+					"analyse-jx1.html"
+				],
+				"priority": 0
+			},
+			"analyse-gx.html": {
+				"resources": [
+					"imgs/icon-14.png",
+					"imgs/icon-8.png",
+					"imgs/icon-20.png",
+					"js/ajax2.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js",
+					"analyse-gx-child.html",
+					"analyse-gx-child2.html"
+				],
+				"refer": [
+					"analyse-gx1.html"
+				],
+				"priority": 0
+			},
+			"analyse-gx1.html": {
+				"resources": [
+					"imgs/icon-21.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"clh/message.html": {
+				"resources": [
+					"css/dstyle.css",
+					"js/goods_engine.js",
+					"imgs/xx.png",
+					"imgs/xt.png",
+					"js/jquery.js",
+					"clh/message_remind.html",
+					"js/mui.min.js",
+					"js/rem.js"
+				],
+				"refer": [
+					"clh/system_notification.html"
+				],
+				"priority": 0
+			},
+			"clh/survey.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"imgs/icon-14.png",
+					"js/echart/echarts.js",
+					"js/jquery.js",
+					"js/echart/chart/pie.js",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"css/dstyle.css",
+					"js/goods_engine.js",
+					"imgs/left_dot.png",
+					"js/mui.min.js",
+					"js/rem.js",
+					"js/ctrl_ajax.js",
+					"js/template.js",
+					null
+				],
+				"refer": [
+					"clh/datetime.html",
+					"product.html"
+				],
+				"priority": 0
+			},
+			"clh/add.html": {
+				"resources": [
+					"gz.html",
+					"js/goods_engine.js",
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"js/rem.js",
+					"js/jquery.js",
+					"imgs/ficon-2.png",
+					"js/mui.min.js",
+					"imgs/ficon-h1.png",
+					"imgs/ficon-3.png",
+					"imgs/ficon-4.png",
+					"js/mui.js"
+				],
+				"refer": [
+					"product.html"
+				],
+				"priority": 0
+			},
+			"message.html": {
+				"resources": [
+					"js/jquery.js",
+					"css/dstyle.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"survey.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"imgs/icon-14.png",
+					"js/echart/chart/pie.js",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"js/echart/echarts.js",
+					"js/goods_engine.js",
+					"js/jquery.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"clh/information.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"js/rem.js",
+					"js/jquery.js"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			},
+			"clh/serch.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"imgs/serch.png"
+				],
+				"refer": [
+					"clh/list.html"
+				],
+				"priority": 0
+			},
+			"clh/message_remind.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"css/dstyle.css",
+					"js/rem.js",
+					"js/jquery.js",
+					"clh/message.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"clh/system_notification.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"css/dstyle.css",
+					"js/rem.js",
+					"js/jquery.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [
+					"imgs/user.png",
+					"imgs/log-bg.png",
+					"imgs/logo.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/login.css",
+					"css/mui.min.css",
+					"imgs/password.png",
+					"js/rem.js",
+					"js/md5.js",
+					"js/app.js",
+					"js/mui.enterfocus.js",
+					"fonts/mui.ttf",
+					"css/style.css",
+					null
+				],
+				"refer": [
+					"forget.html",
+					"index.html",
+					"main.html",
+					"gz1.html"
+				],
+				"priority": 0
+			},
+			"forget.html": {
+				"resources": [
+					"imgs/iphone.png",
+					"js/jquery-1.11.1.js",
+					"imgs/valit.png",
+					"imgs/log-arrow.png",
+					"imgs/log-bg.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/login.css",
+					"css/mui.min.css",
+					"js/rem.js"
+				],
+				"refer": [
+					"index.html",
+					"clh/mpassword.html"
+				],
+				"priority": 0
+			},
+			"datetime1.html": {
+				"resources": [
+					"imgs/icon-21.png",
+					"imgs/icon-11.png",
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/style.css",
+					"js/rem.js",
+					null
+				],
+				"refer": [
+					"list-select.html"
+				],
+				"priority": 0
+			},
+			"select1.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"js/ajax.js",
+					"css/style.css",
+					"js/rem.js",
+					"imgs/icon-12.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"qr.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"clh/list.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.js",
+					"js/rem.js",
+					"js/jquery.js"
+				],
+				"refer": [
+					"product.html"
+				],
+				"priority": 0
+			},
+			"clh/personal_center.html": {
+				"resources": [
+					"imgs/persona@2xl.png",
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"css/dstyle.css",
+					"css/mui.min.css",
+					"js/rem.js",
+					"js/jquery.js",
+					"imgs/avatar.png",
+					"imgs/avatar1.png",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"clh/information.html",
+					"clh/cache.html",
+					"login.html"
+				],
+				"priority": 0
+			},
+			"clh/cache.html": {
+				"resources": [
+					"imgs/arrow-right.png"
+				],
+				"refer": [
+					"clh/crash.html",
+					"clh/mpassword.html"
+				],
+				"priority": 0
+			},
+			"clh/crash.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"css/dstyle.css",
+					"css/mui.min.css",
+					"js/rem.js",
+					"js/jquery.js",
+					"js/ajax.js",
+					"js/ajax2.js",
+					"js/ctrl_ajax.js",
+					"js/ajax1.js",
+					"js/echart/echarts.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"search.html": {
+				"resources": [
+					"imgs/icon-8.png"
+				],
+				"refer": [
+					"analyse-yeji.html",
+					"analyse-yk.html"
+				],
+				"priority": 0
+			},
+			"history.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [
+					"analyse-yk.html"
+				],
+				"priority": 0
+			},
+			"clh/datetime.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"imgs/icon-11.png",
+					"imgs/icon-21.png"
+				],
+				"refer": [
+					"clh/survey.html"
+				],
+				"priority": 0
+			},
+			"list-select.html": {
+				"resources": [
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"main.html": {
+				"resources": [],
+				"refer": [
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"test.html": {
+				"resources": [
+					"imgs/icon-3.png",
+					"js/jquery.min.js",
+					"css/style.css",
+					"js/rem.js",
+					"imgs/icon-4.png",
+					"imgs/icon-5.png",
+					"imgs/icon-2.png",
+					"js/ajax1.js",
+					"js/mui.min.js",
+					"imgs/icon-7.png",
+					"css/mui.min.css",
+					"imgs/icon-1.png",
+					"imgs/icon-6.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"clh/mpassword.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"css/dstyle.css",
+					"js/jquery.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-gx-child.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/ajax2.js",
+					"js/rem.js",
+					"fonts/mui.ttf",
+					"analyse-gx.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-gx-child2.html": {
+				"resources": [
+					"js/jquery-1.11.1.js",
+					"analyse-gx.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-yic.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"css/mui.picker.min.css",
+					"imgs/icon-19.png",
+					"imgs/icon-17.png",
+					"imgs/icon-18.png",
+					"js/ajax2.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"add-more.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"analyse-now.html": {
+				"resources": [
+					"js/analyse.js",
+					"js/mui.picker.min.js",
+					"js/ajax2.js",
+					"imgs/now-2.png",
+					"imgs/now-6.png",
+					"imgs/now-9.png",
+					"imgs/now-7.png",
+					"imgs/now-8.png",
+					"imgs/now-3.png",
+					"imgs/now-5.png",
+					"imgs/now-4.png",
+					"css/mui.picker.min.css",
+					"imgs/now-1.png",
+					"imgs/icon-8.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"SQMarketSurveyAide/html/index/page/index.html": {
+				"resources": [
+					"SQMarketSurveyAide/html/index/css/index.css",
+					"SQMarketSurveyAide/common/lib/mui/css/mui.min.css",
+					"SQMarketSurveyAide/common/lib/jquery.min.js",
+					"SQMarketSurveyAide/html/index/img/email1.png",
+					"SQMarketSurveyAide/common/css/common.css",
+					"SQMarketSurveyAide/common/lib/mui/js/mui.min.js",
+					"SQMarketSurveyAide/html/index/img/task.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"sqmarketsurveyside/html/index/page/commodity.html": {
+				"resources": [
+					"sqmarketsurveyside/html/index/img/destination_gray.png",
+					"sqmarketsurveyside/html/index/js/commodity.js",
+					"sqmarketsurveyside/html/index/css/commondity.css",
+					"sqmarketsurveyside/common/js/accurate.js",
+					"sqmarketsurveyside/html/index/img/back.png",
+					"sqmarketsurveyside/common/lib/ajaxFun1.js",
+					"sqmarketsurveyside/common/lib/marketSurveyModule/categoryOperate.js",
+					"sqmarketsurveyside/html/index/img/trigon.png",
+					"sqmarketsurveyside/html/index/img/true_gray.png",
+					"sqmarketsurveyside/common/css/nav.css",
+					"sqmarketsurveyside/common/lib/mui/js/mui.min.js",
+					"sqmarketsurveyside/common/js/rem.js",
+					"sqmarketsurveyside/common/css/common.css",
+					"sqmarketsurveyside/common/lib/mui/css/mui.min.css",
+					"sqmarketsurveyside/common/lib/jquery.min.js"
+				],
+				"refer": [
+					"sqmarketsurveyside/html/index/page/description.html"
+				],
+				"priority": 0
+			},
+			"sqmarketsurveyside/html/note/page/noteList.html": {
+				"resources": [
+					"sqmarketsurveyside/html/address/img/destination.png",
+					"sqmarketsurveyside/html/note/js/noteList.js",
+					"sqmarketsurveyside/html/note/css/noteList.css",
+					"sqmarketsurveyside/common/img/nav/add.png",
+					"sqmarketsurveyside/html/address/img/date.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"sqmarketsurveyside/html/index/page/taskList.html": {
+				"resources": [
+					"sqmarketsurveyside/html/index/img/date.png",
+					"sqmarketsurveyside/html/index/css/taskList.css",
+					"sqmarketsurveyside/html/index/img/destination.png",
+					"sqmarketsurveyside/common/lib/ajaxFun.js",
+					"sqmarketsurveyside/common/css/nav.css",
+					"sqmarketsurveyside/html/index/img/tips.png",
+					"sqmarketsurveyside/common/img/nav/humor.png",
+					"sqmarketsurveyside/common/lib/marketSurveyModule/marketSurveyOperate.js",
+					"sqmarketsurveyside/common/js/picker.js",
+					"sqmarketsurveyside/html/index/js/taskList.js",
+					"sqmarketsurveyside/common/js/formatDate.js",
+					"sqmarketsurveyside/common/lib/mui/css/mui.picker.min.css",
+					"sqmarketsurveyside/common/js/rem.js",
+					"sqmarketsurveyside/common/lib/mui/js/mui.picker.min.js",
+					"sqmarketsurveyside/common/lib/mui/js/mui.min.js",
+					"sqmarketsurveyside/common/css/common.css",
+					"sqmarketsurveyside/common/lib/mui/css/mui.min.css",
+					"sqmarketsurveyside/common/lib/jquery.min.js"
+				],
+				"refer": [
+					"sqmarketsurveyside/html/index/page/commodity.html"
+				],
+				"priority": 0
+			},
+			"sqmarketsurveyside/html/index/page/index.html": {
+				"resources": [
+					"sqmarketsurveyside/html/index/img/email1.png",
+					"sqmarketsurveyside/common/css/common.css",
+					"sqmarketsurveyside/html/index/img/task.png",
+					"sqmarketsurveyside/html/index/page/taskList.html",
+					"sqmarketsurveyside/common/lib/jquery.min.js",
+					"sqmarketsurveyside/common/lib/mui/js/mui.min.js",
+					"sqmarketsurveyside/common/lib/mui/css/mui.min.css",
+					"sqmarketsurveyside/html/index/css/index.css"
+				],
+				"refer": [
+					"sqmarketsurveyside/html/note/page/noteList.html"
+				],
+				"priority": 0
+			},
+			"sqmarketsurveyside/html/index/page/description.html": {
+				"resources": [
+					"sqmarketsurveyside/html/index/img/shop_1.jpg",
+					"sqmarketsurveyside/html/index/css/description.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"survey/firstPort.html": {
+				"resources": [
+					"css/dstyle.css",
+					"js/ajaxFun.js",
+					"imgs/icon-1.png",
+					"js/search/jsLib/goodSurveyAnalysis.js",
+					"js/jquery.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/rem.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"survey/message.html": {
+				"resources": [
+					"imgs/xx.png",
+					"css/dstyle.css",
+					"imgs/xt.png"
+				],
+				"refer": [
+					"survey/message_remind.html"
+				],
+				"priority": 0
+			},
+			"survey/survey.html": {
+				"resources": [
+					"js/ctrl_ajax.js",
+					"js/surveyData/jsLib/goodSurveyAnalysis.js",
+					"js/surveyData/surveyLeibie.js",
+					"imgs/left_dot.png",
+					"js/surveyData/surveyChart.js",
+					"js/surveyData/successGet.js",
+					"imgs/icon-14.png",
+					"js/surveyData/goodEngine.js",
+					"js/surveyData/surveyData.js",
+					"js/echart/echarts.js",
+					"js/surveyData/chartData.js",
+					"js/surveyData/IncreaseAndDecrease.js",
+					"js/echart/chart/pie.js",
+					"js/echart/chart/bar.js",
+					"js/echart/chart/line.js",
+					"css/dstyle.css",
+					"js/ajaxFun.js",
+					"js/jquery.js"
+				],
+				"refer": [
+					"survey/classes.html"
+				],
+				"priority": 0
+			},
+			"survey/classes.html": {
+				"resources": [
+					"imgs/icon-8.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"survey/message_remind.html": {
+				"resources": [
+					"imgs/icon-8.png",
+					"js/mui.min.js",
+					"css/dstyle.css",
+					"js/rem.js",
+					"js/jquery.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"index1.html",
+				"js/echart/chart/funnel.js",
+				"js/echart/chart/radar.js",
+				"js/echart/chart/scatter.js",
+				"edit1.html",
+				"js/echart/chart/wordCloud.js",
+				"imgs/ficon-5.png",
+				"js/echart/chart/gauge.js",
+				"js/echart/chart/force.js",
+				"imgs/icon-10.png",
+				"js/echart/chart/tree.js",
+				"js/echart/chart/eventRiver.js",
+				"js/echart/chart/heatmap.js",
+				"js/echart/chart/k.js",
+				"imgs/ficon-h5.png",
+				"js/echart/chart/map.js",
+				"js/echart/chart/chord.js",
+				"js/echart/chart/venn.js",
+				"js/echart/chart/treemap.js"
+			]
+		}
+	},"fullscreen":false
+}

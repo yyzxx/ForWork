@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="../css/style.css?v=1" rel="stylesheet" type="text/css" />     
+</head>
+	<style type="text/css">
+		.store{
+			width: 100%;
+			margin-top: 0.5rem;
+			height: 3rem;
+			background-color: white;
+			position: relative;
+			color: #A6A6A6;
+		}
+		.store img{
+			width: 0.6rem !important;
+			height: 0.6rem !important;
+			margin-left: 0.3rem;
+		}
+		.store .right{
+			position: absolute;
+			right: 0.5rem;
+		}
+		.store .left{
+			position: absolute;
+			left: 0.5rem;
+		}
+		.store .all_shop{
+			width: 3.5rem;
+			height: 1.5rem;
+			background-color: #279ACE;
+			position: absolute;
+			top: 1.2rem;
+			left: 0.5rem;
+			color: #242424;
+			line-height: 1.5rem;
+			text-align: center;
+			border-radius: 0.8rem;
+		}
+	</style>
+<body class="fixed-padding1" style="background: #f0f0f0;">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back" id="cbk"><i class="icon icon-5"></i></a>
+        <span>筛选时间</span>
+    </div>
+</div>
+<div class="wrap">
+    <div class="section-item bg-white pl-20">
+        <div class="date-title">设置时间</div>
+        <div class="date-body">
+            <ul class="list-item2">
+            	<li><label for="now"><input type="radio" name="radio1" checked id="now"><a href="###"  class="date-btn">实时</a></label></li>
+            	<li><label for="yestoday"><input type="radio" name="radio1" id="yestoday"><a href="###" class="date-btn">昨天</a></label></li>
+            	<li><label for="others"><input type="radio" name="radio1" id="others"><a href="###" class="date-btn">上月最后一天</a></label></li>
+            </ul>
+            <p><span>自定义</span><a href="###" class="date-btn1"><input type="date" class="date-input" value=""  onfocus="(this.type='date')" id="dateTime"></a><i class="icon-date"></i></p>	        
+        </div>        
+    </div>
+    <div class="store">
+    	<span class="left">设置门店</span>
+    	<p class="right" id="allShop"><span>全部</span><img src="../imgs/icon-21.png" alt="" /></p>
+    	<span class="all_shop">全部门店</span>
+    </div>
+    <p class="text-center mt-120"><a href="javascript:void(0)" class="input-btn" id="confirm">确认</a></p>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">
+// 	  mui.init();
+   	 // window.addEventListener('refresh', function(e) {
+	//在父页面中添加监听事件，刷新页面
+	   // location.reload();  
+	//});
+	mui.plusReady(function () {
+		        //ws = plus.webview.create("survey.html","survey",{top:"0px",bottom:"0px"});
+   });
+   document.querySelector('#confirm').addEventListener('tap',function () {
+       
+        //ws.show();
+   })		
+   	  jQuery("#confirm").on('tap',function () {
+// 	  	 mui.init({
+//		    beforeback: function() {
+//		　　　　 //获得父页面的webview
+//		        var list = plus.webview.currentWebview().opener();
+//		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+//		        mui.fire(list, 'refresh');
+//		        //返回true,继续页面关闭逻辑
+//		        return true;
+//				    }
+//				});
+//		mui.init({
+//		    swipeBack:true, //启用右滑关闭功能		
+//		    beforeback:function(){
+//		    var my_yue = plus.webview.getWebviewById('sback');
+//		    mui.fire(my_yue,'refresh');
+//		    return true;
+//		    }
+//		});
+//		mui.back=function () {
+//              mui.openWindow('survey.html')
+//      }
+// 	  	alert($('input[type=date]').val());
+   	  	  var val;
+   	  	  var dateStr;
+   	  	  var timeNow=new Date();  	  	  
+   	  	  if(jQuery("input[type=date").val()==''){
+   	  	  jQuery(".list-item2 li input").each(function(){
+   	  	  	console.log(dateStr);
+   	  	  	 if(this.checked){   	  	  	 	
+   	  	  	 	console.log(jQuery(this).parent().text());
+   	  	  	 	jQuery(this).css('background','#279ace');
+   	  	  	 	jQuery(this).parent().parent().siblings().find('label input').css('background','none');
+   	  	  	 	val = $(this).parent().text();
+// 	  	  	 	alert(jQuery(this).parent().find('a').text());
+   	  	  	 	if(this.id=='now'){
+   	  	  	 		dateStr=timeNow.getFullYear()+'-'+(timeNow.getMonth()+1)+'-'+(timeNow.getDate()-1);
+   	  	  	 		console.log(dateStr);   	  	  	 		
+   	  	  	 	}
+   	  	  	 	if(this.id=='yestoday'){
+   	  	  	 		var yestoday=new Date(timeNow.getFullYear()+'-'+(timeNow.getMonth()+1)+'-'+(timeNow.getDate()-2));
+   	  	  	 		dateStr=yestoday.getFullYear()+'-'+(yestoday.getMonth()+1)+'-'+yestoday.getDate();
+   	  	  	 	}
+   	  	  	 	if(this.id=='others'){
+   	  	  	 		var lastMonth=new Date(timeNow.getFullYear(),timeNow.getMonth(),0);
+   	  	  	 		dateStr=lastMonth.getFullYear()+'-'+(lastMonth.getMonth()+1)+'-'+lastMonth.getDate();
+   	  	  	 	}
+   	  	  	 }
+   	  	  })}else{
+   	  	  	dateStr = $('input[type=date]').val();  	  	  	
+   	  	  }
+   	  	  console.log(dateStr);    	  	     	  	
+// 	  	 window.location.href = 'survey.html?shopName='+dateStr;
+		 
+		var dateStr = localStorage.setItem('dateStr',dateStr);
+		var storeName = localStorage.getItem("storeName");
+		  mui.init({
+		    beforeback: function() {
+//		　　　　 //获得父页面的webview
+		        var sur = plus.webview.currentWebview().opener();
+//		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+		        mui.fire(sur, 'clash');
+//		        //返回true,继续页面关闭逻辑
+		        return true;
+				    }
+		});
+		mui.back();
+// 	  	 mui.openWindow({
+//				id: "survey",
+//				url: "survey.html",
+//				extras: {
+//					dateStr: dateStr,
+//					storeName:storeName
+//				}
+//			});	
+//		 mui.fire(ws,'send',{
+//         
+//      })
+	
+   });
+   $('#allShop').on('tap',function(){
+   		location.href='shop.html';
+   })
+	var storeName = localStorage.getItem("storeName");
+// 	alert(storeName);	
+	$('.store .all_shop').text(storeName);
+	$('.store .right span').text(storeName);
+	$('#cbk').on('tap',function(){
+		 mui.init({
+		    beforeback: function() {
+//		　　　　 //获得父页面的webview
+		        var sur = plus.webview.currentWebview().opener();
+//		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+		        mui.fire(sur, 'clash');
+//		        //返回true,继续页面关闭逻辑
+		        return true;
+				    }
+		});
+		mui.back();
+	})
+</script>
+</html>

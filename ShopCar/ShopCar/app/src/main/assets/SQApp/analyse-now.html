@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="css/mui.min.css">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/ajax2.js"></script>
+    <script src="js/analyse.js"></script>
+    <style type="text/css">
+    	.list-now1{
+    		height: 4.5rem;
+    	}
+    	.average li{
+    		padding: 0 0.32rem 0.7rem;
+    	}
+    </style>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <!--<a href="javascript:void(0)" class="" onclick="goBack()"><i class="icon icon-5"></i></a>-->
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>实时业绩</span>
+    </div>
+</div>
+<div class="wrap">
+	<div class="section-item bg-white relative now-item1">
+        <p>
+        	<span class="fl">更新时间:<i class="now-1"></i>2017.9.27</span>
+        	<span class="fl">
+        		<em class="fl eshop">门店</em>
+        		<select class="input-sel">
+        			<option>1</option>
+        			<option>2</option>
+        			<option>3</option>
+        			<option>4</option>
+        		</select>
+        	</span>
+        </p>
+    </div>
+    <div class="section-item relative now-item2">
+    	<p>今日销售额</p>   
+        <h3 id="saleValue"></h3>    
+    </div>
+    <div class="section-item relative mb-10 now-item3" id="lisdCard2">
+    	<div class="tabs1 bg-white">
+            <ul class="list-now list-3">
+                <li class="active">
+                	<a href="javascript:void(0);" id="blockMiddleOne">
+                		<p><em>昨日同期</em></p>
+                		<p class="middle"><span></span><i></i></p>
+                		<p><i class="number"></i></p>
+                	</a>
+                	<i class="triangle-down"></i>
+                </li>
+                <li>
+                	<a href="javascript:void(0);" id="blockMiddleTwo">
+                		<p><em>上周同期</em></p>
+                		<p class="middle"><span></span><i></i></p>
+                		<p><i class="number"></i></p>
+                        <i class="triangle-down"></i>
+                	</a>
+                </li>
+                <li>
+                	<a href="javascript:void(0);" id="blockMiddleThree">
+                		<p><em>月日均销售</em></p>
+                		<p class="middle"><span></span><i></i></p>
+                		<p><i class="number"></i></p>
+                        <i class="triangle-down"></i>
+                	</a>
+                </li>
+            </ul>
+            <div class="now-title"><i class="now-9">主要指标</i></div>
+        </div>
+        <div class="tab-item" style="display: block">
+            <div class="now-info mb-10">
+            	<ul class="list-now1 list-3" id="yList">
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <!--<p class="p-head"><i class="now-2"></i><em>客流</em><span style="color: #fe5722">1604+</span></p>
+	                		<p class="tip-item"><span class="fr">-19.76%<i class="now-8"></i></span><em>昨日客流</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>-->
+                            <!--<p class="tip-item"><span class="fr">-11.59%</span><em>月累计同比</em></p>-->
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <!--<p class="p-head"><i class="now-3"></i><em>客单</em><span style="color: #63e063">2.56+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日客单</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>-->
+                            <!--<p class="tip-item"><span class="fr">-11.59%</span><em>月累计同比</em></p>-->
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <!--<p class="p-head"><i class="now-4"></i><em>毛利率</em><span style="color: #feb15b">300+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日毛利率</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>-->
+                            <!--<p class="tip-item"><span class="fr">-11.59%</span><em>月累计同比</em></p>-->
+	                	</a>
+	                </li>
+	            </ul>
+            </div>
+            
+            <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-radio yd-radio">
+		            <ul>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio1" checked index="1"><span></span></label><em>分时段趋势图</em></li>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio1" index="2"><span></span></label><em>时段累计趋势图</em></li>
+		            </ul>
+		        </div>
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">销售额</em><span>昨日<i class="i-sale" style="background: #ea23c9;"></i></span><span>上周<i class="i-sale" style="background: #2fdcd0;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="tCanvas3"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">客流</em><span>昨日<i class="i-sale" style="background: #5b34c9;"></i></span><span>上周<i class="i-sale" style="background: #fcc708;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="tCanvas4"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white" style="padding-top: 0.76rem" id="lisdCard3">
+		        <div class="tabs now-tab">
+		            <ul class="list-card3 list-3">
+		                <li><a href="javascript:void(0);" class="active" tabindex="0">销售额</a></li>
+		                <li><a href="javascript:void(0);" tabindex="1">客流</a></li>
+		                <li><a href="javascript:void(0);" tabindex="3">毛利</a></li>
+		            </ul>
+		        </div>
+		        <div class="tab-item1" style="display: block;overflow: hidden">
+		            <div class="item-bottom mg-10">
+			            <table class="base-table now-table" id="YDsaleValue">
+			                <!--<tr>
+			                	<th>类别</th>
+			                	<th>销售额</th>
+			                	<th>昨日</th>
+			                	<th>增长率</th>
+			                </tr>
+			                <tr>
+			                	<td>苹果</td>
+			                	<td>108.2</td>
+			                	<td>289.3</td>
+			                	<td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>-->
+			            </table>
+		        	</div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="YDSheetQty">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="YDProfitRate">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+        <div class="tab-item">
+            <div class="now-info mb-10">
+            	<ul class="list-now1 list-3" id="LWList">
+	                <!--<li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-2"></i><em>客流</em><span style="color: #fe5722">1604+</span></p>
+	                		<p class="tip-item"><span class="fr">-19.76%<i class="now-8"></i></span><em>昨日客流</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-3"></i><em>客单</em><span style="color: #63e063">2.56+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日客单</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-4"></i><em>毛利率</em><span style="color: #feb15b">300+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日毛利率</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>-->
+	            </ul>
+            </div>
+            
+            <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-radio lw-radio">
+		            <ul>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio2" checked index="1"><span></span></label><em>分时段趋势图</em></li>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio2" index="2"><span></span></label><em>时段累计趋势图</em></li>
+		            </ul>
+		        </div>
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">销售额</em><span>昨日<i class="i-sale" style="background: #ea23c9;"></i></span><span>上周<i class="i-sale" style="background: #2fdcd0;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="LWtCanvas3"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">客流</em><span>昨日<i class="i-sale" style="background: #5b34c9;"></i></span><span>上周<i class="i-sale" style="background: #fcc708;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="LWtCanvas4"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white" style="padding-top: 0.76rem" id="LWlisdCard3">
+		        <div class="tabs now-tab">
+		            <ul class="list-card3 list-3">
+		                <li><a href="javascript:void(0);" class="active" tabindex="0">销售额</a></li>
+		                <li><a href="javascript:void(0);" tabindex="1">客流</a></li>
+		                <li><a href="javascript:void(0);" tabindex="3">毛利</a></li>
+		            </ul>
+		        </div>
+		        <div class="tab-item1" style="display: block;overflow: hidden">
+		            <div class="item-bottom mg-10">
+			            <table class="base-table now-table" id="LWsaleValue">
+			                <!--<tr>
+			                	<th>类别</th>
+			                	<th>销售额</th>
+			                	<th>昨日</th>
+			                	<th>增长率</th>
+			                </tr>
+			                <tr>
+			                	<td>苹果</td>
+			                	<td>108.2</td>
+			                	<td>289.3</td>
+			                	<td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>-->
+			            </table>
+		        	</div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="LWSheetQty">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="LWProfitRate">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+        <div class="tab-item">
+            <div class="now-info mb-10">
+            	<ul class="list-now1 list-3" id="MAList">
+	                <!--<li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-2"></i><em>客流</em><span style="color: #fe5722">1604+</span></p>
+	                		<p class="tip-item"><span class="fr">-19.76%<i class="now-8"></i></span><em>昨日客流</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-3"></i><em>客单</em><span style="color: #63e063">2.56+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日客单</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>
+	                <li>
+	                	<a href="javascript:void(0);">
+                            <p class="p-head"><i class="now-4"></i><em>毛利率</em><span style="color: #feb15b">300+</span></p>
+                            <p class="tip-item"><span class="fr">9.76%<i class="now-7"></i></span><em>昨日毛利率</em></p>
+                            <p class="tip-item"><span class="fr">-4.79%<i class="now-8"></i></span><em>昨日同比</em></p>
+	                	</a>
+	                </li>-->
+	            </ul>
+            </div>
+            
+            <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-radio ma-radio">
+		            <ul>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio3" checked index="1"><span></span></label><em>分时段趋势图</em></li>
+		                <li><label class="zx-radio"><input type="radio" class="radio-item" name="radio3" index="2"><span></span></label><em>时段累计趋势图</em></li>
+		            </ul>
+		        </div>
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">销售额</em><span>昨日<i class="i-sale" style="background: #ea23c9;"></i></span><span>上周<i class="i-sale" style="background: #2fdcd0;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="MAtCanvas3"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white now-item4">
+		        <div class="sec-head">
+		            <p class="text-right" style="overflow: hidden;margin-left: 0.54rem;color: #000;font-size: 0.56rem;"><em class="fl">客流</em><span>昨日<i class="i-sale" style="background: #5b34c9;"></i></span><span>上周<i class="i-sale" style="background: #fcc708;"></i></span></p>
+		        </div>
+		        <div class="char-line5" id="MAtCanvas4"></div>
+		    </div>
+		
+		    <div class="section-item mb-10 bg-white" style="padding-top: 0.76rem" id="MAlisdCard3">
+		        <div class="tabs now-tab">
+		            <ul class="list-card3 list-3">
+		                <li><a href="javascript:void(0);" class="active" tabindex="0">销售额</a></li>
+		                <li><a href="javascript:void(0);" tabindex="1">客流</a></li>
+		                <li><a href="javascript:void(0);" tabindex="3">毛利</a></li>
+		            </ul>
+		        </div>
+		        <div class="tab-item1" style="display: block;overflow: hidden">
+		            <div class="item-bottom mg-10">
+			            <table class="base-table now-table" id="MAsaleValue">
+			                <!--<tr>
+			                	<th>类别</th>
+			                	<th>销售额</th>
+			                	<th>昨日</th>
+			                	<th>增长率</th>
+			                </tr>
+			                <tr>
+			                	<td>苹果</td>
+			                	<td>108.2</td>
+			                	<td>289.3</td>
+			                	<td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>
+			                <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+			                </tr>-->
+			            </table>
+		        	</div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="MASheetQty">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		        <div class="tab-item1" style="overflow: hidden">
+		            <div class="item-bottom mg-10">
+		                <table class="base-table now-table" id="MAProfitRate">
+		                    <!--<tr>
+		                        <th>类别</th>
+		                        <th>销售额</th>
+		                        <th>昨日</th>
+		                        <th>增长率</th>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>
+		                    <tr>
+		                        <td>苹果</td>
+		                        <td>108.2</td>
+		                        <td>289.3</td>
+		                        <td>1600</td>
+		                    </tr>-->
+		                </table>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">	
+	mui.init({
+		beforeback: function(){
+			//获得列表界面的webview
+			var list = plus.webview.getWebviewById('fx.html');
+			//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+			mui.fire(list,'refresh');
+			//返回true，继续页面关闭逻辑
+			return true;
+		}
+	})
+	//analyseCharLine("tCanvas3");
+//  analyseCharLine1("tCanvas4");
+	//选项卡
+    function commonTab(id){
+        var listA=jQuery("#"+id+" .list-now li");
+        listA.click(function(){
+            var i=$(this).index();
+            listA.removeClass("active");
+            jQuery(this).addClass("active");
+            jQuery("#"+id+" .tab-item").hide();
+            jQuery("#"+id+" .tab-item").removeClass('fadeIn');
+            jQuery("#"+id+" .tab-item").eq(i).show();
+            jQuery("#"+id+" .tab-item").eq(i).addClass('fadeIn');
+        })
+    }
+    function commonTab1(id){
+        var listA=jQuery("#"+id+" .list-card3 a");
+        listA.click(function(){
+            var i=$(this).closest("li").index();
+            listA.removeClass("active");
+            jQuery(this).addClass("active");
+            jQuery("#"+id+" .tab-item1").hide();
+            jQuery("#"+id+" .tab-item1").removeClass('fadeIn');
+            jQuery("#"+id+" .tab-item1").eq(i).show();
+            jQuery("#"+id+" .tab-item1").eq(i).addClass('fadeIn');
+        })
+    }
+    commonTab("lisdCard2");
+    commonTab1("lisdCard3");
+	commonTab1("LWlisdCard3");
+	commonTab1("MAlisdCard3");
+	function goBack(){
+		window.webkit.messageHandlers.NativeMethod.postMessage("我要调用native的方法");
+	}
+	
+	mui.plusReady(function(){
+		var accessToken="mmm";
+		var shopId=1;
+		var timeType=0;
+		getAnalyseNow(shopId,timeType);
+		var LWType=1;
+		getAnalyseNow(shopId,LWType);
+		var MAType=2;
+		getAnalyseNow(shopId,MAType);
+		function getAnalyseNow(shopId,timeType){
+			var nowParam = {
+				"head":{
+					"accessToken":accessToken
+				},
+			    "body":{
+			        "shopId":shopId,
+					"type":"",
+			        "timeType":timeType
+			    }
+			};
+			getData6(nowParam,'/SQBusiness/goodsController/selectRealTimeAchieve',timeType);
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="SQApp/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="SQApp/js/rem.js"></script>
+    <script src="SQApp/js/mui.min.js"></script>
+    <script src="SQApp/js/ajax2.js"></script>
+</head>
+<body style="background: #f0f0f0">
+
+<table id="bookInfo" align="center" >
+</table>
+<input type=button value="把选中的加入购物车" onclick="check()" style="font-size:12px">
+
+</body>
+<script type="text/javascript">
+
+    var data = new Array();
+    var carData = new Array();
+    var dataString = '';
+
+	function getData_1(){
+
+        var html5='';
+        data = toJson(dataString).books;
+		for(var i=0;i<data.length;i++){
+            html5+= '<tr><td><input type="checkbox" name="select">选择</td>';
+            html5+= '<td><i><span>'+data[i].title+'</span></i></td><td><span>'+data[i].author+ '</span></td>';
+			html5+= '<td><i><span>'+data[i].publisher+'</span></i></td><td>'+data[i].price+'</td><td><img src="' +data[i].images.small+ '"></td></tr>';
+
+			<!--html5+='<td><input id="add_btn" type=button value="+" onclick="add()"><span id="number" value="1">1</span><input type=button value="-" id="sub_btn" onclick="sub()"></td></tr>';-->
+		}
+		$("#bookInfo").html(html5);
+		$("#bookInfo").css("font-size",12);
+		$("#bookInfo").width(100);
+
+	}
+
+    <!--得到选中行的第一列的值-->
+    function check() {
+        var allCheckBoxs = document.getElementsByName("select") ;
+        var flag = true ;
+
+        for (var i=0;i<allCheckBoxs.length ;i++){
+            <!--alert(allCheckBoxs[i].checked);-->
+            if(allCheckBoxs[i].type=="checkbox"&&allCheckBoxs[i].checked==true){
+                <!--var tbody = allCheckBoxs[i].parentNode;-->
+                <!--tbody.cells[0].value-->
+                <!--alert(data[i].toString)-->
+                carData[i]=data[i];
+                flag = false;
+            }
+        }
+        if (flag){
+            alert("未选中任何图书！")
+        }else{
+            var postData = '';
+            postData = JSON.stringify(carData);
+            control.toData(postData);
+        }
+
+    }
+
+    function getData(){
+
+		dataString = control.getArray();
+        getData_1();
+
+	}
+	function toJson(str){
+        var json = eval('(' + str + ')');
+        return json;
+    }
+
+    <!--function toJson(str){-->
+     <!--var json = (new Function("return " + str))();-->
+     <!--return json;-->
+
+    <!--}-->
+</script>
+</html>

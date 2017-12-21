@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>serch</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link href="../css/style.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/performanceAnalysistl.css"/>
+	</head>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;">
+					<p class="title" style="line-height: 1.52rem;">业绩分析</p>
+				</div>				
+			</div>
+		</div>
+		<div class="increace" id="saixuang.html" class="box mui-popover mui-popover-action mui-popover-bottom">
+			<!--<button class="md-trigger md-setperspective" data-modal="modal-17">Let me in</button>-->
+			<div class="portIitle" id="yj">
+				<p>
+					<span class="leftBar"></span>
+					<span class="portText">业绩指标</span>
+					<span class="date">2017.12.08</span>
+				</p>
+			</div>
+			<div class="portIitle" id="xso">
+				 <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+	                <div class="mui-scroll">
+	                    <!--<a class="mui-control-item mui-active" data-index="0">
+	                    	销售指标12344
+	                    	<div></div>
+	                    </a>
+	                    <a class="mui-control-item" data-index="1">
+	                    	销售指标12344
+	                    	<div></div>
+	                    </a>
+	                    <a class="mui-control-item" data-index="2">
+	                    	销售指标12344
+	                    	<div></div>
+	                    </a>
+	                    <a class="mui-control-item" data-index="3">
+	                    	销售指标12344
+	                    	<div></div>
+	                    </a>
+	                    <a class="mui-control-item" data-index="4">
+	                    	销售指标12344
+	                    	<div></div>
+	                    </a>
+	                    <a class="mui-control-item" data-index="5">
+	                    	销售指标12344
+	                    </a>-->
+	                </div>
+	            </div>
+			</div>
+		</div>			
+		<div class="reportContain" id="second">
+			 <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-icon mui-icon-arrowdown" href="#">关键性指标</a>		           
+		        </li>
+		    </ul>					
+			<ul class="gjx">
+				<li>
+					<p class="ntt">销售指标</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">销售额</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">销售同比</p>
+					<p class="ns">12344</p>
+					<p vclass="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">销售环比</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">销售指标完成率</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">毛利指标</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">毛利额</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li>
+					<p class="ntt">毛利同比</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li class="hx">
+					<p class="ntt">毛利环比</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li class="bn">
+					<p class="ntt">毛利指标完成率</p>
+					<p class="ns">12344</p>
+					<p class="compare"></p>
+				</li>
+				<li class="bn">
+					<p class="ntt">客流</p>
+					<p class="ns">12344</p>
+					<p class="compare">
+						<span>客流增长</span>
+						<span>1340</span>
+					</p>
+				</li>
+				<li class="bn">
+					<p class="ntt">客流</p>
+					<p class="ns">12344</p>
+					<p class="compare">
+						<span>客流增长</span>
+						<span>1340</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="chart">		
+			 <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-icon mui-icon-arrowdown" href="#">趋势图</a>		           
+		        </li>
+		    </ul>
+		    <div id="chart2">		    	
+		    </div>
+	    </div>
+	    <div class="excel">
+	    	<ul class="mui-table-view" id="excel"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-icon mui-icon-arrowdown" href="#">门店列表</a>		            
+		        </li>
+		    </ul>
+	    </div>
+	    <div class="amplitude_table">			
+			<table class="table" id="increaseList">
+			    <tr class="th">
+					<td id="ft">门  店</td>
+					<td>销售额</td>
+					<td>销售指标</td>
+					<td>完成率</td>				
+				</tr>
+				<tr>
+					<td>白马店</td>
+					<td>53255</td>
+					<td>125435</td>
+					<td class="org">75%</td>				
+				</tr>
+				<tr>
+					<td>环南店</td>
+					<td>12557</td>
+					<td class="org">32456</td>
+					<td class="org">65%</td>			
+				</tr>
+				<tr>
+					<td>丞相坊店</td>
+					<td>1547788</td>
+					<td>56366</td>
+					<td>0.00004</td>			
+				</tr>		
+			</table>
+		</div>		
+		<div class="wrap" id="wrap" style="display: none;">
+		    <div class="section-item bg-white pl-20">
+		        <div class="date-title">设置时间</div>
+		        <div class="date-body">
+		            <ul class="list-item2">
+		            	<li><label for="now"><input type="radio" name="radio1" checked id="now"><a href="###"  class="date-btn">实时</a></label></li>
+		            	<li><label for="yestoday"><input type="radio" name="radio1" id="yestoday"><a href="###" class="date-btn">昨天</a></label></li>
+		            	<li><label for="others"><input type="radio" name="radio1" id="others"><a href="###" class="date-btn">上月最后一天</a></label></li>
+		            </ul>
+		            <p>
+		            	<span>自定义</span>
+		            	<span class="sdate" style="width: 4.6rem;height: 1.6rem;background-color: #279ace; border-radius: 0.8rem; display: inline-block;
+		            		height: 1.5rem; width: 4.5rem;">2017-12-09</span>
+		            </p>	        
+		        </div>        
+		    </div>
+		    <div class="store">	
+		    	<ul class="mui-table-view" id="store">
+				    <li class="mui-table-view-cell">设置门店</li>
+				    <li class="mui-table-view-cell">民族店</li>
+				    <li class="mui-table-view-cell">水头店</li>
+				    <li class="mui-table-view-cell">英都店</li>
+				    <li class="mui-table-view-cell">官桥店</li>
+				    <li class="mui-table-view-cell">石井店</li>
+				    <li class="mui-table-view-cell">金淘店</li>
+				    <li class="mui-table-view-cell">成功店</li>
+				    <li class="mui-table-view-cell">仑仓店</li>
+				    <li class="mui-table-view-cell">省新店</li>
+				</ul>
+		    </div>
+		    <p class="text-center mt-120"><a href="javascript:void(0)" class="input-btn" id="confirm">确认</a></p>
+		</div>			
+	</body>	
+</html>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/rem.js"></script>		
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script src="../js/mui.picker.min.js"></script>
+<script src="../js/echart/echarts.js"></script>
+<!--<script src="../js/dhindex.js"></script>-->
+<script type="text/javascript">
+ mui.ready(function(){
+	        mui('.mui-scroll-wrapper').scroll({
+	            bounce: true,
+	            indicators: true,
+	            deceleration:mui.os.ios?0.003:0.0009
+	        });
+//	        mui('.mui-scroll').on('tap','.mui-control-item:not(.mui-active)',function(){
+//	            mui('.mui-slider').slider().gotoItem(this.getAttribute('data-index'));
+//	        });
+        });
+//		$(document).ready(function(){
+ $("#yj").click(function(){
+	if( $(".wrap").css('display') == 'none'){		  		
+	    $(".wrap").show().animate({
+	      top:'4.7rem',
+	    });
+	    $('#xso').css('display','none');
+	  	$('#second').css('display','none');
+	  	$('.chart').css('display','none');
+	  	$('.excel').css('display','none');
+	  	$('.amplitude_table').css('display','none');
+	 }else if( $(".wrap").css('display') == 'block'){		  			    
+//	    $('#xso').css('display','block');
+	  	$('#second').css('display','block');
+	  	$('.chart').css('display','block');
+	  	$('.excel').css('display','block');
+	  	$('.amplitude_table').css('display','block');
+	  	$(".wrap").animate({
+	      top:'35rem',
+	   });
+	   $(".wrap").hide(10);
+	};			 
+});
+var arr_1 =['32.12','32.55','32.34','15.21','25.21'];
+var dot_a = ['10-23','10-29','11-04','11-10','11-22','11-28'];
+var arr_5 = ['87.57','95.85','121.97','95.03','105.03','88.03'];
+var arr_3 = ['51.35','70.00','83.68','66.51','96.51','56.51'];
+var arr_2 = ['49.31','75.80','90.42','100.59','108.59','58.59'];
+var new_a3 = ['168.35','178.61','205.00','235.25','215.00','185.00'];
+var new_a2 = ['229.31','255.80','180.00','270.42','170.42','227.42'];
+var arr_9 = ['110.935','98.615','112.104','199.946','179.946','110.946'];
+var new_a8 = ['162.63','174.54','198.71','168.76','188.76','168.76'];
+require.config({
+        paths: {
+            echarts: '../js/echart'
+        }
+   });
+	 require(
+        [
+            'echarts',
+            'echarts/chart/pie',
+            'echarts/chart/bar',
+            'echarts/chart/line'
+        ],
+		function (ec){
+            var lChart = ec.init(document.getElementById('chart2'));	   	
+            var  option = {		            	
+                grid:{x:8,y:20,x2:8, y2:30,borderWidth:0},        		              		                  
+                xAxis: [
+                    {
+                        type: 'category',
+                        show:true,
+                        //去除横坐标的线
+                        axisLine:{show:false},
+           				splitLine:{show: false},//去除网格线
+           				//去除坐标轴上的刻度
+           				axisTick:{
+					        show:false
+					    },
+                        data: dot_a,
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                            color: '#000',
+                            fontSize:'2'
+                            }
+                       }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '水量/ml',
+                        min: 0,
+                        max: 250,
+                        interval: 50,
+                        show:false,
+           				splitLine:{show: false},//去除网格线
+                        axisLabel: {
+                            formatter: '{value} '
+                        }
+                    }
+                ],
+                series: [                                                 
+                    {
+                        name:'客流',
+                        type:'line',
+                        smooth:false,                            
+                        symbol:'emptyCircle',//拐点样式
+            			symbolSize: 5,//拐点大小
+                        markLine:{
+				            itemStyle:{
+				            normal:{lineStyle:{type:'none',color:'white'},label:{show:true}}
+			            },
+			            large:true,
+						  loop: true,
+						  period: 0,
+						  scaleSize : 2,
+						  shadowColor : null,
+						  shadowBlur : null,
+						              data:[
+						                 [
+									        {name: '标线1起点', xAxis: -20, yAxis: new_a3[0]*1+20},      // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
+									        {name: '标线1终点', xAxis: -20, yAxis: arr_3[0]*1+20},             // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配
+									     ]										     
+						            ]
+						      },							
+                        itemStyle : {  /*设置折线颜色*/
+                       		   normal: {
+                       		   color: '#F0AD4E',
+			                    areaStyle: {            // 系列级个性化折线样式，横向渐变描边
+			                        width: 2,
+			                        color: (function (){
+			                            var zrColor = require('zrender/tool/color');
+			                            return zrColor.getLinearGradient(
+			                                0, 0, 1000, 0,
+			                                [[0, 'white'],[0.6, '#F0AD4E']]
+			                            )
+			                        })(),
+			                        shadowBlur: 10,
+			                        shadowOffsetX: 8,
+			                        shadowOffsetY: 8
+			                    }
+                			}                           
+                        },
+                       data:['168.35','178.61','205.00','235.25','215.00','185.00']
+                   }
+                ]
+        };
+        
+        // 使用刚指定的配置项和数据显示图表。             
+		lChart.setOption(option);
+		 window.addEventListener("resize",function(){
+                  lChart.resize();
+           });
+       })
+	 $('.gjx li').on('tap',function(){
+	 	$(this).addClass('hx').siblings().removeClass('hx');
+	 });
+	 $('#second .mui-table-view').on('tap',function(){
+//		 	alert(123);
+	 	if($('#second .mui-table-view a').hasClass('mui-icon-arrowdown')){
+	 		$('#second .mui-table-view a').addClass('mui-icon-arrowright').removeClass('mui-icon-arrowdown');
+	 		$('.gjx').css('display','none')
+	 	}else{
+	 		$('#second .mui-table-view a').addClass('mui-icon-arrowdown').removeClass('mui-icon-arrowright');
+	 		$('.gjx').css('display','block')
+	 	}
+	 });
+	 $('.chart .mui-table-view').on('tap',function(){
+//		 	alert(123);
+	 	if($('.chart .mui-table-view a').hasClass('mui-icon-arrowdown')){
+	 		$('.chart .mui-table-view a').addClass('mui-icon-arrowright').removeClass('mui-icon-arrowdown');
+	 		$('#chart2').css('display','none')
+	 	}else{
+	 		$('.chart .mui-table-view a').addClass('mui-icon-arrowdown').removeClass('mui-icon-arrowright');
+	 		$('#chart2').css('display','block')
+	 	}
+	 });
+	  $('.excel .mui-table-view').on('tap',function(){
+//		 	alert(123);
+	 	if($('.excel .mui-table-view a').hasClass('mui-icon-arrowdown')){
+	 		$('.excel .mui-table-view a').addClass('mui-icon-arrowright').removeClass('mui-icon-arrowdown');
+	 		$('.amplitude_table').css('display','none')
+	 	}else{
+	 		$('.excel .mui-table-view a').addClass('mui-icon-arrowdown').removeClass('mui-icon-arrowright');
+	 		$('.amplitude_table').css('display','block')
+	 	}
+	 });
+	  var dtPicker = new mui.DtPicker(); 
+	  $('.sdate').on('tap',function(){
+	  	dtPicker.show(function (selectItems) {	  		
+		    console.log(selectItems.y);//{text: "2016",value: 2016} 
+		    console.log(selectItems.m);//{text: "05",value: "05"} 
+		    console.log(selectItems.d);//{text: "05",value: "05"} 
+		    $('.sdate').text(selectItems.y.value + '-' + selectItems.m.value + '-' + selectItems.d.value)
+		});
+	  });
+	 var zb = [];
+	$('.table tr:gt(0)').on('tap',function(){
+		console.log($(this).find('td:first-child').text());
+		var zbm = $(this).find('td:first-child').text();
+		if(zb.indexOf(zbm) == -1){
+			zb.push(zbm);
+			var tml = '';
+			for(var i = 0; i<zb.length;i++){
+				tml += '<a class="mui-control-item" data-index="'+i+'">'+zb[i]+'<div></div></a>'
+			}
+			$('#xso .mui-scroll').html(tml);
+			$('#xso').css('display','block');
+			$('#second').css('margin-top','125pt');
+		}
+		
+	})
+//})
+</script>

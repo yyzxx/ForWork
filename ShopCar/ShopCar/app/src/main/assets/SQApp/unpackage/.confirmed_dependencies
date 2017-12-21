@@ -1,0 +1,1092 @@
+{
+	"index.html": {
+		"resources": [
+			"imgs/icon-3.png",
+			"imgs/ficon-2.png",
+			"js/jquery-1.11.1.js",
+			"imgs/ficon-h1.png",
+			"imgs/ficon-3.png",
+			"css/style.css",
+			"js/rem.js",
+			"imgs/icon-4.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"imgs/icon-7.png",
+			"imgs/ficon-4.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/ficon-h4.png",
+			"setting.html",
+			"product.html",
+			"datetime.html",
+			"imgs/ficon-h2.png",
+			"imgs/ficon-h3.png",
+			"edit.html",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"a.html",
+			"gz.html",
+			"imgs/ficon-1.png",
+			"gz1.html",
+			"js/jquery.min.js",
+			"survey/firstPort.html"
+		],
+		"refer": [
+			"setting.html",
+			"product.html",
+			"datetime.html",
+			"edit.html",
+			"a.html",
+			"b.html",
+			"d.html",
+			"c.html",
+			"gz.html",
+			"xi.html",
+			"fx.html",
+			"gk.html",
+			"gz1.html",
+			"clh/message.html",
+			"clh/survey.html",
+			"message.html",
+			"survey.html",
+			"survey/message.html",
+			"survey/survey.html",
+			"survey/firstPort.html"
+		]
+	},
+	"setting.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/arrow-right.png",
+			"index.html",
+			"setting-name.html",
+			"setting-item.html",
+			"setting-desc.html",
+			"js/ajax1.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"index.html",
+			"setting-name.html",
+			"setting-item.html",
+			"setting-desc.html"
+		]
+	},
+	"product.html": {
+		"resources": [
+			"js/echart/chart/pie.js",
+			"imgs/ficon-6.png",
+			"js/echart/chart/bar.js",
+			"imgs/icon-16.png",
+			"js/echart/chart/line.js",
+			"imgs/ficon-h8.png",
+			"js/echart/echarts.js",
+			"imgs/icon-14.png",
+			"imgs/icon-15.png",
+			"imgs/ficon-7.png",
+			"index.html",
+			"imgs/icon-8.png",
+			"imgs/ficon-1.png",
+			"gz.html",
+			"imgs/ficon-h6.png",
+			"imgs/icon-3.png",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"imgs/icon-4.png",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"gk.html",
+			"imgs/ficon-h1.png",
+			"imgs/ficon-9.png",
+			"imgs/ficon-h7.png",
+			"imgs/ficon-8.png",
+			"js/ajax.js",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"index.html",
+			"gz.html",
+			"gk.html",
+			"datetime1.html",
+			"select1.html",
+			"active-more.html"
+		]
+	},
+	"datetime.html": {
+		"resources": [
+			"imgs/icon-11.png",
+			"index.html",
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"edit.html": {
+		"resources": [
+			"imgs/eicon-3.png",
+			"imgs/eicon-2.png",
+			"js/default.css",
+			"js/index.min.js",
+			"imgs/eicon-1.png",
+			"js/scroll-behaviour.min.js",
+			"index.html",
+			"select.html",
+			"imgs/eicon-2a.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/ajax.js",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"index.html",
+			"select.html"
+		]
+	},
+	"select.html": {
+		"resources": [
+			"imgs/icon-9.png",
+			"new-add.html",
+			"edit.html",
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"js/ajax.js",
+			"css/style.css",
+			"js/rem.js"
+		],
+		"refer": [
+			"new-add.html",
+			"edit.html"
+		]
+	},
+	"new-add.html": {
+		"resources": [
+			"select.html",
+			"imgs/icon-8.png",
+			"js/ajax1.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js"
+		],
+		"refer": [
+			"select.html"
+		]
+	},
+	"setting-name.html": {
+		"resources": [
+			"imgs/icon-13.png",
+			"setting.html",
+			"imgs/icon-12.png",
+			"imgs/icon-8.png",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/mui.min.js",
+			"js/ajax1.js"
+		],
+		"refer": [
+			"setting.html"
+		]
+	},
+	"setting-item.html": {
+		"resources": [
+			"setting.html",
+			"imgs/icon-12.png",
+			"imgs/icon-8.png",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/ajax1.js",
+			"js/mui.min.js"
+		],
+		"refer": [
+			"setting.html"
+		]
+	},
+	"setting-desc.html": {
+		"resources": [
+			"setting.html",
+			"imgs/icon-12.png",
+			"imgs/icon-8.png",
+			"js/ajax1.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"setting.html"
+		]
+	},
+	"a.html": {
+		"resources": [
+			"imgs/icon-3.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"imgs/icon-7.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/icon-4.png"
+		]
+	},
+	"gk.html": {
+		"resources": [
+			"imgs/icon-3.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"imgs/icon-7.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/icon-4.png",
+			"product.html",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js",
+			"js/echart/chart/pie.js",
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"imgs/icon-14.png",
+			"js/echart/echarts.js",
+			"js/goods_engine.js",
+			"js/jquery.js",
+			"survey.html"
+		],
+		"refer": [
+			"product.html",
+			"survey.html"
+		]
+	},
+	"gz.html": {
+		"resources": [
+			"imgs/icon-3.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"imgs/icon-7.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/icon-4.png",
+			"gz1.html",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js",
+			"product.html",
+			"fonts/mui.ttf",
+			"js/ajax1.js",
+			"clh/add.html"
+		],
+		"refer": [
+			"gz1.html",
+			"product.html",
+			"datetime.html",
+			"setting.html",
+			"edit.html",
+			"person.html",
+			"clh/add.html",
+			"clh/information.html"
+		]
+	},
+	"fx.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"imgs/arrow-right1.png",
+			"imgs/arrow-bottom.png",
+			"imgs/eicon-1s.png",
+			"css/mui.min.css",
+			"js/jquery.min.js",
+			"css/style.css",
+			"js/mui.min.js",
+			"js/rem.js",
+			"fx.html"
+		],
+		"refer": [
+			"analyse-yeji.html",
+			"analyse-jx.html",
+			"analyse-yk.html",
+			"analyse-yic.html",
+			"analyse-gx.html",
+			"analyse-gx2.html",
+			"fx.html",
+			"search.html",
+			"history.html",
+			"analyse-now.html"
+		]
+	},
+	"xi.html": {
+		"resources": [
+			"imgs/icon-3.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"imgs/icon-7.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/icon-4.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js",
+			"css/dstyle.css",
+			"js/goods_engine.js",
+			"js/jquery.js"
+		]
+	},
+	"gz1.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.1.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js",
+			"product.html",
+			"imgs/icon-3.png",
+			"imgs/icon-5.png",
+			"imgs/icon-2.png",
+			"js/ajax1.js",
+			"imgs/icon-7.png",
+			"imgs/icon-1.png",
+			"imgs/icon-6.png",
+			"imgs/icon-4.png",
+			"fonts/mui.ttf",
+			"js/jquery.min.js",
+			"clh/personal_center.html"
+		],
+		"refer": [
+			"product.html",
+			"datetime.html",
+			"setting.html",
+			"edit.html",
+			"new-add.html",
+			"person.html",
+			"clh/information.html",
+			"clh/add.html",
+			"clh/serch.html",
+			"clh/personal_center.html",
+			"qr.html",
+			"add-more.html",
+			"survey/personal_center.html",
+			"survey/serch.html"
+		]
+	},
+	"person.html": {
+		"resources": [
+			"imgs/icon-8.png"
+		]
+	},
+	"analyse-yeji.html": {
+		"resources": [
+			"js/echart/chart/pie.js",
+			"imgs/icon-17.png",
+			"js/mui.picker.min.js",
+			"imgs/ficon-6.png",
+			"imgs/icon-18.png",
+			"js/echart/echarts.js",
+			"imgs/ficon-7.png",
+			"imgs/icon-19.png",
+			"imgs/icon-8.png",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"css/mui.picker.min.css",
+			"imgs/ficon-h8.png",
+			"imgs/icon-20.png",
+			"js/ajax2.js",
+			"js/jquery.min.js",
+			"css/style.css",
+			"js/rem.js",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		]
+	},
+	"analyse-gx2.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/icon-14.png",
+			"imgs/icon-22.png"
+		]
+	},
+	"analyse-yk1.html": {
+		"resources": [
+			"imgs/icon-21.png"
+		]
+	},
+	"analyse-yk.html": {
+		"refer": [
+			"analyse-yk1.html"
+		],
+		"resources": [
+			"imgs/icon-21.png",
+			"imgs/icon-14.png",
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"js/ajax2.js",
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/echart/echarts.js",
+			"js/rem.js"
+		]
+	},
+	"analyse-jx.html": {
+		"refer": [
+			"analyse-jx1.html"
+		],
+		"resources": [
+			"imgs/icon-21.png",
+			"imgs/icon-19.png",
+			"imgs/icon-8.png",
+			"js/ajax2.js",
+			"imgs/icon-20.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"imgs/icon-14.png",
+			"js/echart/echarts.js",
+			"js/rem.js",
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js"
+		]
+	},
+	"analyse-gx.html": {
+		"refer": [
+			"analyse-gx1.html",
+			"analyse-gx-child.html"
+		],
+		"resources": [
+			"imgs/icon-14.png",
+			"imgs/icon-8.png",
+			"imgs/icon-20.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/ajax2.js",
+			"js/rem.js"
+		]
+	},
+	"analyse-gx1.html": {
+		"resources": [
+			"imgs/icon-21.png"
+		]
+	},
+	"clh/message.html": {
+		"resources": [
+			"css/dstyle.css",
+			"js/goods_engine.js",
+			"imgs/xx.png",
+			"imgs/xt.png",
+			"js/jquery.js",
+			"clh/message_remind.html",
+			"js/mui.min.js",
+			"js/rem.js"
+		],
+		"refer": [
+			"clh/message_remind.html",
+			"clh/system_notification.html"
+		]
+	},
+	"clh/survey.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/icon-14.png",
+			"js/echart/echarts.js",
+			"js/jquery.js",
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"css/dstyle.css",
+			"js/goods_engine.js",
+			"imgs/left_dot.png",
+			"js/mui.min.js",
+			"js/rem.js",
+			"js/ctrl_ajax.js",
+			"clh/datetime.html",
+			"js/template.js",
+			"js/ajaxFun.js",
+			"js/leibie.js",
+			"js/chartFun/leibie.js",
+			"js/success_get/success_get.js",
+			"js/success_get/survey_chart.js",
+			"js/success_get/leibie.js",
+			"js/survey_data/leibie.js",
+			"js/survey_data/success_get.js",
+			"js/survey_data/survey_chart.js",
+			"js/survey_data/goods_engine.js",
+			"js/survey_data/survey_leibie.js",
+			"js/survey_data/survey_data.js",
+			"js/survey_data/Increase_and_decrease.js",
+			"js/survey_data/chart_data.js",
+			"js/survey_data/survey_type.js",
+			"js/survey_data/good_engine.js",
+			"js/survey_data/goodEngine.js",
+			"js/survey_data/jsLib/goodSurveyAnalysis.js",
+			"js/surveyData/surveyLeibie.js",
+			"js/surveyData/successGet.js",
+			"js/surveyData/surveyChart.js",
+			"js/surveyData/goodEngine.js",
+			"js/surveyData/surveyData.js",
+			"js/surveyData/chartData.js",
+			"js/surveyData/jsLib/goodSurveyAnalysis.js",
+			"js/surveyData/IncreaseAndDecrease.js"
+		],
+		"refer": [
+			"clh/datetime.html",
+			"clh/increate.html",
+			"clh/decreate.html",
+			"product.html",
+			"clh/classes.html",
+			"clh/fresh.html",
+			"clh/leibie.html"
+		]
+	},
+	"clh/add.html": {
+		"resources": [
+			"gz.html",
+			"js/goods_engine.js",
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"imgs/ficon-2.png",
+			"js/mui.min.js",
+			"imgs/ficon-h1.png",
+			"imgs/ficon-3.png",
+			"imgs/ficon-4.png",
+			"js/mui.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"gz.html",
+			"product.html"
+		]
+	},
+	"message.html": {
+		"resources": [
+			"js/jquery.js",
+			"css/dstyle.css"
+		]
+	},
+	"survey.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"imgs/icon-14.png",
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"js/echart/echarts.js",
+			"js/goods_engine.js",
+			"js/jquery.js"
+		]
+	},
+	"clh/information.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"js/mui.min.js"
+		]
+	},
+	"clh/serch.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/serch.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js"
+		],
+		"refer": [
+			"clh/list.html",
+			"product.html"
+		]
+	},
+	"clh/message_remind.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"clh/message.html"
+		],
+		"refer": [
+			"clh/message.html"
+		]
+	},
+	"clh/system_notification.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"imgs/user.png",
+			"imgs/log-bg.png",
+			"imgs/logo.png",
+			"js/mui.min.js",
+			"css/login.css",
+			"css/mui.min.css",
+			"imgs/password.png",
+			"js/rem.js",
+			"js/md5.js",
+			"js/jquery.min.js",
+			"clh/mpassword.html"
+		],
+		"refer": [
+			"index.html",
+			"clh/mpassword.html"
+		]
+	},
+	"clh/personal_center.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/persona@2xl.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"clh/cache.html",
+			"fonts/mui.ttf",
+			"imgs/log-bg.png"
+		],
+		"refer": [
+			"login.html",
+			"clh/cache.html",
+			"clh/information.html"
+		]
+	},
+	"clh/cache.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"imgs/arrow-right.png",
+			"js/jquery.js",
+			"clh/mpassword.html"
+		],
+		"refer": [
+			"clh/mpassword.html",
+			"clh/crash.html"
+		]
+	},
+	"clh/mpassword.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"js/mui.min.js",
+			"js/md5.js",
+			"login.html",
+			"clh/cache.html"
+		],
+		"refer": [
+			"login.html",
+			"clh/cache.html",
+			"clh/login.html"
+		]
+	},
+	"clh/crash.html": {
+		"resources": [
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js",
+			"js/echart/echarts.js",
+			"js/goods_engine.js",
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"fonts/mui.ttf",
+			"js/ajax.js",
+			"js/ajax2.js",
+			"js/ctrl_ajax.js",
+			"js/ajax1.js"
+		]
+	},
+	"clh/datetime.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"imgs/icon-11.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/style.css",
+			"js/rem.js",
+			"imgs/icon-21.png",
+			"clh/store.html",
+			"clh/survey.html",
+			"clh/shop.html"
+		],
+		"refer": [
+			"clh/survey.html",
+			"clh/store.html",
+			"clh/shop.html"
+		]
+	},
+	"clh/list.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.js",
+			"imgs/icon-8.png",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js"
+		],
+		"refer": [
+			"product.html"
+		]
+	},
+	"datetime1.html": {
+		"resources": [
+			"imgs/icon-21.png",
+			"imgs/icon-11.png",
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/style.css",
+			"js/rem.js"
+		]
+	},
+	"qr.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js"
+		]
+	},
+	"select1.html": {
+		"resources": [
+			"imgs/icon-12.png",
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"js/ajax.js",
+			"css/style.css",
+			"js/rem.js"
+		]
+	},
+	"search.html": {
+		"resources": [
+			"imgs/icon-8.png"
+		],
+		"refer": [
+			"analyse-yeji.html",
+			"analyse-yk.html"
+		]
+	},
+	"history.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js"
+		],
+		"refer": [
+			"analyse-yk.html",
+			"analyse-jx.html",
+			"analyse-yic.html"
+		]
+	},
+	"clh/store.html": {
+		"resources": [
+			"js/mui.js",
+			"clh/datetime.html",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/jquery.js",
+			"imgs/icon-8.png",
+			"js/rem.js"
+		],
+		"refer": [
+			"clh/datetime.html"
+		]
+	},
+	"clh/shop.html": {
+		"resources": [
+			"css/style(1).css",
+			"css/mui.indexedlist.css",
+			"js/mui.indexedlist.js",
+			"clh/datetime.html",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/rem.js"
+		],
+		"refer": [
+			"clh/datetime.html"
+		]
+	},
+	"clh/increate.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"js/ajaxFun.js"
+		],
+		"refer": [
+			"product.html"
+		]
+	},
+	"clh/decreate.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"js/ctrl_ajax.js",
+			"js/ajaxFun.js"
+		],
+		"refer": [
+			"product.html"
+		]
+	},
+	"analyse-yic.html": {
+		"resources": [
+			"js/echart/chart/pie.js",
+			"imgs/icon-17.png",
+			"js/jquery.min.js",
+			"js/mui.picker.min.js",
+			"css/style.css",
+			"imgs/icon-18.png",
+			"js/ajax2.js",
+			"js/echart/echarts.js",
+			"js/rem.js",
+			"imgs/icon-19.png",
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"js/echart/chart/bar.js",
+			"css/mui.min.css",
+			"js/echart/chart/line.js",
+			"css/mui.picker.min.css"
+		]
+	},
+	"clh/classes.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"css/mui.min.css",
+			"js/rem.js",
+			"js/jquery.js"
+		],
+		"refer": [
+			"product.html"
+		]
+	},
+	"clh/fresh.html": {
+		"resources": [
+			"js/ctrl_ajax.js",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"imgs/icon-14.png",
+			"js/echart/echarts.js",
+			"js/goods_engine.js",
+			"js/rem.js",
+			"js/jquery.js"
+		]
+	},
+	"clh/drink.html": {
+		"resources": [
+			"js/template.js"
+		]
+	},
+	"clh/leibie.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js",
+			"clh/ajaxFun.js"
+		],
+		"refer": [
+			"clh/classes.html"
+		]
+	},
+	"active-more.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"js/ajax.js",
+			"css/style.css",
+			"js/echart/echarts.js",
+			"js/rem.js"
+		]
+	},
+	"add-more.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"fonts/mui.ttf",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/rem.js"
+		]
+	},
+	"analyse-now.html": {
+		"resources": [
+			"js/analyse.js",
+			"js/jquery.min.js",
+			"js/mui.picker.min.js",
+			"css/style.css",
+			"js/ajax2.js",
+			"js/echart/echarts.js",
+			"js/rem.js",
+			"imgs/now-2.png",
+			"imgs/now-9.png",
+			"imgs/now-6.png",
+			"imgs/now-7.png",
+			"imgs/icon-8.png",
+			"imgs/now-8.png",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"imgs/now-3.png",
+			"imgs/now-5.png",
+			"imgs/now-4.png",
+			"css/mui.picker.min.css",
+			"js/echart/chart/line.js",
+			"imgs/now-1.png"
+		]
+	},
+	"survey/message.html": {
+		"resources": [
+			"imgs/xx.png",
+			"css/dstyle.css",
+			"imgs/xt.png"
+		],
+		"refer": [
+			"survey/message_remind.html"
+		]
+	},
+	"survey/survey.html": {
+		"resources": [
+			"css/dstyle.css",
+			"js/surveyData/surveyLeibie.js",
+			"js/surveyData/successGet.js",
+			"js/surveyData/surveyChart.js",
+			"imgs/icon-14.png",
+			"js/surveyData/goodEngine.js",
+			"js/echart/echarts.js",
+			"js/surveyData/surveyData.js",
+			"js/surveyData/chartData.js",
+			"js/ctrl_ajax.js",
+			"js/surveyData/jsLib/goodSurveyAnalysis.js",
+			"js/ajaxFun.js",
+			"imgs/left_dot.png",
+			"js/jquery.js",
+			"js/surveyData/IncreaseAndDecrease.js",
+			"js/echart/chart/pie.js",
+			"js/echart/chart/bar.js",
+			"js/echart/chart/line.js"
+		],
+		"refer": [
+			"survey/classes.html"
+		]
+	},
+	"survey/personal_center.html": {
+		"resources": [
+			"imgs/persona@2xl.png"
+		],
+		"refer": [
+			"survey/cache.html"
+		]
+	},
+	"survey/cache.html": {
+		"resources": [
+			"imgs/arrow-right.png"
+		]
+	},
+	"survey/serch.html": {
+		"resources": [
+			"js/search/jsLib/goodSurveyAnalysis.js",
+			"imgs/serch.png",
+			"js/search/search.js"
+		],
+		"refer": [
+			"survey/list.html"
+		]
+	},
+	"survey/list.html": {
+		"resources": [
+			"js/mui.js",
+			"js/search/list.js",
+			"js/search/jsLib/goodSearchList.js"
+		]
+	},
+	"survey/firstPort.html": {
+		"resources": [
+			"css/dstyle.css",
+			"js/ajaxFun.js",
+			"imgs/icon-1.png",
+			"js/search/jsLib/goodSurveyAnalysis.js",
+			"js/jquery.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/rem.js"
+		]
+	},
+	"survey/classes.html": {
+		"resources": [
+			"imgs/icon-8.png"
+		]
+	},
+	"survey/message_remind.html": {
+		"resources": [
+			"imgs/icon-8.png",
+			"js/mui.min.js",
+			"css/dstyle.css",
+			"js/rem.js",
+			"js/jquery.js"
+		]
+	}
+}

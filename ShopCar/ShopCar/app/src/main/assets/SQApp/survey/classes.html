@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+		<meta name="msapplication-tap-hightlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="../css/dstyle.css?v=1" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	</head>
+	<style type="text/css">
+		body{
+			background-color: white;
+		}		
+		.serch_body .header-time p.title {
+				    line-height: 1.73rem;
+				    width: 6rem;
+				}
+		.table{
+			margin-top: -0.5rem;
+		}		
+		.table tr:nth-child(even) {
+		    background-color: #f9f9f9!important;
+		}
+		.table .th{
+			background-color: white!important;
+		}
+		tr td:first-child em{
+			width: 2rem;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: inline-block;
+			line-height: 0.6rem;		
+		}
+		tr td:first-child div{
+			margin-left: 0.2rem;
+			text-align: center;
+			display: inline-block;
+			line-height: 1rem;
+		}
+	</style>
+	<body class="serch_body">
+		<div class="header fixed-header">
+			<div class="top-head">
+				<div id="cbk"><i class="icon icon-8"></i></div>
+				<div class="header-time" style="width: 6rem;height: 1.73rem;color: white;">
+					<p class="title" style="color: white;">商品销售增幅榜</p>
+				</div>
+			</div>
+		</div>
+		<div class="amplitude_table">
+			<p class="title">商品销售降幅表</p>
+		<table class="table" id="increaseList">
+		  <tr class="th">
+			<td>品  名</td>
+			<td>销售量</td>
+			<td>销售额</td>
+			<td>增幅</td>
+			<td>毛利率</td>
+			<td>库存天数</td>			
+		</tr>
+		<!--<tr>
+			<td>商品1</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>			
+		</tr>
+		<tr>
+			<td>商品2</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品3</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品4</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品5</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品6</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品7</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品8</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品9</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>
+		<tr>
+			<td>商品10</td>
+			<td>123</td>
+			<td>502.23</td>
+			<td>-26%</td>
+			<td>15.8%</td>
+			<td>32</td>		
+		</tr>-->
+	</table>
+</div>
+</body>
+<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//	mui.init();	
+	mui.plusReady(function(){
+		var self = plus.webview.currentWebview();
+		var accessToken=plus.storage.getItem('accessToken');
+//		var accessToken='1578BF239F724072A25E9BE32296926F'
+		var title=localStorage.getItem('title');
+//		alert(title)
+		$('.title').text(title);		
+		//console.log(accessToken);		
+		var btp = localStorage.getItem('btp')
+//		var btp=91
+//		console.log(btp)
+		var dateStr = localStorage.getItem('dateStr');
+		alert(dateStr);
+//		var dateStr = "2017-07-01"; 
+		var dataParam = {
+							"head":{
+								"accesToken":accessToken
+							},
+						    "body":{
+						        "selectDate":dateStr,
+						        "shopId":"",
+						        "type":btp
+						    }
+				};
+		$.ajax('http://jaaint.f3322.net:28080/SQBusiness/goodsController/selectGoodsTypeDetailApp',{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+//				console.log(data.body.data.increaseList[0].SaleQty)
+				var extend1 = data.body.data;
+				
+				//console.log(extend1);
+				//增幅商品名
+				var extend_ar1 = [];
+				//增幅销售量
+				 var extend_ar2 = [];
+				 //增幅销售额
+				 var extend_ar3 = [];
+				 //增幅增幅
+				 var extend_ar4 = [];
+				 //增幅毛利率
+				 var extend_ar5 = [];
+				 //增幅库存天数
+				 var extend_ar6 = [];
+				 for(var i = 0;i<extend1.length;i++){
+				 	extend_ar1.push(extend1[i].GoodsName);
+				 	extend_ar2.push(parseFloat(extend1[i].SaleQty).toFixed(2));
+				 	extend_ar3.push(parseFloat(extend1[i].SaleValue).toFixed(2));
+				 	extend_ar4.push(parseFloat(extend1[i].GrowthRate).toFixed(2));
+				 	extend_ar5.push(parseFloat(extend1[i].ProfitRate).toFixed(2));
+				 	extend_ar6.push(parseFloat(extend1[i].StockDay).toFixed(2));				 					 				 	
+				 }
+					 var class_ml1 = '<tr class="th"><td>品  名</td><td>销售量</td><td>销售额</td><td>增幅</td><td>毛利率</td><td>库存天数</td>';
+					    for(var i = 0;i<extend1.length;i++){
+				   		var flag = extend1[i].IndexFlag;				   		
+				    	if(flag){
+				    		var flar = flag.split('-');
+				    		var str = flag.replace(/\b1\b/i,"A").replace(/\b2\b/i,"B").replace(/\b3\b/i,"C").replace(/\b4\b/i,"平").replace(/\b5\b/i,"重").replace(/\b6\b/i,"促");
+				    		var nr = str.split('-');
+				    		//console.log(nr); 
+				    		if(flar[1]*1>3&&flar[2]*1<3){
+				    			class_ml1+= '<tr><td class="turn"><em>'+extend1[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div>';				    			   		
+						     	class_ml1+= '</td><td>'+parseFloat(extend1[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(extend1[i].SaleValue).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].GrowthRate).toFixed(2)+'</td><td>'+parseFloat(extend1[i].ProfitRate).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].StockDay).toFixed(2)+'</td></tr>';
+				    		}else if(flar[1]*1<3&&flar[2]*1>3){
+				    			class_ml1+= '<tr><td class="turn"><em>'+extend1[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div>';				    			   		
+						     	class_ml1+= '</td><td>'+parseFloat(extend1[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(extend1[i].SaleValue).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].GrowthRate).toFixed(2)+'</td><td>'+parseFloat(extend1[i].ProfitRate).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].StockDay).toFixed(2)+'</td></tr>';
+				    		}else if(flar[1]*1>3&&flar[2]*1>3){
+				    			class_ml1+= '<tr><td class="turn"><em>'+extend1[i].GoodsName+'</em><div class="org">'+nr[1]+'</div><div  class="org">'+nr[2]+'</div>';				    			   		
+						     	class_ml1+= '</td><td>'+parseFloat(extend1[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(extend1[i].SaleValue).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].GrowthRate).toFixed(2)+'</td><td>'+parseFloat(extend1[i].ProfitRate).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].StockDay).toFixed(2)+'</td></tr>';
+				    		}else if(flar[1]*1<3&&flar[2]*1<3){
+				    			class_ml1+= '<tr><td class="turn"><em>'+extend1[i].GoodsName+'</em><div class="red">'+nr[1]+'</div><div  class="red">'+nr[2]+'</div>';				    			   		
+						     	class_ml1+= '</td><td>'+parseFloat(extend1[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(extend1[i].SaleValue).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].GrowthRate).toFixed(2)+'</td><td>'+parseFloat(extend1[i].ProfitRate).toFixed(2)+'</td><td>';
+						     	class_ml1+= parseFloat(extend1[i].StockDay).toFixed(2)+'</td></tr>';
+				    		} 						     	
+				    	}else{
+				    		class_ml1+= '<tr><td class="turn"><em>'+extend1[i].GoodsName;				    				   		
+					     	class_ml1+= '</em></td><td>'+parseFloat(extend1[i].SaleQty).toFixed(2)+'</td><td>'+parseFloat(extend1[i].SaleValue).toFixed(2)+'</td><td>';
+					     	class_ml1+= parseFloat(extend1[i].GrowthRate).toFixed(2)+'</td><td>'+parseFloat(extend1[i].ProfitRate).toFixed(2)+'</td><td>';
+					     	class_ml1+= parseFloat(extend1[i].StockDay).toFixed(2)+'</td></tr>';
+				    	}				    	
+			   	}
+				 $('.serch_body .amplitude_table .table').html(class_ml1);
+				 var trs = document.querySelectorAll('.table tr');
+//				 alert(trs.length)				
+				 var t = $(this).index();
+				 $('.table tr').click(function(){
+				 	console.log(t)
+				 })
+				 
+
+//				 window.onload = function(){
+//				 	for(var i = -1;i<trs.length;i++){
+//				 		trs[i+2].style.backgroundColor = '#DEDEDE';
+//				 	}
+//				 }
+//				 $('.table tr:odd').css('background-color','#DEDEDE');
+//				 $('.table tr:even').css('background-color','#DEDEDE')
+				 $('tr:gt(0)').on('tap',function(){
+					var goodsName = $(this).find('td').eq(0).text();
+					var k = $(this).index();
+					var goodsId = extend1[k].GoodsID;
+//					var goodsId=$(this).find('a').attr('goodsId');
+					//alert(goodsId)
+					mui.openWindow({
+							id: "product.html",
+							url: "../product.html",
+							extras: {
+								goodsName: goodsName,
+								goodsCode:goodsId
+							}
+						});
+				})
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}			
+		});
+	});
+	$('#cbk').on('tap',function(){
+		 mui.init({
+		    beforeback: function() {
+//		　　　　 //获得父页面的webview
+		        var sur = plus.webview.currentWebview().opener();
+//		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+		        mui.fire(sur, 'clash');
+//		        //返回true,继续页面关闭逻辑
+		        return true;
+				    }
+		});
+		mui.back();
+	})
+</script>
+</html>

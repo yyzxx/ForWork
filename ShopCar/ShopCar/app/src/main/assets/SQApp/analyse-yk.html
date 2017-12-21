@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax2.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <!--<a href="javascript:void(0)" onclick="goBack()"><i class="icon icon-5"></i></a>-->
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>生鲜盈亏分析</span>
+        <a href="javascript:void(0)" id="filter" onclick="showModal()"><i class="icon icon-8"></i></a>
+    </div>
+</div>
+<div class="wrap analyse">
+	<div class="section-item">
+        <div class="tabs1 bg-white mb-10">
+            <ul class="list-card2 list-3">
+                <li><a href="javascript:void(0);" class="analyse-item active" index="0">毛利率</a></li>
+                <li><a href="javascript:void(0);" class="analyse-item" index="1">同比毛利增长率</a></li>
+                <li><a href="javascript:void(0);" class="analyse-item" index="2">环比毛利增长率</a></li>
+            </ul>
+        </div>
+        <div class="tab-item bg-white" style="display: block;overflow:hidden;">
+            <div class="char-line1" id="tCanvas1"></div>
+            <div class="item-bottom mg-10 border-table">
+            	<p style="height: 20px;"></p>
+	            <table class="base-table no-wrap" id="baseTable1">
+	                <!--<tr>
+	                	<th>门店</th>
+	                	<th></th>
+	                	<th></th>
+	                	<th></th>
+	                </tr>
+	                <tr>
+	                	<td><a href="###">三明区</a></td>
+	                	<td></td>
+	                	<td></td>
+	                	<td></td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###">三明区</a></td>
+	                	<td></td>
+	                	<td></td>
+	                	<td></td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###">三明区</a></td>
+	                	<td></td>
+	                	<td></td>
+	                	<td></td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###">三明区</a></td>
+	                	<td></td>
+	                	<td></td>
+	                	<td></td>
+	                </tr>
+	                <tr>
+	                	<td><a href="###">三明区</a></td>
+	                	<td></td>
+	                	<td></td>
+	                	<td></td>
+	                </tr>-->
+	            </table>
+        	</div>
+        </div>
+   </div>
+</div>
+<div id="modal" style="background: #fff;display: none;position: fixed;left: 0;bottom:0;width: 100%;height: 100%;z-index: 999;">
+	<form id="modalForm">
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部门店<i class="icon-ar1"></i></em><span>选择门店</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn active" shopId="">黎明店</a></label></li>
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn" shopId="">杨桥店</a></label></li>
+				<li><label><input type="radio" name="radio1" class="shopId"><a class="item-btn" shopId="">宝龙店</a></label></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部柜组<i class="icon-ar1"></i></em><span>选择柜组</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio2" class="cupboardGroup"><a class="item-btn" cupboardGroup="">生鲜柜</a></label></li>
+				<li><label><input type="radio" name="radio2" class="cupboardGroup"><a class="item-btn" cupboardGroup="">食品柜</a></label></li>
+				<li><label><input type="radio" name="radio2" class="cupboardGroup"><a class="item-btn" cupboardGroup="">百货柜</a></label></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部课<i class="icon-ar1"></i></em><span>选择课</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio3" class="courseGroup"><a class="item-btn" courseGroup="">生鲜课</label></a></li>
+				<li><label><input type="radio" name="radio3" class="courseGroup"><a class="item-btn" courseGroup="">蔬菜课</label></a></li>
+				<li><label><input type="radio" name="radio3" class="courseGroup"><a class="item-btn" courseGroup="">肉课</label></a></li>
+			</ul>
+		</div>
+		<div class="select-item pd-10">
+			<div class="select-title"><em class="fr">全部类别<i class="icon-ar1"></i></em><span>选择类别</span></div>
+			<ul class="list-item">
+				<li><label><input type="radio" name="radio4" class="goodsCode"><a class="item-btn" goodsCode="2">门店</label></a></li>
+				<li><label><input type="radio" name="radio4" class="goodsCode"><a class="item-btn" goodsCode="3">商品</label></a></li>
+				<li><label><input type="radio" name="radio4" class="goodsCode"><a class="item-btn" goodsCode="1">货商</label></a></li>
+			</ul>
+		</div>
+		<div class="select-time">
+			<p class="set-time">设置时间</p>
+			<p class="mt-3">
+				<input type="date" placeholder="2016-01-01" onfocus="(this.type='date')" class="input-date" id="beginDate"><em>-</em>
+				<input type="date" placeholder="2016-01-01" onfocus="(this.type='date')" class="input-date" id="selectDate"><em>-</em>
+				<!--<input type="date" placeholder="2016-01-01" onfocus="(this.type='date')" class="input-date" >-->
+				<select class="input-date" id="dateType" style="width: 4rem!important;">
+					<option value="a">上半月</option>
+					<option value="b">下半月</option>
+					<option value="c">全月</option>
+				</select>
+			</p>
+		</div>
+		<div class="bottom-btn">
+			<a href="###" class="reset-btn">重置</a>
+			<a href="javascript:void(0)" class="confirm-btn">确定</a>
+		</div>
+	</form>
+</div>
+
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">
+	mui.init({
+		beforeback: function(){
+			//获得列表界面的webview
+			var list = plus.webview.getWebviewById('fx.html');
+			//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+			mui.fire(list,'refresh');
+			//返回true，继续页面关闭逻辑
+			return true;
+		}
+	})
+	/* 图表 */
+//  echartLine('tCanvas1');
+//	echartLine('tCanvas2');
+//	echartLine('tCanvas3');
+//	window.onresize=function(){
+//		echartLine('tCanvas1');
+//		echartLine('tCanvas2');
+//		echartLine('tCanvas3');
+//	}
+//  function openUrl(url){
+//		mui.openWindow({
+//			url:url, //需要打开页面的url地址 
+//			id:url,  //需要打开页面的url页面id
+//			show:{
+//				duration:'300'
+//			}
+//		})
+//	}
+//	jQuery("#filter").on('tap',function(){
+//		openUrl('analyse-yk1.html');
+//	})
+	//分析	
+	getCommonDataYK("","1","","","2017-06-01","2017-07-01","a","1","1","20",0)
+	jQuery(".analyse-item").bind('tap',function(){
+		jQuery(".analyse-item").removeClass('active');
+		jQuery(this).addClass('active');
+    	var index=jQuery(this).attr('index');
+		getCommonDataYK("","1","","","2017-06-01","2017-07-01","a","1","1","20",index)
+    })
+	function getCommonDataYK(userId,shopId,cupboardGroup,courseGroup,beginDate,selectDate,dateType,goodsCode,page,counts,index){
+		var	dataParam1={
+			    body:{
+					userId:userId,
+			        shopId:shopId,
+			        cupboardGroup:cupboardGroup,
+			        courseGroup:courseGroup,
+			        beginDate:beginDate,
+			        selectDate:selectDate,
+			        dateType:dateType,
+			        goodsCode:goodsCode,
+			        page:page,
+			        counts:counts
+				}
+		}
+		getData4(dataParam1,'/SQBusiness/goodsController/selectProfitLostApp',index,goodsCode)
+	}
+	function showModal(){
+		jQuery("#modal").slideDown(500);
+	}
+	jQuery(".confirm-btn").click(function(){
+		var shopId="",cupboardGroup="",courseGroup="",beginDate="2017-06-01",selectDate="2017-07-01",dateType="a",page=1,counts=20;
+		var goodsCode='1';
+		var userId="";
+		var index=jQuery('.list-card2 .active').attr('index');
+		jQuery(".shopId").each(function(){
+			if(this.checked){
+				shopId=jQuery(this).closest('label').find("a").attr('shopId');
+			}
+		})
+		jQuery(".cupboardGroup").each(function(){
+			if(this.checked){
+				cupboardGroup=jQuery(this).closest('label').find("a").attr('cupboardGroup');
+			}
+		})
+		jQuery(".courseGroup").each(function(){
+			if(this.checked){
+				courseGroup=jQuery(this).closest('label').find("a").attr('courseGroup');
+			}
+		})
+		jQuery(".goodsCode").each(function(){
+			if(this.checked){
+				goodsCode=jQuery(this).closest('label').find("a").attr('goodsCode');
+			}
+		})
+		jQuery("#beginDate").change(function(){
+			beginDate=jQuery(this).val();
+		})
+		jQuery("#selectDate").change(function(){
+			selectDate=jQuery(this).val();
+		})
+		jQuery("#dateType").change(function(){
+			var arr=jQuery("#dateType")[0].options
+			dateType=arr[arr.selectedIndex].value;
+		})
+		getCommonDataYK(userId,shopId,cupboardGroup,courseGroup,beginDate,selectDate,dateType,goodsCode,page,counts,index)
+		jQuery("#modal").slideUp(500);
+	})
+	jQuery(".reset-btn").bind('click',function(){
+		jQuery("#modalForm")[0].reset();
+	})
+	function goBack(){
+		window.webkit.messageHandlers.NativeMethod.postMessage("我要调用native的方法");
+	}
+</script>
+</html>

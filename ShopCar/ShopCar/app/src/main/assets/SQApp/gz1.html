@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax1.js"></script>
+    <style type="text/css">
+    	.base-table{
+    		font-size: 0.6rem;
+    	}
+    </style>
+</head>
+<body class="fixed-padding">
+<div class="header fixed-header">
+    <div class="top-head">
+        <a href="javascript:void(0)" id="personal"><i class="icon icon-1"></i></a>
+        <div class="header-time">
+        	<i class="icon icon-3" id="leftA" style="display: none;"></i>
+        	<p class="title"><span id="subTitle">我的关注</span></p>
+        	<i class="icon icon-4" id="rightA"></i>
+        </div>
+        <p class="text-center sub-title1"><em><i id="dayTime">2017-07-03</i> <i id="timeNow">9:50</i></em></p>
+        <a href="javascript:void(0)" id="iconQue"><i class="icon icon-2"></i></a>
+    </div>
+    <div class="tool-bar">
+        <ul class="list-tool">
+            <li>
+                <a href="javascript:void(0);" id="qrCode">
+                    <p><i class="ticon-1"></i></p>
+                    <p>扫一扫</p>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" id="searchPage">
+                    <p><i class="ticon-2"></i></p>
+                    <p>搜索</p>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" id="addPage">
+                    <p><i class="ticon-3"></i></p>
+                    <p>添加</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mui-content wrap mui-scroll-wrapper bg-white" id="refreshContainer">
+	<div class="mui-scroll">
+		<div class="mui-slider" style="margin-top: 5.17rem;">
+			<div class="mui-slider-group" id="slideGroup" style="transform: translate3d(0px, 0px, 0px) translateZ(0px);">
+				<div class="mui-slider-item" index="0">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="tip-alert">
+	<div class="tip-cover"></div>
+	<div class="tip-pop">
+		<ul class="list-pop">
+			<li><a href="javascript:void(0)" id="dataTime"><i class="mui-icon mui-icon-download"></i><span>筛选时间</span></a></li>
+			<li><a href="javascript:void(0)" id="setItem"><i class="mui-icon mui-icon-gear-filled" ></i><span>设置组合</span></a></li>
+			<li><a href="javascript:void(0)" id="editItem"><i class="mui-icon mui-icon-compose"></i><span>编辑</span></a></li>
+			<li><a href="javascript:void(0)" id="addItem"><i class="mui-icon mui-icon-plusempty"></i><span>新增组合</span></a></li>
+		</ul>
+	</div>
+</div>
+<!--<img src="imgs/loading.gif" class="loading">-->
+</body>
+<script type="text/javascript">
+	mui.init();
+	jQuery("#dayTime").html(getDate());
+	jQuery("#timeNow").html(getTime());
+	//var userId=localStorage.getItem('userId');
+	//var userId="D3924FF954AD4CE69BF587F083530B7C";
+	mui.plusReady(function(){
+		userId=plus.storage.getItem('userId');
+		jQuery(function(){
+	    	//所有组合  	
+	    	var selectDate=jQuery("#dayTime").html();
+			getCommonData(userId,selectDate);
+		})
+		window.addEventListener('refresh',function(event){
+			if(event.detail.dateStr!=undefined){
+				if(event.detail.dateStr==''){
+					return false;
+				}
+				if(event.detail.dateStr=='refresh'){
+					jQuery("#slideGroup").html('<div class="mui-slider-item" index="0"></div>');
+					var gallery = mui('.mui-slider');
+					gallery.slider().gotoItem(0); 	
+			    	var selectDate=jQuery("#dayTime").html();
+					getCommonData(userId,selectDate);
+					return false;
+				}
+				jQuery("#dayTime").html(event.detail.dateStr);
+				jQuery("#slideGroup").html('<div class="mui-slider-item" index="0"></div>');
+				var gallery = mui('.mui-slider');
+				gallery.slider().gotoItem(0);
+				getCommonData(userId,event.detail.dateStr);
+			}
+		})
+		
+		var page = mui.preload({
+		    url:"qr.html",
+		    id:"qr.html",//默认使用当前页面的url作为id
+		    styles:{},//窗口参数
+		    extras:{}//自定义扩展参数
+		});
+	    jQuery('#qrCode').bind('tap',function(){
+			//plus.webview.getWebviewById('qr.html');
+			page.show('slide-in-right');
+		})
+	})
+	
+	window.addEventListener('reload',function(event){
+		var self=plus.webview.currentWebview();
+		self.reload();
+	})
+	
+	jQuery("#iconQue").click(function(e){
+    	jQuery(".tip-alert").show();
+    	e.stopPropagation();
+    })
+    
+    jQuery('body').click(function(){
+    	jQuery(".tip-alert").hide();
+    })
+    jQuery('#dataTime').bind('tap',function(){
+		openUrl('datetime.html');
+		jQuery(".tip-alert").hide();
+	})
+//	jQuery('#qrCode').bind('tap',function(){
+//		mui.openWindow({
+//			id:'qr.html',
+//			url:'qr.html',
+//			show:{
+//				autoShow:false,
+//				duration:'300'
+//			}
+//		})
+//	})
+    jQuery('#personal').bind('tap',function(){
+		openUrl('survey/personal_center.html');
+	})
+     
+	function getCommonData(userId,selectDate){
+		var gzParam={
+			body:{
+				userId:userId,
+        		selectDate:selectDate
+			}
+		}
+        getData1(gzParam,'/SQBusiness/goodsController/selectUserGoodsGroupListApp',selectDate);
+	}
+	jQuery('#addItem').bind('tap',function(){
+		openUrl('new-add.html');
+		jQuery(".tip-alert").hide();
+	})
+	jQuery("#addPage").on('tap',function(){
+		//openUrl('survey/add.html');
+		openUrl('add-more.html');
+	})
+	jQuery("#searchPage").on('tap',function(){
+		openUrl('survey/serch.html');
+	})
+	
+	function getDate(){
+		var currentTime=new Date();
+		var year=currentTime.getFullYear();
+		var month=currentTime.getMonth();
+		var day=currentTime.getDate();
+		var yesToday=new Date(year,month,day-2);
+		var sYear=yesToday.getFullYear();
+		var sMonth=yesToday.getMonth()+1;
+		var sDay=yesToday.getDate();
+		return sYear+'-'+sMonth+'-'+sDay;
+	}
+	function getTime(){
+		var currentTime=new Date();
+		var hours=currentTime.getHours();
+		var mins=currentTime.getMinutes();
+		return hours+":"+mins;
+	}
+</script>
+</html>

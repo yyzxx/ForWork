@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+    <meta name="msapplication-tap-hightlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+<body class="fixed-padding1" style="background: #f0f0f0">
+<div class="header fixed-header">
+    <div class="top-head edit">
+        <a href="javascript:void(0)" class="mui-action-back"><i class="icon icon-5"></i></a>
+        <span>动态</span>
+    </div>
+</div>
+<div class="section-item mb-10 bg-white" id="lisdCard2">
+	<div class="tab-item" style="display: block;">
+        <div class="normal-table pro-table2">
+            <table class="base-table" id="productInfo2">
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/echart/echarts.js"></script>
+<script type="text/javascript">
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var date=self.date;
+		var goodsId=self.goodsId;
+		var dataParam={
+		    body:{
+				userId:"",
+		        selectDate:date,
+		        goodsId:goodsId
+		    }
+		}
+		getData(dataParam,"/SQBusiness/goodsController/selectDynamicApp")
+	})
+	function getData(dataParam,apiUrl){
+		mui.ajax(baseUrl+apiUrl,{
+			data: JSON.stringify(dataParam),
+			dataType:'json',//服务器返回json格式数据
+			//crossDomain:true,
+			type:'post',//HTTP请求类型
+			contentType: "application/json; charset=utf-8",
+			timeout:10000,//超时时间设置为10秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				//console.log(data);
+			    if(apiUrl=='/SQBusiness/goodsController/selectDynamicApp'){
+					var html5='';
+					for(var i=0;i<data.body.data.length;i++){
+						html5+='<tr><td><i>'+data.body.data[i].Sdate+'</i><i class="shopname">'+data.body.data[i].ShopName+'</i><span>'+data.body.data[i].Content+'</span><i>'+data.body.data[i].Implementer+'</i></td></tr>'
+					}
+					jQuery("#productInfo2").html(html5);     
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(errorThrown);
+			}
+		})
+	}
+</script>
+</html>
