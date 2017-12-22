@@ -18,10 +18,12 @@
 <body style="background: #f0f0f0">
 <table class="base-table"  id="bookInfo">
 </table>
-<input type="checkbox" checked value="全选" onclick="checkAll(this.checked)" id="select_all">
-<label for="select_all">全选</label>
+<input type="checkbox" value="123" onchange="checkAll(this.checked)"  id="selectall">
+<input  id="alls" type="button" value="全选" onclick="checkAlls()">
+<!--<label for="selectall" onclick="checkAlls()" id="alls"><input style="background: #ffffff;" type="button" onclick="checkAlls()" value="全选"></label>-->
+
 <input type="button" value="删除选中图书" onclick="del()">
-<span id="total_show">--</span>
+<span id="total_show"> -- </span>
 </body>
 <script type="text/javascript">
 
@@ -54,7 +56,7 @@
 			}
 			$("#bookInfo").html(html5);
 		    $("#bookInfo").css("font-size",12);
-		    $("#bookInfo").css('width','100%');
+		    $("#bookInfo").css('width','90%');
 		    total();
 	}
 
@@ -107,7 +109,7 @@
         }
         <!--金额计算-->
         function total(){
-            $("#total_show").text("总计:"+sum);
+            $("#total_show").text("总计  :"+sum);
         }
 
         <!--全选-->
@@ -121,7 +123,13 @@
                         allCheckBoxs[i].checked=checked;
                     }
                 }
+        }
+        function checkAlls(){
 
+            var allcheck = $("#selectall").get(0).checked;
+            alert(!allcheck);
+            checkAll(!allcheck);
+            $("#selectall").get(0).checked = !allcheck;
         }
 </script>
 </html>
