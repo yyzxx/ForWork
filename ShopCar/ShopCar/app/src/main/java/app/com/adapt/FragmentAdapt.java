@@ -43,7 +43,6 @@ public class FragmentAdapt extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.e("------>fragment",""+position);
         return getfragment(position);
     }
 

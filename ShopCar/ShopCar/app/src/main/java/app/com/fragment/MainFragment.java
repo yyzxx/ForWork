@@ -5,21 +5,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
-import android.util.JsonToken;
-import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
+
 import com.alibaba.fastjson.*;
 import app.com.ConstantUtil;
 import app.com.base.BaseFragment;
-import app.com.httprequest.HttpRequest;
 import app.com.httprequest.RequestThread;
-import app.com.shopcar.MainActivity;
 import app.com.shopcar.R;
 import butterknife.Bind;
 
@@ -56,7 +52,6 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        super.initData();
 
         mThread.start();
         try {
@@ -87,35 +82,8 @@ public class MainFragment extends BaseFragment {
 
                     @Override
                     public void run() {
-
-                        // 取网页数据
                         // 调用javascript的getData()方法
-
-
-                        try {
-
-                            mJsonData = JSON.parseObject(mdata);
-                            //System.out.print("----------->"+mJsonData);
-
-//                            Log.e("----------->", String.valueOf(mJsonData));
-                            mJSONArray =  mJsonData.getJSONArray("books");
-                            mWebView.loadUrl("javascript:getData()");
-//                            Log.e("----------->>>", " {\"bookdetail\": ["+mJSONArray.getJSONObject(0).toString()+"]}");
-                            for (int i = 0;i<postData.length;i++){
-                                postData[i][0]=mJSONArray.getJSONObject(i).getString("summary");
-                                postData[i][1]=mJSONArray.getJSONObject(i).getString("price");
-                                postData[i][2]=mJSONArray.getJSONObject(i).getString("publisher");
-                                postData[i][3]=mJSONArray.getJSONObject(i).getString("images");
-                                postData[i][4]=mJSONArray.getJSONObject(i).getString("author");
-                                postData[i][5]=mJSONArray.getJSONObject(i).getString("id");
-                                postData[i][6]=mJSONArray.getJSONObject(i).getString("image");
-
-                            }
-                            //Log.e("====================>", String.valueOf(postData[0][1]));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
+                        mWebView.loadUrl("javascript:getData()");
 
                     }
                 });
@@ -152,29 +120,14 @@ public class MainFragment extends BaseFragment {
 
 
     public class JsInteraction {
-        private JSONObject mJsonData = new JSONObject();
-        private JSONArray mJSONArray = new JSONArray();
-        @RequiresApi(api = 26)
         @JavascriptInterface
         public void toData(String  message) {
-            // 提供给js调用的方法
-//            Log.e("---------<>",message);
-//            WebView pWebView = (WebView) getActivity().getFragmentManager().getFragments().get(1).getView().findViewById(R.id.wv_ffollow_show);//获取B页面的控件
-//            pWebView.loadUrl("javascript:gets()");
             ConstantUtil.DATA = message;
         }
         @JavascriptInterface
         public String getArray(){
-//            mJsonData = JSON.parseObject(mdata);
-//            mJSONArray =  mJsonData.getJSONArray("books");
-//            mdata = mJSONArray.toJSONString();
-//            Log.e("====================>", mdata);
             return mdata;
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
 }

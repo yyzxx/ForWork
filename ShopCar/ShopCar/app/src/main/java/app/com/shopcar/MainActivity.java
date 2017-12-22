@@ -53,27 +53,6 @@ public class MainActivity extends AppCompatActivity {
         mMenuIndex.setIcon(getResources().getDrawable(ConstantUtil.MENU_ICON[0]));
         mMenuGps.setIcon(getResources().getDrawable(ConstantUtil.MENU_ICON[1]));
 
-        // 列表点击搜索事件
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                //tab选中
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                //tab未选中
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                //tab重新选中
-            }
-        });
-
-    }
-    public TabLayout getmTabLayout(){
-        return mTabLayout;
     }
 
     @Override

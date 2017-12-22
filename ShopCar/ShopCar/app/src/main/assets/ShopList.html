@@ -38,8 +38,6 @@
             html5+= '<tr><td><input type="checkbox" name="select">选择</td>';
             html5+= '<td><i><span>'+data[i].title+'</span></i></td><td><span>'+data[i].author+ '</span></td>';
 			html5+= '<td><i><span>'+data[i].publisher+'</span></i></td><td>'+data[i].price+'</td><td><img src="' +data[i].images.small+ '"></td></tr>';
-
-			<!--html5+='<td><input id="add_btn" type=button value="+" onclick="add()"><span id="number" value="1">1</span><input type=button value="-" id="sub_btn" onclick="sub()"></td></tr>';-->
 		}
 		$("#bookInfo").html(html5);
 		$("#bookInfo").css("font-size",12);
@@ -81,12 +79,12 @@
 	function toJson(str){
         var json = eval('(' + str + ')');
         return json;
-    }
-
-    <!--function toJson(str){-->
+    }--function toJson(str){-->
      <!--var json = (new Function("return " + str))();-->
      <!--return json;-->
 
     <!--}-->
+
+    <!
 </script>
 </html>

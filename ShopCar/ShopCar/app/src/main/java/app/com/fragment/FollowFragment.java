@@ -1,27 +1,20 @@
 package app.com.fragment;
 
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import app.com.ConstantUtil;
 import app.com.base.BaseFragment;
-import app.com.httprequest.HttpRequest;
 import app.com.shopcar.R;
 import butterknife.Bind;
 
@@ -59,8 +52,6 @@ public class FollowFragment extends BaseFragment {
 
 
     protected void initDatas() {
-        super.initData();
-
 
         pWebView.clearCache(true);
         WebSettings pWebSettings = pWebView.getSettings();
@@ -79,15 +70,6 @@ public class FollowFragment extends BaseFragment {
                 pWebView.post(new  Runnable() {
                     @Override
                     public void run() {
-//                        try {
-////                            mJsonData = gson.fromJson(HttpRequest.run(),JSONObject.class);
-////                            mJSONArray = mJsonData.getJSONArray("book");
-//
-//                            //Log.e("----------->",mJsonData.getString("count"));
-//                           // Log.e("====================>",ConstantUtil.DATA[0]);
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
                         pWebView.loadUrl("javascript:gets()");
                     }
                 });
@@ -119,8 +101,6 @@ public class FollowFragment extends BaseFragment {
         if (getUserVisibleHint()) {
             if(ConstantUtil.DATA!=null){
                 initDatas();
-                Log.e("---------<>",ConstantUtil.DATA);
-//              pWebView.loadUrl("javascript:getData("+ ConstantUtil.DATA+")");
             }
 
         }
@@ -141,16 +121,4 @@ public class FollowFragment extends BaseFragment {
 
     }
 
-//        xWalkView.setResourceClient(new XWalkResourceClient(xWalkView){
-//            @Override
-//            public void onLoadFinished(XWalkView view, String url) {
-//                //super.onLoadFinished(view, url);
-//                //Toast.makeText(MainActivity.this,"loadfinished!",Toast.LENGTH_LONG).show();
-//            }
-//            @Override
-//            public void onLoadStarted(XWalkView view, String url) {
-//                //super.onLoadStarted(view, url);
-//                //Toast.makeText(MainActivity.this,"onLoadStarted!",Toast.LENGTH_LONG).show();
-//            }
-//        });
 }
