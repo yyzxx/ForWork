@@ -31,8 +31,6 @@ public class FollowFragment extends BaseFragment {
 
     @Bind(R.id.wv_fmain_show)
     WebView pWebView;
-    private JSONObject mJsonData;
-    private JSONArray mJSONArray;
 
     @Override
     protected int getContextLayoutId() {
@@ -118,7 +116,6 @@ public class FollowFragment extends BaseFragment {
         public void setData(String data){
             ConstantUtil.DATA = data;
         }
-
     }
 
 }

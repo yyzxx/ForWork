@@ -30,12 +30,9 @@ import butterknife.Bind;
 public class MainFragment extends BaseFragment {
 
     @Bind(R.id.wv_fmain_show)
-    WebView mWebView;
+    WebView pWebView;
 
-    private JSONObject mJsonData = new JSONObject();
-    private JSONArray mJSONArray = new JSONArray();
     private String mdata ="";
-    private Object postData[][]=new String[20][23];
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -60,30 +57,29 @@ public class MainFragment extends BaseFragment {
             e.printStackTrace();
         }
 
-        mWebView.clearCache(true);
+        pWebView.clearCache(true);
 
-        WebSettings pWebSettings = mWebView.getSettings();
+        WebSettings pWebSettings = pWebView.getSettings();
         // 设置webview支持js
         pWebSettings.setJavaScriptEnabled(true);
         // 设置本地调用对象及其接口
-        mWebView.addJavascriptInterface(new JsInteraction(), "control");
-
+        pWebView.addJavascriptInterface(new JsInteraction(), "control");
         // 设置允许JS弹窗
         pWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         // 设置资源文件
-        mWebView.loadUrl("file:///android_asset/ShopList.html",null);
+        pWebView.loadUrl("file:///android_asset/ShopList.html",null);
 
-        mWebView.setWebViewClient(new WebViewClient(){
+        pWebView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                mWebView.post(new  Runnable() {
+                pWebView.post(new  Runnable() {
 
                     @Override
                     public void run() {
                         // 调用javascript的getData()方法
-                        mWebView.loadUrl("javascript:getData()");
+                        pWebView.loadUrl("javascript:getData()");
 
                     }
                 });
@@ -95,7 +91,7 @@ public class MainFragment extends BaseFragment {
         // webview只是载体，内容的渲染需要使用webviewChromClient类去实现
         // 通过设置WebChromeClient对象处理JavaScript的对话框
         // 设置响应js 的Alert()函数
-        mWebView.setWebChromeClient(new WebChromeClient() {
+        pWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
 
@@ -117,7 +113,6 @@ public class MainFragment extends BaseFragment {
         });
 
     }
-
 
     public class JsInteraction {
         @JavascriptInterface
