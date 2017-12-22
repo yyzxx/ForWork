@@ -16,7 +16,7 @@
     <script src="SQApp/js/ajax.js"></script>
 </head>
 <body style="background: #f0f0f0">
-<table class="base-table" id="bookInfo">
+<table class="base-table"  id="bookInfo">
 </table>
 <input type="checkbox" checked value="全选" onclick="checkAll(this.checked)" id="select_all">
 <label for="select_all">全选</label>
@@ -54,7 +54,7 @@
 			}
 			$("#bookInfo").html(html5);
 		    $("#bookInfo").css("font-size",12);
-		    $("#bookInfo").width(200);
+		    $("#bookInfo").css('width','100%');
 		    total();
 	}
 
