@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -7,12 +7,49 @@
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/wv_ffollow_show"></WebView>
-    <Button
+        android:id="@+id/wv_ffollow_show">
+    </WebView>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="9"
-        android:text="hellow"
-        android:id="@+id/btn_ffollow_alert"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:gravity="right"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:minWidth="60dp"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:id="@+id/tv_ffollow_showmoney"/>
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:text="@string/allchoose"
+            style="@style/Viewset"
+            android:background="@drawable/shape"
+            android:id="@+id/btn_ffollow_alert"/>
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:text="@string/del"
+            style="@style/Viewset"
+            android:background="@drawable/shape"
+            android:id="@+id/btn_ffollow_del"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/allchoose"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--style="@style/Viewset"-->
+            <!--android:id="@+id/btn_ffollow_alert"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="@style/Viewset"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:text="@string/del"-->
+            <!--android:id="@+id/btn_ffollow_del"/>-->
+
+    </LinearLayout>
+</FrameLayout>

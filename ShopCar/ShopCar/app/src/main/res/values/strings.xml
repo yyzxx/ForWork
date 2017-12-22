@@ -2,4 +2,7 @@
     <string name="app_name">ShopCar</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="shopcar">添加到购物车</string>
+    <string name="del">删除</string>
+    <string name="allchoose">全/不选</string>
 </resources>

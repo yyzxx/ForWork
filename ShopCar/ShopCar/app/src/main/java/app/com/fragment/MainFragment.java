@@ -5,12 +5,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.*;
 import app.com.ConstantUtil;
@@ -31,6 +34,9 @@ public class MainFragment extends BaseFragment {
 
     @Bind(R.id.wv_fmain_show)
     WebView pWebView;
+
+    @Bind(R.id.btn_main_tocar)
+    Button pButton;
 
     private String mdata ="";
     private Handler mHandler = new Handler(){
@@ -80,7 +86,13 @@ public class MainFragment extends BaseFragment {
                     public void run() {
                         // 调用javascript的getData()方法
                         pWebView.loadUrl("javascript:getData()");
-
+                        pButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pWebView.loadUrl("javascript:check()");
+                                Toast.makeText(getActivity(),"添加成功！",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
             }

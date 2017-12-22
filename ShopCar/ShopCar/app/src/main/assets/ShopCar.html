@@ -16,14 +16,24 @@
     <script src="SQApp/js/ajax.js"></script>
 </head>
 <body style="background: #f0f0f0">
-<table class="base-table"  id="bookInfo">
-</table>
-<input type="checkbox" value="123" onchange="checkAll(this.checked)"  id="selectall">
-<input  id="alls" type="button" value="全选" onclick="checkAlls()">
-<!--<label for="selectall" onclick="checkAlls()" id="alls"><input style="background: #ffffff;" type="button" onclick="checkAlls()" value="全选"></label>-->
-
-<input type="button" value="删除选中图书" onclick="del()">
-<span id="total_show"> -- </span>
+<div align="left">
+    <table class="base-table"  id="bookInfo" >
+        <tr align="center">
+            <td></td>
+            <td>书名</td>
+            <td>作者</td>
+            <td>出版社</td>
+            <td>封面</td>
+        </tr>
+        <tbody id="bookInfos"></tbody>
+    </table>
+</div>
+<div align="center">
+    <!--<input type="checkbox" onchange="checkAll(this.checked)"  id="selectall" disabled>-->
+    <!--<input  id="alls" type="button" value="全/不选" onclick="checkAlls()">-->
+    <!--<input type="button" value="删除选中图书" onclick="del()">-->
+    <!--<span id="total_show"> &#45;&#45; </span>-->
+</div>
 </body>
 <script type="text/javascript">
 
@@ -50,13 +60,13 @@
 			    if(data[i]!=null){
                     html5+='<tr><td><input type="checkbox" name="select" value = "'+i+'"></td>';
                     html5+= '<td><i><span>'+data[i].title+'</span></i></td><td><span>'+data[i].author+ '</span></td>';
-                    html5+= '<td><i><span>'+data[i].publisher+'</span></i></td><td>'+data[i].price+'</td><td><img src="' +data[i].images.small+ '"></td>';
-                    html5+='<td><input type=button value="+" onclick="add(this)" id = "'+i+'"></br><span id="number'+i+'">'+0+'</span></br><input type=button value="-" onclick="sub(this)" id = "'+i+'"></td></tr>';
+                    html5+= '<td><i><span>'+data[i].publisher+'</span></i></td><td><img src="' +data[i].images.small+ '"></td></tr>';
+                    html5+='<tr ><td id="prices'+i+'" align="right" colspan="3">单价：'+data[i].price+'</td><td align="left" colspan="2"><input type=button value="+" onclick="add(this)" id = "'+i+'">&nbsp;<span id="number'+i+'">'+0+'</span>&nbsp;<input type=button value="-" onclick="sub(this)" id = "'+i+'"></td></tr>';
 			    }
 			}
-			$("#bookInfo").html(html5);
+			$("#bookInfos").html(html5);
 		    $("#bookInfo").css("font-size",12);
-		    $("#bookInfo").css('width','90%');
+		    $("#bookInfo").css('width','95%');
 		    total();
 	}
 
@@ -73,6 +83,9 @@
                     var number = ($(ids).text());
                     // 删除数据
                     tbody.removeChild(allCheckBoxs[i].parentNode.parentNode);
+                    var tds = "prices"+index;
+                    var tdss = document.getElementById(tds).parentNode;
+                    tbody.removeChild(tdss);
                     i--;
 
                     sum-=(parseFloat(data[index].price.substring(0,5))*number);
@@ -107,9 +120,11 @@
                 total();
             }
         }
-        <!--金额计算-->
+
+        <!--金额-->
         function total(){
-            $("#total_show").text("总计  :"+sum);
+            <!--$("#total_show").text("总计  :"+sum);-->
+            control.showMoney(sum);
         }
 
         <!--全选-->
@@ -125,9 +140,7 @@
                 }
         }
         function checkAlls(){
-
-            var allcheck = $("#selectall").get(0).checked;
-            alert(!allcheck);
+            var allcheck = $("input[name='select']").get(0).checked;
             checkAll(!allcheck);
             $("#selectall").get(0).checked = !allcheck;
         }

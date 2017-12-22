@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -7,9 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/wv_fmain_show"></WebView>
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        style="@style/Viewset"
+        android:background="@drawable/shape"
+        android:text="@string/shopcar"
+        android:id="@+id/btn_main_tocar"/>
     <!--<TextView-->
         <!--android:id="@+id/section_label"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"/>-->
 
-</RelativeLayout>
+</FrameLayout>

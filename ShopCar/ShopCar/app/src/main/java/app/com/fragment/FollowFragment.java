@@ -1,6 +1,7 @@
 package app.com.fragment;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -9,6 +10,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,12 +33,19 @@ import butterknife.Bind;
 
 public class FollowFragment extends BaseFragment {
 
-    @Bind(R.id.wv_fmain_show)
+    @Bind(R.id.wv_ffollow_show)
     WebView pWebView;
+    @Bind(R.id.btn_ffollow_del)
+    TextView pButton_del;
+    @Bind(R.id.tv_ffollow_showmoney)
+    TextView pTextView;
+    @Bind(R.id.btn_ffollow_alert)
+    TextView pButton_cho;
+
 
     @Override
     protected int getContextLayoutId() {
-        return R.layout.fragment_main;
+        return R.layout.fragment_follow;
     }
 
     @Override
@@ -51,6 +62,8 @@ public class FollowFragment extends BaseFragment {
 
     protected void initDatas() {
 
+//        pButton_del.setBackgroundColor(Color.argb(100, 0, 100, 0)); // 背景透明度
+//        pButton_cho.setBackgroundColor(0xffff00ff);
         pWebView.clearCache(true);
         WebSettings pWebSettings = pWebView.getSettings();
         // 设置webview支持js
@@ -69,6 +82,19 @@ public class FollowFragment extends BaseFragment {
                     @Override
                     public void run() {
                         pWebView.loadUrl("javascript:gets()");
+                        pButton_del.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pWebView.loadUrl("javascript:del()");
+                            }
+                        });
+                        pButton_cho.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pWebView.loadUrl("javascript:checkAlls()");
+                            }
+                        });
+
                     }
                 });
             }
@@ -115,6 +141,16 @@ public class FollowFragment extends BaseFragment {
         @JavascriptInterface
         public void setData(String data){
             ConstantUtil.DATA = data;
+        }
+        // js显示金额
+        @JavascriptInterface
+        public void showMoney(final int text){
+            pWebView.post(new  Runnable() {
+                @Override
+                public void run() {
+                    pTextView.setText("总计："+text+"元");
+                }
+            });
         }
     }
 
